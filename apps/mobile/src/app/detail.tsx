@@ -1,2 +1,4 @@
-import {WasteScreen} from '../features/waste';
-export default function Screen(){return <WasteScreen screen="detail"/>;}
+import { WasteScreen } from "../features/waste";
+export default function Screen() {
+  return <WasteScreen screen="detail" />;
+}

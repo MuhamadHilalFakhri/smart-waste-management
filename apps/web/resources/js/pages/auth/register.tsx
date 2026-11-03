@@ -1,2 +1,4 @@
-import Auth from '@/features/waste/auth';
-export default function Page(){return <Auth register/>;}
+import Auth from "@/features/waste/auth";
+export default function Page() {
+    return <Auth register />;
+}

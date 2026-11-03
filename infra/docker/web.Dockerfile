@@ -3,6 +3,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends git unzip libzi
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 COPY apps/web/ ./
+COPY docs/openapi.json ./resources/openapi.json
 RUN composer install --no-dev --prefer-dist --no-interaction --no-scripts && php artisan package:discover
 FROM php-base AS frontend
 COPY --from=node:22-bookworm-slim /usr/local/bin/node /usr/local/bin/node
