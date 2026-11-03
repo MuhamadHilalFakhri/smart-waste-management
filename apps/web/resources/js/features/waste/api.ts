@@ -6,10 +6,12 @@ export async function api<T = unknown>(
         ...init,
         headers: {
             Accept: "application/json",
-            "X-CSRF-TOKEN":
-                document.querySelector<HTMLMetaElement>(
-                    'meta[name="csrf-token"]',
-                )?.content ?? "",
+            "X-XSRF-TOKEN": decodeURIComponent(
+                document.cookie
+                    .split("; ")
+                    .find((cookie) => cookie.startsWith("XSRF-TOKEN="))
+                    ?.slice("XSRF-TOKEN=".length) ?? "",
+            ),
             ...(init.body instanceof FormData
                 ? {}
                 : { "Content-Type": "application/json" }),

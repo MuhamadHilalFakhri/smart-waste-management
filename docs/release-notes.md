@@ -13,3 +13,5 @@ Website demo: https://8080-001m6e4ck17dvek9788p0t5q4fm.sbx.sandboxes-cloud.docke
 README, OpenAPI, ERD, notebook Colab, dan hasil pengujian tersedia di repository. Pengujian perangkat Android fisik untuk kamera/GPS masih diperlukan.
 
 Pemeriksaan akhir: Pint lulus, PHPStan level 7 tanpa error, 50 tes Laravel / 160 assertions, 3 tes FastAPI, lint dan TypeScript Expo, serta build web. SHA256SUMS.txt memuat checksum artefak.
+
+Patch web v1.0.1: header CSRF memakai cookie terbaru setelah login/register Inertia. Probe HTTP nyata membuktikan token meta lama ditolak 419 dan cookie terbaru berhasil menyimpan laporan 201. Artefak model, dataset, APK, dan video tetap memakai hasil terverifikasi yang sama.

@@ -18,3 +18,5 @@
 | Evaluasi Colab T4 | Accuracy testing 97,06%, 330/340 benar |
 
 Tangkapan layar aktual berada di docs/screenshots. APK diverifikasi melalui hasil build EAS, integritas ZIP, AndroidManifest.xml, DEX, bundle aplikasi, dan origin API produksi dalam bundle. Pengujian kamera dan GPS pada perangkat Android fisik masih diperlukan. Video walkthrough tidak menggantikan pengujian perangkat fisik.
+
+Regresi CSRF diuji dengan server Laravel nyata: setelah register tanpa reload, token meta lama menghasilkan 419; header cookie XSRF terbaru berhasil membuat laporan dengan 201.

@@ -83,5 +83,5 @@ Lihat [arsitektur](docs/architecture.md), [API](docs/api.md), [ERD](docs/erd.md)
 
 Model, dataset aktual, APK, dan video disediakan melalui GitHub Releases. Kredensial Admin demo disimpan lokal di `.cache/demo-credentials.txt` dan tidak dipublikasikan.
 
-Unduhan lengkap: https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/tag/v1.0.0
+Unduhan lengkap: https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/tag/v1.0.1
 Hasil pemeriksaan rinci: `docs/testing.md`.
