@@ -7,6 +7,7 @@ use Illuminate\Support\{Str,Facades\DB};
 class SaveReport {
  public function execute(User $u,array $data,?UploadedFile $photo,?Report $report=null):Report {
  return DB::transaction(function()use($u,$data,$photo,$report){
+ if($report){$report=Report::lockForUpdate()->findOrFail($report->id);\Illuminate\Support\Facades\Gate::authorize('update',$report);}
  $new=!$report;$report??=new Report(['user_id'=>$u->id,'number'=>(string)Str::uuid(),'status'=>'pending']);
  $report->fill($data);
  if($photo){$report->photo_path=$photo->store('reports','local');$report->photo_version=(string)Str::uuid();}

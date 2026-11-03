@@ -7,6 +7,14 @@ from starlette.concurrency import run_in_threadpool
 from PIL import Image, UnidentifiedImageError
 from .config import settings
 from .model import Classifier
+from pydantic import BaseModel, Field
+from typing import Literal
+class Prediction(BaseModel):
+    label: Literal["organic", "paper", "plastic"]
+    confidence: float = Field(ge=0, le=1)
+    probabilities: dict[str, float]
+    model_version: str
+
 
 @asynccontextmanager
 async def lifespan(app):
@@ -23,7 +31,7 @@ def health(): return {'status':'ok'}
 def ready():
     if app.state.classifier.model is None: raise HTTPException(503, 'Model belum dipasang')
     return {'status':'ready'}
-@app.post('/predict', dependencies=[Depends(authenticate)])
+@app.post('/predict', response_model=Prediction, dependencies=[Depends(authenticate)])
 async def predict(file: UploadFile):
     if app.state.classifier.model is None: raise HTTPException(503, 'Model belum dipasang')
     content = await file.read(5 * 1024 * 1024 + 1)

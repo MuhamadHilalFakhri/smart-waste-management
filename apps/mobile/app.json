@@ -34,13 +34,16 @@
           "locationWhenInUsePermission": "Catat koordinat laporan sampah."
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-router",
+      "expo-router"
     ],
     "extra": {
       "eas": {
         "projectId": "9bc93050-ee16-41c9-81a4-cf2ffad7cbc4"
       }
     },
-    "owner": "maykiddd"
+    "owner": "maykiddd",
+    "scheme": "smartwaste"
   }
 }

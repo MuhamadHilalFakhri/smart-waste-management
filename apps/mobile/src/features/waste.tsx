@@ -1,12 +1,13 @@
-import {useEffect,useState} from 'react';
+import {useEffect,useState,createContext,useContext,type ReactNode} from 'react';
+import {router} from 'expo-router';
 import {SafeAreaView,ScrollView,View,Text,TextInput,Pressable,StyleSheet,Image,Alert,ActivityIndicator,Linking} from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
-import {api,baseUrl,categories,type Report,type Page} from './src/api';
+import {api,baseUrl,categories,type Report,type Page} from '../api';
 const status:Record<string,string>={pending:'Pending',in_progress:'In Progress',completed:'Completed',rejected:'Rejected'};
-export default function App(){
- const[token,setToken]=useState<string|null>(null);const[ready,setReady]=useState(false);const[register,setRegister]=useState(false);const[name,setName]=useState('');const[email,setEmail]=useState('');const[password,setPassword]=useState('');const[confirmation,setConfirmation]=useState('');const[screen,setScreen]=useState('home');const[reports,setReports]=useState<Page<Report>>();const[stats,setStats]=useState<{total:number;statuses:Record<string,number>}>();const[selected,setSelected]=useState<Report>();const[editing,setEditing]=useState<Report>();const[description,setDescription]=useState('');const[category,setCategory]=useState<string|null>(null);const[photo,setPhoto]=useState<ImagePicker.ImagePickerAsset>();const[coords,setCoords]=useState<{latitude:number;longitude:number}>();const[error,setError]=useState('');const[busy,setBusy]=useState(false);
+function useWasteState(){
+ const[token,setToken]=useState<string|null>(null);const[ready,setReady]=useState(false);const[register,setRegister]=useState(false);const[name,setName]=useState('');const[email,setEmail]=useState('');const[password,setPassword]=useState('');const[confirmation,setConfirmation]=useState('');const setScreen=(view:string)=>router.push(view==='home'?'/':('/'+view) as '/');const[reports,setReports]=useState<Page<Report>>();const[stats,setStats]=useState<{total:number;statuses:Record<string,number>}>();const[selected,setSelected]=useState<Report>();const[editing,setEditing]=useState<Report>();const[description,setDescription]=useState('');const[category,setCategory]=useState<string|null>(null);const[photo,setPhoto]=useState<ImagePicker.ImagePickerAsset>();const[coords,setCoords]=useState<{latitude:number;longitude:number}>();const[error,setError]=useState('');const[busy,setBusy]=useState(false);
  useEffect(()=>{SecureStore.getItemAsync('token').then(t=>{setToken(t);setReady(true);});},[]);
  const load=async(page=1)=>{const [r,s]=await Promise.all([api<Page<Report>>('reports?page='+page),api<{total:number;statuses:Record<string,number>}>('dashboard')]);setReports(r);setStats(s);};
  const run=async(fn:()=>Promise<void>)=>{setBusy(true);setError('');try{await fn();}catch(e){setError((e as Error).message);}finally{setBusy(false);}};
@@ -19,6 +20,12 @@ export default function App(){
  function newReport(report?:Report){setEditing(report);setDescription(report?.description??'');setCategory(report?.category??null);setCoords(report?{latitude:Number(report.latitude),longitude:Number(report.longitude)}:undefined);setPhoto(undefined);setScreen('form');}
  async function save(){if(description.trim().length<10||!coords||(!photo&&!editing))throw new Error('Isi deskripsi minimal 10 karakter, foto, dan lokasi GPS.');const data=new FormData();data.append('description',description);data.append('latitude',String(coords.latitude));data.append('longitude',String(coords.longitude));data.append('category',category??'');if(photo)data.append('photo',{uri:photo.uri,name:'report.jpg',type:photo.mimeType??'image/jpeg'} as unknown as Blob);if(editing)data.append('_method','PUT');await api('reports'+(editing?'/'+editing.id:''),{method:'POST',body:data});await load();setScreen('history');Alert.alert('Laporan tersimpan','Saran kategori AI akan muncul pada detail laporan.');}
  async function detail(id:number){setSelected(await api<Report>('reports/'+id));setScreen('detail');}
+
+ return {token,setToken,field,ready,register,setRegister,name,setName,email,setEmail,password,setPassword,confirmation,setConfirmation,reports,stats,selected,editing,description,setDescription,category,setCategory,photo,coords,error,busy,button,run,load,auth,pick,gps,newReport,save,detail,setScreen};
+}
+const WasteContext=createContext<ReturnType<typeof useWasteState>|null>(null);
+export function WasteProvider({children}:{children:ReactNode}){const state=useWasteState();return <WasteContext.Provider value={state}>{children}</WasteContext.Provider>;}
+export function WasteScreen({screen}:{screen:string}){const state=useContext(WasteContext);if(!state)throw new Error("WasteProvider missing");const {token,setToken,field,ready,register,setRegister,name,setName,email,setEmail,password,setPassword,confirmation,setConfirmation,reports,stats,selected,editing,description,setDescription,category,setCategory,photo,coords,error,busy,button,run,load,auth,pick,gps,newReport,save,detail,setScreen}=state;
  if(!ready)return <SafeAreaView style={s.safe}><ActivityIndicator/></SafeAreaView>;
  return <SafeAreaView style={s.safe}><ScrollView contentContainerStyle={s.container} keyboardShouldPersistTaps="handled"><Text style={s.brand}>Smart Waste</Text><Text style={s.sub}>Catat sampah. Pantau penanganannya.</Text>{error!==''&&<Text accessibilityRole="alert" style={s.error}>{error}</Text>}{busy&&<ActivityIndicator color="#216b45"/>}
  {!token?<View style={s.card}><Text style={s.title}>{register?'Buat akun':'Masuk ke akun'}</Text>{register&&field('Nama',name,setName)}{field('Email',email,setEmail)}{field('Kata sandi',password,setPassword,true)}{register&&field('Konfirmasi kata sandi',confirmation,setConfirmation,true)}{button(register?'Daftar':'Masuk',()=>void run(auth))}{button(register?'Sudah punya akun':'Buat akun baru',()=>setRegister(!register),true)}</View>:<><View style={s.nav}>{button('Dashboard',()=>setScreen('home'),true)}{button('Riwayat',()=>setScreen('history'),true)}{button('Lapor',()=>newReport(),true)}</View>
