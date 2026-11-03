@@ -42,14 +42,11 @@ export default function Reports() {
     };
     function filters(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        setQuery(
-            new URLSearchParams(
-                new FormData(e.currentTarget) as unknown as Record<
-                    string,
-                    string
-                >,
-            ).toString(),
-        );
+        const nextQuery = new URLSearchParams(
+            new FormData(e.currentTarget) as unknown as Record<string, string>,
+        ).toString();
+        if (nextQuery === query) void load(nextQuery);
+        else setQuery(nextQuery);
     }
     function save(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();

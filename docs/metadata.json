@@ -1,0 +1,14 @@
+{
+  "version": "9fdcea1e664b",
+  "sha256": "9fdcea1e664b842bdfb098d3e256f1b02eaf333dd772f03a1598f59864dde927",
+  "labels": [
+    "organic",
+    "paper",
+    "plastic"
+  ],
+  "input_size": [
+    224,
+    224
+  ],
+  "preprocessing": "RGB, EXIF transpose, bilinear resize; normalization embedded"
+}

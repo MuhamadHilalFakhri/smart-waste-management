@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 WORKDIR /service
-COPY services/ml/requirements.txt .
+COPY services/ml/requirements.lock ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 COPY services/ml/app ./app
 COPY services/ml/tests ./tests

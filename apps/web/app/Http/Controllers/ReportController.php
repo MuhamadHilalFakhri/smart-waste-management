@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actions\SaveReport;
 use App\Http\Requests\SaveReportRequest;
+use App\Http\Resources\ReportResource;
 use App\Jobs\PredictReport;
 use App\Models\Report;
 use Illuminate\Http\Request;
@@ -19,36 +20,40 @@ class ReportController
         $q = Report::visibleTo($r->user())->with('prediction');
         if ($s = $r->query('search')) {
             $q->where(fn ($q) => $q->where('number', 'like', "%$s%")->orWhere('description', 'like', "%$s%"));
-        }foreach (['status', 'category'] as $key) {
+        }
+        foreach (['status', 'category'] as $key) {
             if ($v = $r->query($key)) {
                 $q->where($key, $v);
             }
-        }foreach (['from' => '>=', 'to' => '<='] as $k => $op) {
+        }
+        foreach (['from' => '>=', 'to' => '<='] as $k => $op) {
             if ($v = $r->query($k)) {
                 $q->whereDate('created_at', $op, $v);
             }
         }
 
-        return $q->latest()->paginate(15)->withQueryString();
+        return $q->latest()->paginate(15)->withQueryString()
+            ->through(fn (Report $report) => ReportResource::make($report)->resolve());
     }
 
     public function show(Report $report)
     {
         Gate::authorize('view', $report);
 
-        return $report->load(['prediction', 'histories']);
+        return ReportResource::make($report->load(['prediction', 'histories']));
     }
 
     public function store(SaveReportRequest $r, SaveReport $action)
     {
-        return response()->json($action->execute($r->user(), $r->safe()->except('photo'), $r->file('photo')), 201);
+        return ReportResource::make($action->execute($r->user(), $r->safe()->except('photo'), $r->file('photo')))
+            ->response()->setStatusCode(201);
     }
 
     public function update(SaveReportRequest $r, Report $report, SaveReport $action)
     {
         Gate::authorize('update', $report);
 
-        return $action->execute($r->user(), $r->safe()->except('photo'), $r->file('photo'), $report);
+        return ReportResource::make($action->execute($r->user(), $r->safe()->except('photo'), $r->file('photo'), $report));
     }
 
     public function destroy(Report $report)

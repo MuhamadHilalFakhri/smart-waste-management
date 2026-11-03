@@ -57,7 +57,7 @@ pip install -r requirements.txt
 uvicorn app.main:app --port 8001
 ```
 
-Target accuracy testing >=80% harus dibuktikan evaluation.json hasil eksekusi. Nilai belum dinyatakan sebelum training selesai.
+Hasil training aktual: **97,06% accuracy testing** pada 340 gambar. Lihat `docs/evaluation.md` untuk confusion matrix, classification report, dan checksum model.
 
 ## Pemeriksaan
 

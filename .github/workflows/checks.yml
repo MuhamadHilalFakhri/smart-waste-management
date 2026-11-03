@@ -23,5 +23,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm ci && npx tsc --noEmit
+      - run: npm ci && npm run lint && npx tsc --noEmit
         working-directory: apps/mobile
+  ml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: services/ml/requirements.lock
+      - run: pip install -r requirements-dev.txt && python -m unittest discover -s tests -v
+        working-directory: services/ml
+        env:
+          ML_TOKEN: test-service-token-123456

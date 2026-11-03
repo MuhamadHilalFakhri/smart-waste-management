@@ -36,7 +36,8 @@ class UserController
             abort_if($u->exists && $admins->contains('id', $u->id) && $admins->count() === 1 && ($d['role'] !== 'admin' || ! $d['is_active']), 422, 'Admin aktif terakhir tidak dapat dinonaktifkan.');
             if (empty($d['password'])) {
                 unset($d['password']);
-            }foreach ($d as $k => $v) {
+            }
+            foreach ($d as $k => $v) {
                 $u->$k = $v;
             }$u->save();
             if (! $u->is_active) {

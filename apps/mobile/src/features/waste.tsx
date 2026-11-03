@@ -81,7 +81,15 @@ function useWasteState() {
     }
   };
   useEffect(() => {
-    if (token) void run(() => load());
+    if (!token) return;
+    let cancelled = false;
+    Promise.all([
+      api<Page<Report>>("reports?page=1"),
+      api<{total:number;statuses:Record<string,number>}>("dashboard"),
+    ]).then(([reports, statistics]) => {
+      if (!cancelled) { setReports(reports); setStats(statistics); }
+    }).catch((error: Error) => { if (!cancelled) setError(error.message); });
+    return () => { cancelled = true; };
   }, [token]);
   const button = (label: string, onPress: () => void, secondary = false) => (
     <Pressable
