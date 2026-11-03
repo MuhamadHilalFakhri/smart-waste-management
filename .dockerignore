@@ -1,0 +1,9 @@
+**/node_modules
+**/vendor
+**/.env
+.git
+.cache
+ml/data
+ml/artifacts
+**/__pycache__
+**/storage/logs/*

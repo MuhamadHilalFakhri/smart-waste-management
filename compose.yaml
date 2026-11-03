@@ -1,0 +1,55 @@
+name: smart-waste
+x-web: &web
+  image: smart-waste-web
+  build:
+    context: .
+    dockerfile: infra/docker/web.Dockerfile
+    target: runtime
+  env_file: .env
+  volumes:
+    - photos:/var/www/html/storage/app
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - database:/var/lib/mysql
+  bootstrap:
+    <<: *web
+    command: ["bootstrap"]
+    depends_on: [mysql]
+  web:
+    <<: *web
+    restart: unless-stopped
+    depends_on: [mysql, ml]
+  worker:
+    <<: *web
+    command: ["php","artisan","queue:work","--sleep=3","--tries=1","--timeout=45"]
+    restart: unless-stopped
+    depends_on: [mysql, ml]
+  nginx:
+    image: smart-waste-nginx
+    build:
+      context: .
+      dockerfile: infra/docker/web.Dockerfile
+      target: nginx
+    ports: ["8080:8080"]
+    depends_on: [web]
+    restart: unless-stopped
+  ml:
+    build:
+      context: .
+      dockerfile: infra/docker/ml.Dockerfile
+    environment:
+      MODEL_DIR: /models
+      ML_TOKEN: ${ML_TOKEN}
+    volumes:
+      - ${MODEL_DIR:-./ml/artifacts}:/models:ro
+    restart: unless-stopped
+volumes:
+  database:
+  photos:

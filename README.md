@@ -1,0 +1,73 @@
+# Smart Waste Management System
+
+Monorepo Laravel 13 + Inertia React TypeScript, React Native Expo, FastAPI, MySQL, dan training Google Colab.
+
+## Mulai dengan Docker
+
+1. Salin `.env.example` menjadi `.env`. Isi password database, ML_TOKEN, ADMIN_EMAIL, ADMIN_PASSWORD, dan APP_URL.
+2. Buat APP_KEY: `php apps/web/artisan key:generate --show`, lalu simpan nilainya di `.env` root.
+3. Jalankan `sh infra/sandbox/deploy.sh` pada host Linux dengan Docker Compose.
+4. Buka `http://localhost:8080`. Admin dibuat hanya jika email tersebut belum ada.
+5. Model belum terpasang ditampilkan sebagai layanan prediksi belum siap; pelaporan tetap berfungsi.
+
+## Pengembangan web
+
+PHP >=8.3, Composer 2, Node >=22.12, dan MySQL 8.
+
+```sh
+cd apps/web
+composer install
+cp .env.example .env
+php artisan key:generate
+# Atur DB_CONNECTION=mysql dan kredensial MySQL pada .env aplikasi.
+php artisan migrate --seed
+npm ci
+npm run build
+php artisan serve
+# Terminal kedua:
+php artisan queue:work --tries=1 --timeout=45
+```
+
+Untuk tes terisolasi, PHPUnit memakai SQLite in-memory. Database aplikasi demo menggunakan MySQL.
+
+## Android
+
+```sh
+cd apps/mobile
+npm ci
+cp .env.example .env
+# Isi EXPO_PUBLIC_API_URL dengan origin HTTPS backend, tanpa /api/v1.
+npx expo start
+# APK standalone:
+npx eas-cli build --platform android --profile preview
+```
+
+Gunakan perangkat Android untuk kamera dan GPS. Profil APK tidak memerlukan Metro. Login akun Expo diperlukan untuk EAS Build.
+
+## Training dan inference
+
+Buka `ml/notebooks/train_waste.ipynb` di Colab, pilih GPU T4 bila tersedia, jalankan semua sel. Notebook mandiri mengunduh RealWaste dan menjalankan training. Unduh arsip hasil, ekstrak ke `ml/artifacts/`, lalu restart layanan ML. Arsip berisi model.keras, metadata.json, manifest.csv, evaluation.json, confusion matrix, dan kurva training.
+
+```sh
+cd services/ml
+python -m venv .venv
+# Aktifkan virtual environment sesuai OS.
+pip install -r requirements.txt
+# Atur ML_TOKEN dan MODEL_DIR melalui environment.
+uvicorn app.main:app --port 8001
+```
+
+Target accuracy testing >=80% harus dibuktikan evaluation.json hasil eksekusi. Nilai belum dinyatakan sebelum training selesai.
+
+## Pemeriksaan
+
+```sh
+cd apps/web
+php artisan test
+npm run types:check
+npm run build
+cd ../mobile
+npx tsc --noEmit
+```
+
+Lihat [arsitektur](docs/architecture.md), [API](docs/api.md), [ERD](docs/erd.md), [deployment](docs/deployment.md), dan [skenario demo](docs/demo.md).
