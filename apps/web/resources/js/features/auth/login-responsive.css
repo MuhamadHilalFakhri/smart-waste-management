@@ -1,6 +1,6 @@
-@media (min-width: 900px) {
+@media (min-width: 768px) {
     .smart-login {
-        grid-template-columns: minmax(18rem, 34%) minmax(0, 1fr);
+        grid-template-columns: minmax(0, 34%) minmax(0, 1fr);
     }
     .login-story {
         position: relative;
@@ -8,31 +8,22 @@
         min-inline-size: 0;
         flex-direction: column;
         justify-content: space-between;
-        gap: 56px;
+        gap: 64px;
         overflow: hidden;
-        padding: clamp(28px, 3.5vw, 56px);
+        padding: 22px 17px 24px;
         background:
-            radial-gradient(
-                ellipse at 40% 30%,
-                oklch(0.7 0.15 135 / 55%),
-                transparent 60%
-            ),
-            linear-gradient(
-                160deg,
-                oklch(0.18 0.03 150),
-                oklch(0.45 0.12 140) 55%,
-                oklch(0.5 0.12 135)
-            );
+            radial-gradient(ellipse at 35% 25%, #699c4090, transparent 60%),
+            linear-gradient(160deg, #173315, #23541c 48%, #70b83d);
         color: white;
     }
     .login-story::after {
         content: "";
         position: absolute;
         inset-inline-start: -25%;
-        inset-block-start: 42%;
+        inset-block-start: 52%;
         inline-size: 150%;
         block-size: 120%;
-        border-top: 1px solid oklch(1 0 0 / 22%);
+        border-top: 1px solid #ffffff35;
         border-radius: 50%;
         pointer-events: none;
     }
@@ -43,48 +34,55 @@
     .login-back {
         display: inline-flex;
         align-items: center;
-        gap: 6px;
+        gap: 5px;
         inline-size: fit-content;
-        min-block-size: 44px;
-        padding: 10px 12px;
-        border: 1px solid oklch(1 0 0 / 30%);
-        border-radius: 8px;
-        background: oklch(0.18 0.03 150 / 18%);
-        font-size: 13px;
+        min-block-size: 34px;
+        padding: 8px 12px;
+        border: 1px solid #ffffff26;
+        border-radius: 10px;
+        background: #ffffff09;
+        font-size: 12px;
         line-height: 1.4;
     }
     .login-back:hover {
-        background: oklch(0.18 0.03 150 / 30%);
+        background: #ffffff15;
     }
     .login-story-copy {
-        max-inline-size: 25rem;
-    }
-    .login-story-brand {
-        margin-block-end: 22px;
-        font-size: 15px;
-        font-weight: 700;
+        margin-top: auto;
     }
     .login-story-copy h2 {
         margin: 0;
-        font-size: clamp(1.8rem, 2.65vw, 3rem);
+        font-size: clamp(1.5rem, 2.15vw, 2rem);
         font-weight: 700;
         line-height: 1.22;
         overflow-wrap: anywhere;
     }
-    .login-story-copy > p:last-child {
-        margin-block-start: 22px;
-        font-size: 15px;
-        line-height: 1.75;
-    }
-    .login-story-footer {
-        font-size: 12px;
-        line-height: 1.6;
-    }
-    .login-mobile-brand {
-        display: none;
+    .login-story-copy p {
+        margin-block-start: 16px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #ffffffe0;
     }
     .login-story :focus-visible {
         outline-color: white;
+    }
+    .login-content {
+        padding-inline: 32px;
+    }
+    .login-input input {
+        font-size: 14px;
+    }
+}
+@media (max-width: 767px) {
+    .login-remember {
+        min-height: 44px;
+    }
+    .login-submit {
+        min-height: 48px;
+    }
+    .login-footer a {
+        min-height: 36px;
+        padding-block: 8px;
     }
 }
 @media (max-height: 620px) {

@@ -1,0 +1,198 @@
+.smart-login {
+    --login-ink: #060c18;
+    --login-muted: #71829c;
+    --login-border: #dce3ee;
+    --login-brand: #007f73;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-block-size: 100vh;
+    min-block-size: 100svh;
+    background: white;
+    color: var(--login-ink);
+    font-family: Arial, sans-serif;
+    color-scheme: light;
+}
+.smart-login *,
+.smart-login *::before,
+.smart-login *::after {
+    box-sizing: border-box;
+}
+.login-story {
+    display: none;
+}
+.login-content {
+    display: flex;
+    min-inline-size: 0;
+    flex-direction: column;
+    gap: 48px;
+    padding: 48px 24px 20px;
+}
+.login-form {
+    inline-size: 100%;
+    max-inline-size: 24rem;
+    margin: auto;
+    flex-shrink: 0;
+}
+.login-intro {
+    text-align: center;
+    margin-block-end: 36px;
+}
+.login-mark {
+    display: block;
+    margin: 0 auto 18px;
+    color: var(--login-brand);
+}
+.login-intro h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 2.2vw, 1.875rem);
+    font-weight: 700;
+    line-height: 1.25;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+}
+.login-field {
+    margin-block-end: 22px;
+    min-inline-size: 0;
+}
+.login-field > label {
+    display: block;
+    margin-block-end: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.login-input {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-block-size: 46px;
+    padding-inline: 13px;
+    border: 1px solid var(--login-border);
+    border-radius: 14px;
+    background: white;
+}
+.login-input > svg {
+    flex-shrink: 0;
+    color: var(--login-muted);
+    width: 16px;
+    height: 16px;
+}
+.login-input-divider {
+    inline-size: 1px;
+    block-size: 16px;
+    flex-shrink: 0;
+    background: var(--login-border);
+}
+.login-input input {
+    inline-size: 100%;
+    min-inline-size: 0;
+    min-block-size: 44px;
+    padding-block: 11px;
+    background: transparent;
+    color: var(--login-ink);
+    border: 0;
+    outline: none;
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: 0;
+}
+.login-input input::placeholder {
+    color: var(--login-muted);
+    opacity: 1;
+}
+.login-input:focus-within {
+    border-color: var(--login-brand);
+    box-shadow: 0 0 0 3px #007f7325;
+}
+.login-input-error {
+    border-color: #ae342f;
+}
+.login-error {
+    margin-block-start: 8px;
+    color: #9c2925;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+.login-status {
+    padding: 14px;
+    margin-block-end: 22px;
+    border-radius: 8px;
+    background: #edf5ed;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.login-remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-block-size: 28px;
+    inline-size: fit-content;
+    cursor: pointer;
+    font-size: 14px;
+}
+.login-remember input {
+    inline-size: 16px;
+    block-size: 16px;
+    flex-shrink: 0;
+    accent-color: #080d1d;
+}
+.login-submit {
+    display: block;
+    inline-size: 100%;
+    min-block-size: 44px;
+    margin-block-start: 30px;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 14px;
+    background: linear-gradient(90deg, #087b6f, #71b83d);
+    box-shadow: 0 3px 5px #132b1b20;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: filter 150ms ease;
+}
+.login-submit:hover:not(:disabled) {
+    filter: brightness(0.96);
+}
+.login-submit:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+.login-help {
+    margin-block-start: 28px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.login-help a {
+    color: var(--login-brand);
+    text-underline-offset: 4px;
+}
+.login-help a:hover {
+    text-decoration: underline;
+}
+.login-footer {
+    max-inline-size: 24rem;
+    margin-inline: auto;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.5;
+}
+.login-footer a {
+    display: inline-block;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+.login-footer p {
+    color: var(--login-muted);
+}
+.smart-login :focus-visible {
+    outline: 3px solid var(--login-brand);
+    outline-offset: 4px;
+}
+.smart-login .login-input input:focus-visible {
+    outline: none;
+}

@@ -46,7 +46,7 @@ export default function Login({
     canResetPassword?: boolean;
     status?: string;
 }) {
-    const form = useForm({ email: "", password: "", remember: false });
+    const form = useForm({ email: "", password: "", remember: true });
 
     return (
         <div className="smart-login">
@@ -62,20 +62,16 @@ export default function Login({
                     Buat akun pelapor
                 </Link>
                 <div className="login-story-copy">
-                    <p className="login-story-brand">Smart Waste</p>
                     <h2>
-                        Laporkan sampah.
+                        Lingkungan bersih.
                         <br />
-                        Pantau penanganannya.
+                        Mulai dari laporan Anda.
                     </h2>
                     <p>
                         Catat lokasi dan foto sampah, lalu ikuti perkembangan
                         laporan Anda dalam satu tempat.
                     </p>
                 </div>
-                <p className="login-story-footer">
-                    Smart Waste Management System
-                </p>
             </aside>
 
             <main className="login-content">
@@ -95,9 +91,8 @@ export default function Login({
                             size={42}
                             aria-hidden="true"
                         />
-                        <p className="login-mobile-brand">Smart Waste</p>
+
                         <h1 id="login-title">Selamat datang kembali</h1>
-                        <p>Masuk untuk melanjutkan laporan Anda.</p>
                     </div>
                     {status && (
                         <p className="login-status" role="status">
@@ -157,11 +152,6 @@ export default function Login({
                         {form.processing ? "Memproses..." : "Masuk"}
                     </button>
                     <div className="login-help">
-                        {canResetPassword && (
-                            <Link href="/forgot-password">
-                                Lupa kata sandi?
-                            </Link>
-                        )}
                         <p>
                             Belum punya akun?{" "}
                             <Link href="/register">Daftar sebagai pelapor</Link>
@@ -169,7 +159,10 @@ export default function Login({
                     </div>
                 </form>
                 <footer className="login-footer">
-                    Smart Waste · Pengelolaan laporan sampah yang terpantau.
+                    {canResetPassword && (
+                        <Link href="/forgot-password">Lupa kata sandi?</Link>
+                    )}
+                    <p>Smart Waste · Catat sampah dan pantau penanganannya.</p>
                 </footer>
             </main>
         </div>
