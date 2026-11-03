@@ -1,6 +1,5 @@
 import { Head, Link, useForm } from "@inertiajs/react";
 import {
-    ChevronLeft,
     Droplet,
     Lock,
     Mail,
@@ -57,10 +56,6 @@ export default function Login({
                 />
             </Head>
             <aside className="login-story" aria-label="Tentang Smart Waste">
-                <Link href="/register" className="login-back">
-                    <ChevronLeft size={15} aria-hidden="true" />
-                    Buat akun pelapor
-                </Link>
                 <div className="login-story-copy">
                     <h2>
                         Lingkungan bersih.
@@ -151,12 +146,6 @@ export default function Login({
                     >
                         {form.processing ? "Memproses..." : "Masuk"}
                     </button>
-                    <div className="login-help">
-                        <p>
-                            Belum punya akun?{" "}
-                            <Link href="/register">Daftar sebagai pelapor</Link>
-                        </p>
-                    </div>
                 </form>
                 <footer className="login-footer">
                     {canResetPassword && (

@@ -31,22 +31,6 @@
         position: relative;
         z-index: 1;
     }
-    .login-back {
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        inline-size: fit-content;
-        min-block-size: 34px;
-        padding: 8px 12px;
-        border: 1px solid #ffffff26;
-        border-radius: 10px;
-        background: #ffffff09;
-        font-size: 12px;
-        line-height: 1.4;
-    }
-    .login-back:hover {
-        background: #ffffff15;
-    }
     .login-story-copy {
         margin-top: auto;
     }

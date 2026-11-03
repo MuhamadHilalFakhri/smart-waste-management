@@ -161,19 +161,6 @@
     opacity: 0.65;
     cursor: wait;
 }
-.login-help {
-    margin-block-start: 28px;
-    text-align: center;
-    font-size: 14px;
-    line-height: 1.6;
-}
-.login-help a {
-    color: var(--login-brand);
-    text-underline-offset: 4px;
-}
-.login-help a:hover {
-    text-decoration: underline;
-}
 .login-footer {
     max-inline-size: 24rem;
     margin-inline: auto;
