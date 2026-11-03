@@ -7,3 +7,9 @@ Font sans sistem mengutamakan keterbacaan dan tidak memerlukan unduhan font.
 
 ## Halaman login
 Mengikuti referensi React dan CSS dari pengguna: panel hijau di desktop, form dengan ikon, serta tombol gradasi. Gradasi panel memisahkan area pengantar dari form; gradasi tombol menandai aksi utama. Warna tombol dibuat lebih gelap agar teks putih terbaca. Font sans sistem menjaga keterbacaan di semua perangkat. Panel disembunyikan di bawah 900 px, form memakai input 16 px dan target sentuh minimal 44 px, sementara halaman dapat digulir pada layar pendek. CSS dibatasi ke `.smart-login` sehingga token global dashboard tidak berubah.
+
+## Halaman setelah login
+Dashboard, laporan, dan pengguna mengikuti referensi React/CSS pengguna. Navigasi tetap melalui Inertia; data contoh diganti API Laravel dengan otorisasi, filter, dan pagination server. Komponen memakai shadcn/ui berbasis Radix: Button, Card, Input, Select, Dialog, Sheet, Badge, Alert, Table, dan Textarea. Token warna dibatasi ke `.waste-app`, termasuk portal dialog dan select. Sidebar desktop berubah menjadi Sheet di bawah 900 px. Kartu dan filter disusun ulang di bawah 600 px; tabel dapat digulir di dalam panel tanpa memperlebar halaman. Dialog dibatasi 90dvh agar judul dan tindakan tetap dapat dijangkau pada layar pendek.
+
+## Batas panjang source
+Source yang dipelihara untuk web dan mobile dibatasi maksimal 250 baris per file, dengan target di bawah 200 bila memungkinkan. Halaman, komponen fitur, hook, dan stylesheet dipisahkan berdasarkan tanggung jawab. Jalankan `node infra/scripts/check-source-size.mjs` dari root; pemeriksaan yang sama dijalankan CI. Dependensi, lockfile, artefak build, serta source Wayfinder yang dihasilkan otomatis (`actions`, `routes`, `wayfinder`) tidak termasuk pemeriksaan. Jangan mengedit atau memadatkan hasil generator untuk memenuhi batas ini.

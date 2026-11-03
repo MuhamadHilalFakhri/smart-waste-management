@@ -1,0 +1,183 @@
+.waste-app .sw-intro {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 24px;
+}
+.waste-app .sw-intro h2 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+}
+.waste-app .sw-stat-grid {
+    display: grid;
+    grid-template-columns: 1.35fr repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+}
+.waste-app .dashboard-card {
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: white;
+    box-shadow: none;
+    gap: 0;
+}
+.waste-app .sw-stat-label {
+    color: #748579;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: center;
+}
+.waste-app .sw-stat-number {
+    font-size: 30px;
+    font-weight: 650;
+    letter-spacing: -1px;
+    margin-top: 17px;
+    display: block;
+}
+.waste-app .sw-stat-total {
+    background: #214e39;
+    color: white;
+    border-color: #214e39;
+}
+.waste-app .sw-stat-total .sw-stat-label {
+    color: #d0decf;
+}
+.waste-app .sw-dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.45fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+.waste-app .sw-category-content {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 28px;
+}
+.waste-app .sw-donut {
+    flex-shrink: 0;
+    width: 154px;
+    height: 154px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+.waste-app .sw-donut-hole {
+    width: 118px;
+    height: 118px;
+    background: white;
+    border-radius: 50%;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+}
+.waste-app .sw-donut-hole strong {
+    font-size: 26px;
+}
+.waste-app .sw-donut-hole span {
+    font-size: 11px;
+    color: #819087;
+}
+.waste-app .sw-legend {
+    display: grid;
+    gap: 18px;
+    font-size: 12px;
+    min-width: 150px;
+}
+.waste-app .sw-legend div {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.waste-app .sw-legend strong {
+    margin-left: auto;
+}
+.waste-app .sw-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.waste-app .sw-side-stack {
+    display: grid;
+    gap: 16px;
+}
+.waste-app .sw-attention {
+    background: #edf2de;
+    border-color: #dce5c8;
+}
+.waste-app .sw-attention p {
+    margin: 12px 0 18px;
+}
+.waste-app .sw-quick-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 18px;
+}
+.waste-app .sw-quick-links a {
+    font-size: 12px;
+    min-height: 65px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+}
+.waste-app .sw-quick-links a:hover {
+    background: #f5f8f4;
+}
+.waste-app .sw-chart {
+    margin-top: 22px;
+    height: 180px;
+    display: flex;
+    align-items: end;
+    gap: 4px;
+    border-bottom: 1px solid var(--border);
+    padding: 8px 0 0;
+}
+.waste-app .sw-chart-day {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    align-items: end;
+    min-width: 0;
+}
+.waste-app .sw-chart-bar {
+    width: 100%;
+    background: #78a683;
+    border-radius: 3px 3px 0 0;
+    min-height: 2px;
+}
+.waste-app .sw-chart-axis {
+    display: flex;
+    justify-content: space-between;
+    color: #8b988e;
+    font-size: 10px;
+    margin-top: 10px;
+}
+.waste-app .sw-user-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 26px;
+}
+.waste-app .report-symbol {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    background: #edf3e8;
+    color: #527348;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}

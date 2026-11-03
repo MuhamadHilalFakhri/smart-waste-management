@@ -12,6 +12,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: node infra/scripts/check-source-size.mjs
       - run: composer install --no-interaction
         working-directory: apps/web
       - run: cp .env.example .env && php artisan key:generate && npm ci && npm run build && npm run types:check && composer test

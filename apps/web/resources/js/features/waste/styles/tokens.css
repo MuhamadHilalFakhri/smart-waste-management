@@ -1,0 +1,128 @@
+.waste-app {
+    color-scheme: light;
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-destructive: var(--destructive);
+
+    --background: #f5f8f6;
+    --foreground: #18382d;
+    --card: #fff;
+    --card-foreground: #18382d;
+    --primary: #1b6546;
+    --primary-foreground: #fff;
+    --secondary: #edf4ef;
+    --secondary-foreground: #234f3d;
+    --muted: #edf2ef;
+    --muted-foreground: #63776c;
+    --accent: #edf4ef;
+    --accent-foreground: #18382d;
+    --border: #dce5df;
+    --input: #dce5df;
+    --ring: #31865e;
+    --popover: #fff;
+    --popover-foreground: #18382d;
+    --destructive: #b63838;
+    color: var(--foreground);
+    font-family: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+}
+.waste-app button,
+.waste-app a {
+    touch-action: manipulation;
+}
+.waste-app [data-slot="button"] {
+    min-height: 40px;
+    cursor: pointer;
+}
+.waste-app [data-slot="input"],
+.waste-app [data-slot="select-trigger"] {
+    background: white;
+    min-height: 42px;
+    width: 100%;
+}
+.waste-app[data-slot="dialog-content"] {
+    background: white;
+}
+.waste-app .sw-field {
+    display: grid;
+    gap: 9px;
+    min-width: 0;
+}
+.waste-app .sw-field label {
+    font-size: 13px;
+    font-weight: 600;
+}
+.waste-app .sw-error {
+    border-color: #e5bcbc;
+    color: #962d2d;
+    margin-bottom: 20px;
+}
+.waste-app .sw-notice {
+    border-color: #adcbbb;
+    color: #205a3e;
+    margin-bottom: 20px;
+}
+.waste-app .sw-muted {
+    color: var(--muted-foreground);
+    font-size: 13px;
+    line-height: 1.6;
+}
+.waste-app .sw-empty {
+    padding: 42px 20px;
+    text-align: center;
+    color: var(--muted-foreground);
+    font-size: 14px;
+}
+.waste-app.sw-dialog {
+    max-height: 90dvh;
+    overflow-y: auto;
+    width: calc(100% - 32px);
+    max-width: 620px;
+}
+.waste-app .editor-form {
+    display: grid;
+    gap: 20px;
+}
+.waste-app .sw-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.waste-app .sw-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+.waste-app .sw-section-title {
+    font-size: 16px;
+    font-weight: 650;
+    letter-spacing: -0.3px;
+}
+.waste-app .avatar-circle {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e6eee6;
+    color: #315d3d;
+    font-size: 12px;
+    font-weight: 700;
+}

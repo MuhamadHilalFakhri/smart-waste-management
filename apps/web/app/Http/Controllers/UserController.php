@@ -23,7 +23,19 @@ class UserController
     {
         abort_unless($r->user()->role === 'admin', 403);
 
-        return response()->json(User::orderBy('name')->paginate(20));
+        $search = (string) $r->query('search', '');
+        $users = User::query()->when($search !== '', function ($query) use ($search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%'.$search.'%')->orWhere('email', 'like', '%'.$search.'%');
+            });
+        })->orderBy('name')->paginate(20)->toArray();
+        $users['counts'] = [
+            'total' => User::count(),
+            'active' => User::where('is_active', true)->count(),
+            'admins' => User::where('role', 'admin')->count(),
+        ];
+
+        return response()->json($users);
     }
 
     public function store(Request $r): User

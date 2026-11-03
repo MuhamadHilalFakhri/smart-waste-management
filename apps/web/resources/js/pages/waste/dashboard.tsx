@@ -1,89 +1,73 @@
-import { useEffect, useState } from "react";
+import { Link, router } from "@inertiajs/react";
+import { Plus } from "lucide-react";
 import Shell from "@/features/waste/shell";
-import { api, statuses, categories } from "@/features/waste/api";
-type Stats = {
-    total: number;
-    statuses: Record<string, number>;
-    categories: { category: string | null; total: number }[];
-    trend: { date: string; total: number }[];
-};
+import { useAccount } from "@/features/waste/navigation";
+import { useData } from "@/features/waste/use-data";
+import { Notice } from "@/features/waste/common";
+import { Button } from "@/components/ui/button";
+import Stats from "@/features/waste/dashboard/stats";
+import CategoryChart from "@/features/waste/dashboard/categories";
+import Activity from "@/features/waste/dashboard/activity";
+import Actions from "@/features/waste/dashboard/actions";
+import ReportTable from "@/features/waste/reports/report-table";
+import type { Statistics, Page, Report } from "@/features/waste/types";
 export default function Dashboard() {
-    const [data, setData] = useState<Stats>();
-    const [error, setError] = useState("");
-    useEffect(() => {
-        api<Stats>("dashboard")
-            .then(setData)
-            .catch((e) => setError(e.message));
-    }, []);
+    const user = useAccount();
+    const stats = useData<Statistics>("dashboard");
+    const reports = useData<Page<Report>>("reports");
     return (
-        <Shell title="Ringkasan laporan">
-            {error && (
-                <p role="alert" className="error">
-                    {error}
+        <Shell title="Dashboard">
+            <div className="sw-intro">
+                <div>
+                    <h2>Selamat datang, {user.name.split(" ")[0]}.</h2>
+                    <p className="sw-muted">
+                        {user.role === "admin"
+                            ? "Pantau laporan dan penanganan sampah di satu tempat."
+                            : "Catat temuan sampah dan pantau perkembangannya."}
+                    </p>
+                </div>
+                <Button asChild>
+                    <Link href="/reports?buat=true">
+                        <Plus />
+                        Buat laporan
+                    </Link>
+                </Button>
+            </div>
+            <Notice error={stats.error || reports.error} />
+            {!stats.data ? (
+                <p className="sw-empty">
+                    {stats.loading
+                        ? "Memuat statistik…"
+                        : "Statistik belum tersedia."}
                 </p>
-            )}
-            {!data && !error && <p>Memuat statistik...</p>}
-            {data && (
+            ) : (
                 <>
-                    <div className="stats">
-                        <div className="stat">
-                            Total laporan<strong>{data.total}</strong>
-                        </div>
-                        {Object.entries(statuses).map(([key, label]) => (
-                            <div className="stat" key={key}>
-                                {label}
-                                <strong>{data.statuses[key] ?? 0}</strong>
-                            </div>
-                        ))}
+                    <Stats data={stats.data} />
+                    <div className="sw-dashboard-grid">
+                        <CategoryChart data={stats.data} />
+                        <Actions
+                            pending={stats.data.statuses.pending ?? 0}
+                            admin={user.role === "admin"}
+                        />
                     </div>
-                    <div className="two-col">
-                        <section className="panel">
-                            <h2>Kategori pilihan pelapor</h2>
-                            {data.categories.length ? (
-                                data.categories.map((c) => (
-                                    <div key={c.category ?? "none"}>
-                                        {categories[c.category ?? ""] ??
-                                            "Belum dipilih"}{" "}
-                                        <b>{c.total}</b>
-                                        <div
-                                            className="bar"
-                                            style={{
-                                                width:
-                                                    Math.max(
-                                                        1,
-                                                        (c.total /
-                                                            Math.max(
-                                                                data.total,
-                                                                1,
-                                                            )) *
-                                                            100,
-                                                    ) + "%",
-                                            }}
-                                        />
-                                    </div>
-                                ))
-                            ) : (
-                                <p className="muted">Belum ada laporan.</p>
-                            )}
-                        </section>
-                        <section className="panel">
-                            <h2>Aktivitas 30 hari terakhir</h2>
-                            {data.trend.length ? (
-                                data.trend.map((t) => (
-                                    <p key={t.date}>
-                                        {t.date}: <b>{t.total} laporan</b>
-                                    </p>
-                                ))
-                            ) : (
-                                <p className="muted">Belum ada aktivitas.</p>
-                            )}
-                        </section>
-                    </div>
-                    <a className="button" href="/reports">
-                        Buka laporan
-                    </a>
+                    <Activity data={stats.data} />
                 </>
             )}
+            <section className="table-section">
+                <div className="table-heading">
+                    <h2 className="sw-section-title">Laporan terbaru</h2>
+                    <Button asChild variant="ghost" size="sm">
+                        <Link href="/reports">Lihat semua →</Link>
+                    </Button>
+                </div>
+                <ReportTable
+                    rows={reports.data?.data.slice(0, 5) ?? []}
+                    loading={reports.loading}
+                    onSelect={(report) => {
+                        router.visit("/reports?detail=" + report.id);
+                    }}
+                />
+            </section>
         </Shell>
     );
 }

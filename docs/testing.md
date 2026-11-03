@@ -2,7 +2,7 @@
 
 | Pemeriksaan | Hasil |
 |---|---|
-| composer test | Lulus: Pint, PHPStan level 7 tanpa error, 50 tes / 160 assertions |
+| composer test | Lulus: Pint, PHPStan level 7 tanpa error, 54 tes / 180 assertions |
 | TypeScript web dan build produksi | Lulus |
 | TypeScript Expo dan expo lint | Lulus |
 | Expo Doctor | 20/20 pemeriksaan lulus |
@@ -20,3 +20,7 @@
 Tangkapan layar aktual berada di docs/screenshots. APK diverifikasi melalui hasil build EAS, integritas ZIP, AndroidManifest.xml, DEX, bundle aplikasi, dan origin API produksi dalam bundle. Pengujian kamera dan GPS pada perangkat Android fisik masih diperlukan. Video walkthrough tidak menggantikan pengujian perangkat fisik.
 
 Regresi CSRF diuji dengan server Laravel nyata: setelah register tanpa reload, token meta lama menghasilkan 419; header cookie XSRF terbaru berhasil membuat laporan dengan 201.
+
+Pembaruan UI shadcn: dashboard, laporan, dan pengguna diperiksa pada lebar 320, 390, 768, 844 (landscape), 1024, 1440, dan 2560 px. Tidak ada overflow halaman; tabel memakai scroll di panel. Dialog create/edit diperiksa pada 320×640 dengan tinggi maksimum 90dvh. Menu Sheet dapat membuka halaman laporan. Uji browser lokal berhasil menyimpan foto dan kategori, menampilkan hasil filter kosong, reset, mengunduh CSV, menyimpan nama pengguna, serta mencatat Pending → In Progress → Rejected dengan alasan. Ekspor CSV juga menangani koordinat bertipe angka dari SQLite. Console browser tidak mencatat error pada alur akhir.
+
+`node infra/scripts/check-source-size.mjs`: 214 file source web/mobile lolos batas 250 baris; file terpanjang 248 baris. Source Wayfinder otomatis, dependency, lockfile, dan build dikecualikan. Pemecahan mobile lulus lint, TypeScript, ekspor bundle Android, dan 20/20 pemeriksaan Expo Doctor. APK rilis sebelumnya masih memakai snapshot source sebelumnya; perubahan mobile pada pembaruan ini berupa pemisahan modul dan perbaikan pembersihan sesi saat logout.

@@ -1,0 +1,134 @@
+.waste-app .table-section {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: white;
+    overflow: hidden;
+    min-width: 0;
+}
+.waste-app .table-heading {
+    padding: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+}
+.waste-app .count-badge {
+    font-size: 11px;
+    background: #eff4ec;
+    color: #739068;
+    padding: 3px 8px;
+    border-radius: 5px;
+    margin-left: 8px;
+}
+.waste-app .table-scroll {
+    overflow-x: auto;
+}
+.waste-app .waste-table {
+    min-width: 650px;
+}
+.waste-app .waste-table th {
+    font-size: 10px;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    background: #f6f8f5;
+    color: #7e8d81;
+    font-weight: 650;
+    height: 42px;
+    padding: 12px 22px;
+    border-top: 1px solid #edf1eb;
+}
+.waste-app .waste-table td {
+    padding: 17px 22px;
+    border-color: #edf1eb;
+    font-size: 13px;
+}
+.waste-app .table-footer {
+    padding: 18px 22px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 11px;
+    color: #7f8e83;
+}
+.waste-app .status-badge {
+    font-size: 10px;
+    border: 0;
+    border-radius: 5px;
+    padding: 5px 8px;
+    white-space: nowrap;
+}
+.waste-app .status-success {
+    background: #e8f3e8;
+    color: #35714a;
+}
+.waste-app .status-pending {
+    background: #fbf2d9;
+    color: #97711c;
+}
+.waste-app .status-progress {
+    background: #e8eff9;
+    color: #416d99;
+}
+.waste-app .status-neutral {
+    background: #f1eeee;
+    color: #866b6b;
+}
+.waste-app .role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    padding: 4px 8px;
+    background: #f3f5f2;
+    border-radius: 5px;
+}
+.waste-app .sw-filter {
+    display: grid;
+    grid-template-columns: minmax(160px, 1.4fr) repeat(2, minmax(130px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.waste-app .sw-filter-dates {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto auto;
+    align-items: end;
+    gap: 16px;
+}
+.waste-app .sw-filters-card {
+    margin-bottom: 24px;
+}
+.waste-app .sw-report-description {
+    max-width: 270px;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.waste-app .sw-report-image {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #f4f7f3;
+}
+.waste-app .sw-detail-grid {
+    display: grid;
+    gap: 12px;
+    font-size: 13px;
+}
+.waste-app .sw-history {
+    border-left: 2px solid #dce7d8;
+    margin-left: 6px;
+    padding-left: 18px;
+    display: grid;
+    gap: 18px;
+}
+.waste-app .sw-history p {
+    font-size: 12px;
+    line-height: 1.7;
+}
