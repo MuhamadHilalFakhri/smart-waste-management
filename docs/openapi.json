@@ -20,7 +20,14 @@
         "summary": "Daftar pengguna",
         "responses": {
           "201": {
-            "description": "Berhasil"
+            "description": "Berhasil",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
           },
           "401": {
             "description": "Tidak login"
@@ -37,6 +44,12 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Tidak ditemukan"
+          },
+          "429": {
+            "description": "Batas permintaan terlampaui"
           }
         },
         "security": [],
@@ -77,7 +90,14 @@
         "summary": "Login",
         "responses": {
           "200": {
-            "description": "Berhasil"
+            "description": "Berhasil",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
           },
           "401": {
             "description": "Tidak login"
@@ -94,6 +114,12 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Tidak ditemukan"
+          },
+          "429": {
+            "description": "Batas permintaan terlampaui"
           }
         },
         "security": [],
@@ -143,6 +169,12 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Tidak ditemukan"
+          },
+          "429": {
+            "description": "Batas permintaan terlampaui"
           }
         }
       }
@@ -169,6 +201,12 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Tidak ditemukan"
+          },
+          "429": {
+            "description": "Batas permintaan terlampaui"
           }
         }
       }
@@ -195,6 +233,12 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Tidak ditemukan"
+          },
+          "429": {
+            "description": "Batas permintaan terlampaui"
           }
         }
       }
@@ -204,7 +248,14 @@
         "summary": "Daftar laporan",
         "responses": {
           "200": {
-            "description": "Berhasil"
+            "description": "Berhasil",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportPage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Tidak login"
@@ -221,6 +272,12 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Tidak ditemukan"
+          },
+          "429": {
+            "description": "Batas permintaan terlampaui"
           }
         },
         "parameters": [
@@ -272,7 +329,14 @@
         "summary": "Buat laporan",
         "responses": {
           "201": {
-            "description": "Berhasil"
+            "description": "Berhasil",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Report"
+                }
+              }
+            }
           },
           "401": {
             "description": "Tidak login"
@@ -289,6 +353,12 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Tidak ditemukan"
+          },
+          "429": {
+            "description": "Batas permintaan terlampaui"
           }
         },
         "requestBody": {
@@ -308,7 +378,14 @@
         "summary": "Detail laporan",
         "responses": {
           "200": {
-            "description": "Berhasil"
+            "description": "Berhasil",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Report"
+                }
+              }
+            }
           },
           "401": {
             "description": "Tidak login"
@@ -325,6 +402,12 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Tidak ditemukan"
+          },
+          "429": {
+            "description": "Batas permintaan terlampaui"
           }
         },
         "parameters": [
@@ -342,7 +425,14 @@
         "summary": "Ubah laporan",
         "responses": {
           "200": {
-            "description": "Berhasil"
+            "description": "Berhasil",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Report"
+                }
+              }
+            }
           },
           "401": {
             "description": "Tidak login"
@@ -359,6 +449,12 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Tidak ditemukan"
+          },
+          "429": {
+            "description": "Batas permintaan terlampaui"
           }
         },
         "parameters": [
@@ -376,7 +472,7 @@
           "content": {
             "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/ReportInput"
+                "$ref": "#/components/schemas/ReportUpdate"
               }
             }
           }
@@ -403,6 +499,12 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Tidak ditemukan"
+          },
+          "429": {
+            "description": "Batas permintaan terlampaui"
           }
         },
         "parameters": [
@@ -439,6 +541,12 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Tidak ditemukan"
+          },
+          "429": {
+            "description": "Batas permintaan terlampaui"
           }
         },
         "parameters": [
@@ -475,6 +583,12 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Tidak ditemukan"
+          },
+          "429": {
+            "description": "Batas permintaan terlampaui"
           }
         },
         "parameters": [
@@ -511,6 +625,12 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Tidak ditemukan"
+          },
+          "429": {
+            "description": "Batas permintaan terlampaui"
           }
         },
         "parameters": [
@@ -614,6 +734,162 @@
                 "type": "string"
               }
             }
+          }
+        }
+      },
+      "ReportUpdate": {
+        "type": "object",
+        "required": [
+          "description",
+          "latitude",
+          "longitude"
+        ],
+        "properties": {
+          "description": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 5000
+          },
+          "latitude": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "longitude": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "organic",
+              "paper",
+              "plastic"
+            ]
+          },
+          "photo": {
+            "type": "string",
+            "format": "binary",
+            "description": "JPEG/PNG/WebP, maksimal 5 MB"
+          }
+        }
+      },
+      "Report": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "number": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "in_progress",
+              "completed",
+              "rejected"
+            ]
+          },
+          "prediction": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "pending",
+                  "succeeded",
+                  "failed"
+                ]
+              },
+              "label": {
+                "type": "string",
+                "nullable": true
+              },
+              "confidence": {
+                "type": "number",
+                "nullable": true
+              },
+              "model_version": {
+                "type": "string",
+                "nullable": true
+              }
+            }
+          },
+          "histories": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "ReportPage": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Report"
+            }
+          },
+          "current_page": {
+            "type": "integer"
+          },
+          "last_page": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          }
+        }
+      },
+      "AuthResponse": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "admin",
+                  "user"
+                ]
+              },
+              "is_active": {
+                "type": "boolean"
+              }
+            }
+          },
+          "token": {
+            "type": "string"
           }
         }
       }
