@@ -12,7 +12,7 @@ Route::redirect('/', '/dashboard')->name('home');
 Route::middleware(['auth', ActiveUser::class])->group(function () {
     Route::inertia('/dashboard', 'waste/dashboard')->name('dashboard');
     Route::inertia('/reports', 'waste/reports')->name('reports');
-    Route::inertia('/users', 'waste/users')->name('users');
+    Route::get('/users', [UserController::class, 'page'])->name('users');
     Route::prefix('data')->group(function () {
         Route::get('dashboard', [ReportController::class, 'dashboard']);
         Route::apiResource('reports', ReportController::class);

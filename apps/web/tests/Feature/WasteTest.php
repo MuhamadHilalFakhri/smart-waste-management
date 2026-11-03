@@ -48,6 +48,7 @@ class WasteTest extends TestCase
         $r = $this->report($this->user());
         $this->actingAs($a, 'sanctum')->getJson('/api/v1/reports/'.$r->id)->assertForbidden();
         $this->getJson('/api/v1/reports')->assertJsonCount(0, 'data');
+        $this->get('/users')->assertForbidden();
     }
 
     public function test_create_stores_photo_and_dispatches_prediction(): void

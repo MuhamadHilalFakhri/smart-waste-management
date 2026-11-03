@@ -52,7 +52,7 @@ Buka `ml/notebooks/train_waste.ipynb` di Colab, pilih GPU T4 bila tersedia, jala
 cd services/ml
 python -m venv .venv
 # Aktifkan virtual environment sesuai OS.
-pip install -r requirements.txt
+pip install -r requirements.lock
 # Atur ML_TOKEN dan MODEL_DIR melalui environment.
 uvicorn app.main:app --port 8001
 ```
@@ -82,3 +82,6 @@ Lihat [arsitektur](docs/architecture.md), [API](docs/api.md), [ERD](docs/erd.md)
 - Video walkthrough memakai tangkapan layar aplikasi aktual dan narasi sintetis bahasa Indonesia. Pengujian kamera/GPS di perangkat fisik masih diperlukan.
 
 Model, dataset aktual, APK, dan video disediakan melalui GitHub Releases. Kredensial Admin demo disimpan lokal di `.cache/demo-credentials.txt` dan tidak dipublikasikan.
+
+Unduhan lengkap: https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/tag/v1.0.0
+Hasil pemeriksaan rinci: `docs/testing.md`.

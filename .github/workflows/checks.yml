@@ -14,7 +14,7 @@ jobs:
           node-version: '22'
       - run: composer install --no-interaction
         working-directory: apps/web
-      - run: cp .env.example .env && php artisan key:generate && npm ci && npm run build && npm run types:check && php artisan test
+      - run: cp .env.example .env && php artisan key:generate && npm ci && npm run build && npm run types:check && composer test
         working-directory: apps/web
   mobile:
     runs-on: ubuntu-latest

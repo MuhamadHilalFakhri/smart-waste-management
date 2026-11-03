@@ -23,3 +23,5 @@ ml/artifacts/
 *.apk
 *.zip
 backups/
+
+.ruff_cache/

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class PredictionClient
 {
+    /** @return array<string, mixed> */
     public function predict(string $path): array
     {
         $stream = Storage::disk('local')->readStream($path);

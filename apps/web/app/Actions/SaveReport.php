@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 
 class SaveReport
 {
+    /** @param array<string, mixed> $data */
     public function execute(User $u, array $data, ?UploadedFile $photo, ?Report $report = null): Report
     {
         return DB::transaction(function () use ($u, $data, $photo, $report) {
@@ -23,7 +24,11 @@ class SaveReport
             $report ??= new Report(['user_id' => $u->id, 'number' => (string) Str::uuid(), 'status' => 'pending']);
             $report->fill($data);
             if ($photo) {
-                $report->photo_path = $photo->store('reports', 'local');
+                $path = $photo->store('reports', 'local');
+                if ($path === false) {
+                    throw new \RuntimeException('Foto gagal disimpan.');
+                }
+                $report->photo_path = $path;
                 $report->photo_version = (string) Str::uuid();
             }
             $report->save();

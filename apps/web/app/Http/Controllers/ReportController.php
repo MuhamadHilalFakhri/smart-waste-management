@@ -7,15 +7,18 @@ use App\Http\Requests\SaveReportRequest;
 use App\Http\Resources\ReportResource;
 use App\Jobs\PredictReport;
 use App\Models\Report;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ReportController
 {
-    public function index(Request $r)
+    public function index(Request $r): JsonResponse
     {
         $q = Report::visibleTo($r->user())->with('prediction');
         if ($s = $r->query('search')) {
@@ -32,31 +35,31 @@ class ReportController
             }
         }
 
-        return $q->latest()->paginate(15)->withQueryString()
-            ->through(fn (Report $report) => ReportResource::make($report)->resolve());
+        return response()->json($q->latest()->paginate(15)->withQueryString()
+            ->through(fn (Report $report) => ReportResource::make($report)->resolve()));
     }
 
-    public function show(Report $report)
+    public function show(Report $report): ReportResource
     {
         Gate::authorize('view', $report);
 
         return ReportResource::make($report->load(['prediction', 'histories']));
     }
 
-    public function store(SaveReportRequest $r, SaveReport $action)
+    public function store(SaveReportRequest $r, SaveReport $action): JsonResponse
     {
         return ReportResource::make($action->execute($r->user(), $r->safe()->except('photo'), $r->file('photo')))
             ->response()->setStatusCode(201);
     }
 
-    public function update(SaveReportRequest $r, Report $report, SaveReport $action)
+    public function update(SaveReportRequest $r, Report $report, SaveReport $action): ReportResource
     {
         Gate::authorize('update', $report);
 
         return ReportResource::make($action->execute($r->user(), $r->safe()->except('photo'), $r->file('photo'), $report));
     }
 
-    public function destroy(Report $report)
+    public function destroy(Report $report): Response
     {
         Gate::authorize('delete', $report);
         $report->delete();
@@ -64,14 +67,14 @@ class ReportController
         return response()->noContent();
     }
 
-    public function photo(Report $report)
+    public function photo(Report $report): StreamedResponse
     {
         Gate::authorize('view', $report);
 
         return Storage::disk('local')->response($report->photo_path);
     }
 
-    public function retry(Report $report)
+    public function retry(Report $report): JsonResponse
     {
         Gate::authorize('update', $report);
         $report->prediction()->update(['status' => 'pending']);
@@ -80,7 +83,7 @@ class ReportController
         return response()->json(['message' => 'Prediksi dijadwalkan.'], 202);
     }
 
-    public function status(Request $r, Report $report)
+    public function status(Request $r, Report $report): Report
     {
         abort_unless($r->user()->role === 'admin', 403);
         $d = $r->validate(['status' => 'required|in:in_progress,completed,rejected', 'note' => 'nullable|string|max:2000']);
@@ -97,10 +100,10 @@ class ReportController
         });
     }
 
-    public function dashboard(Request $r)
+    public function dashboard(Request $r): JsonResponse
     {
         $q = Report::visibleTo($r->user());
 
-        return ['total' => (clone $q)->count(), 'statuses' => (clone $q)->selectRaw('status, count(*) as total')->groupBy('status')->pluck('total', 'status'), 'categories' => (clone $q)->selectRaw('category, count(*) as total')->groupBy('category')->get(), 'trend' => (clone $q)->where('created_at', '>=', now()->subDays(29))->selectRaw('DATE(created_at) as date, count(*) as total')->groupByRaw('DATE(created_at)')->orderBy('date')->get()];
+        return response()->json(['total' => (clone $q)->count(), 'statuses' => (clone $q)->selectRaw('status, count(*) as total')->groupBy('status')->pluck('total', 'status'), 'categories' => (clone $q)->selectRaw('category, count(*) as total')->groupBy('category')->get(), 'trend' => (clone $q)->where('created_at', '>=', now()->subDays(29))->selectRaw('DATE(created_at) as date, count(*) as total')->groupByRaw('DATE(created_at)')->orderBy('date')->get()]);
     }
 }

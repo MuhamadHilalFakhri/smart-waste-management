@@ -4,10 +4,8 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "build:ssr": "vp build && vp build --ssr",
     "dev": "vite",
-    "check": "vp check",
-    "check:fix": "vp check --fix",
+    "check": "tsc --noEmit",
     "types:check": "tsc --noEmit"
   },
   "dependencies": {

@@ -2,7 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Report extends Model
@@ -13,22 +17,27 @@ class Report extends Model
 
     protected $hidden = ['photo_path'];
 
-    public function user()
+    /** @return BelongsTo<User, $this> */
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function prediction()
+    /** @return HasOne<ReportPrediction, $this> */
+    public function prediction(): HasOne
     {
         return $this->hasOne(ReportPrediction::class);
     }
 
-    public function histories()
+    /** @return HasMany<ReportStatusHistory, $this> */
+    public function histories(): HasMany
     {
         return $this->hasMany(ReportStatusHistory::class)->latest();
     }
 
-    public function scopeVisibleTo($q, User $u)
+    /** @param Builder<Report> $q
+     * @return Builder<Report> */
+    public function scopeVisibleTo(Builder $q, User $u): Builder
     {
         return $u->role === 'admin' ? $q : $q->where('user_id', $u->id);
     }

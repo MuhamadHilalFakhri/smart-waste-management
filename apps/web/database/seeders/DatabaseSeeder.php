@@ -9,15 +9,19 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        if (! env('ADMIN_EMAIL') || ! env('ADMIN_PASSWORD')) {
+        $email = config('admin.email');
+        $password = config('admin.password');
+        if (! is_string($email) || $email === '' || ! is_string($password) || $password === '') {
             return;
-        }$u = User::firstOrNew(['email' => env('ADMIN_EMAIL')]);
-        if ($u->exists) {
+        }
+        $user = User::firstOrNew(['email' => $email]);
+        if ($user->exists) {
             return;
-        }$u->name = 'Administrator';
-        $u->password = env('ADMIN_PASSWORD');
-        $u->role = 'admin';
-        $u->email_verified_at = now();
-        $u->save();
+        }
+        $user->name = 'Administrator';
+        $user->password = $password;
+        $user->role = 'admin';
+        $user->email_verified_at = now();
+        $user->save();
     }
 }
