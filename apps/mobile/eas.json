@@ -8,8 +8,14 @@
       "distribution": "internal",
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://8080-001m6e4ck17dvek9788p0t5q4fm.sbx.sandboxes-cloud.docker.com"
       }
     },
     "production": {}
+  },
+  "cli": {
+    "appVersionSource": "local"
   }
 }

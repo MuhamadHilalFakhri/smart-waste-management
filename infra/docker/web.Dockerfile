@@ -4,8 +4,10 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 COPY apps/web/ ./
 RUN composer install --no-dev --prefer-dist --no-interaction --no-scripts && php artisan package:discover
-FROM node:22-bookworm-slim AS frontend
-RUN apt-get update && apt-get install -y --no-install-recommends php-cli php-mbstring php-xml && rm -rf /var/lib/apt/lists/*
+FROM php-base AS frontend
+COPY --from=node:22-bookworm-slim /usr/local/bin/node /usr/local/bin/node
+COPY --from=node:22-bookworm-slim /usr/local/lib/node_modules /usr/local/lib/node_modules
+RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 WORKDIR /app
 COPY --from=php-base /var/www/html ./
 RUN npm ci && npm run build
