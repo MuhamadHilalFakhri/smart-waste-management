@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Plus, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,7 +12,15 @@ import UserTable from "@/features/waste/users/user-table";
 import UserEditor from "@/features/waste/users/user-editor";
 export default function UsersPage() {
     const [query, setQuery] = useState("");
+    const [draft, setDraft] = useState("");
     const [page, setPage] = useState(1);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setQuery(draft);
+            setPage(1);
+        }, 350);
+        return () => clearTimeout(timer);
+    }, [draft]);
     const [open, setOpen] = useState(false);
     const [editing, setEditing] = useState<Account>();
     const list = useData<UserPage>(
@@ -43,9 +51,9 @@ export default function UsersPage() {
         <Shell title="Manajemen pengguna">
             <div className="sw-intro">
                 <p className="sw-muted">
-                    Kelola pengguna, role, dan akses akun Smart Waste.
+                    Kelola orang-orang di workspace Anda.
                 </p>
-                <Button onClick={() => editor()}>
+                <Button className="sw-primary-button" onClick={() => editor()}>
                     <Plus />
                     Tambah pengguna
                 </Button>
@@ -55,7 +63,7 @@ export default function UsersPage() {
                 notice={action.notice}
             />
             {list.data && <UserStats counts={list.data.counts} />}
-            <section className="table-section">
+            <section className="table-section sw-user-table">
                 <div className="table-heading">
                     <h2 className="sw-section-title">
                         Daftar pengguna{" "}
@@ -64,22 +72,17 @@ export default function UsersPage() {
                         </span>
                     </h2>
                     <form
-                        className="flex w-full gap-2 sm:max-w-sm"
+                        className="sw-search sw-user-search"
                         onSubmit={search}
                     >
+                        <Search size={15} />
                         <Input
                             name="search"
                             aria-label="Cari pengguna"
                             placeholder="Cari nama atau email"
+                            value={draft}
+                            onChange={(event) => setDraft(event.target.value)}
                         />
-                        <Button
-                            type="submit"
-                            variant="outline"
-                            size="icon"
-                            aria-label="Cari"
-                        >
-                            <Search />
-                        </Button>
                     </form>
                 </div>
                 <UserTable
@@ -89,6 +92,7 @@ export default function UsersPage() {
                 />
                 {list.data && (
                     <Pagination
+                        noun="pengguna"
                         page={list.data}
                         onPage={setPage}
                         busy={action.busy}

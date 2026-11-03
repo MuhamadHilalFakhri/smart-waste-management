@@ -1,0 +1,121 @@
+.waste-app .sw-activity-card,
+.waste-app .sw-recent-card {
+    min-height: 328px;
+}
+.waste-app .sw-activity-total {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    color: var(--muted-foreground);
+    font-size: 12px;
+    margin-top: 22px;
+}
+.waste-app .sw-activity-total strong {
+    color: var(--foreground);
+    font-size: 30px;
+    font-weight: 500;
+}
+.waste-app .sw-chart-wrap {
+    display: flex;
+    gap: 10px;
+    height: 142px;
+    margin-top: 20px;
+}
+.waste-app .sw-chart-ticks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--muted-foreground);
+    padding-bottom: 4px;
+}
+.waste-app .sw-chart {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: end;
+    gap: 3px;
+    border-bottom: 1px solid var(--border);
+    background: repeating-linear-gradient(
+        to top,
+        transparent 0,
+        transparent calc(33.333% - 1px),
+        var(--border) 33.333%
+    );
+}
+.waste-app .sw-chart-day {
+    position: relative;
+    height: 92%;
+    flex: 1;
+    display: flex;
+    align-items: end;
+    min-width: 0;
+}
+.waste-app .sw-chart-bar {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background: linear-gradient(90deg, var(--brand), var(--lime));
+    border-radius: 4px 4px 0 0;
+}
+.waste-app .sw-chart-bar span {
+    position: absolute;
+    top: -18px;
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    color: var(--success);
+}
+.waste-app .sw-chart-axis {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 24px;
+    color: var(--muted-foreground);
+    font-size: 10px;
+    margin-top: 3px;
+}
+.waste-app .sw-recent-list {
+    margin-top: 16px;
+}
+.waste-app .sw-recent-report {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 17px 0;
+    border-bottom: 1px solid var(--border);
+}
+.waste-app .sw-recent-report:last-child {
+    border-bottom: 0;
+}
+.waste-app .sw-recent-text {
+    flex: 1;
+    min-width: 0;
+}
+.waste-app .sw-recent-text strong {
+    font-size: 12px;
+    font-weight: 500;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.waste-app .sw-recent-text small {
+    font-size: 10px;
+    color: var(--muted-foreground);
+    display: block;
+    margin-top: 4px;
+}
+.waste-app .sw-recent-report > svg {
+    color: var(--muted-foreground);
+    flex-shrink: 0;
+}
+.waste-app .sw-recent-caption {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: var(--muted-foreground);
+    margin-top: auto;
+    padding-top: 12px;
+}

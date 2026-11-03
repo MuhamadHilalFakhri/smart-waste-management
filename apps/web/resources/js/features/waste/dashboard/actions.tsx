@@ -1,5 +1,12 @@
 import { Link } from "@inertiajs/react";
-import { ArrowUpRight, Plus, Users, ClipboardList } from "lucide-react";
+import {
+    ArrowUpRight,
+    Plus,
+    Users,
+    FileText,
+    Leaf,
+    Recycle,
+} from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 export default function Actions({
@@ -9,44 +16,46 @@ export default function Actions({
     pending: number;
     admin: boolean;
 }) {
+    const links = [
+        { label: "Buat laporan", href: "/reports?buat=true", icon: Plus },
+        { label: "Lihat laporan", href: "/reports", icon: FileText },
+        ...(admin ? [{ label: "Pengguna", href: "/users", icon: Users }] : []),
+    ];
     return (
         <div className="sw-side-stack">
             <Card className="dashboard-card sw-attention">
-                <h2 className="sw-section-title">
-                    {pending
-                        ? "Laporan menunggu penanganan"
-                        : "Semua laporan telah ditinjau"}
-                </h2>
-                <p className="sw-muted">
-                    {pending
-                        ? `${pending} laporan berstatus Pending. ${admin ? "Tinjau laporan dan tentukan langkah penanganannya." : "Pantau perkembangan laporan Anda di halaman riwayat."}`
-                        : "Buat laporan baru saat menemukan sampah yang perlu ditangani."}
+                <p>
+                    <Leaf size={15} />
+                    Prioritas hari ini
                 </p>
-                <Button asChild variant="outline" className="w-fit bg-white">
+                <h2>
+                    {pending > 0
+                        ? `${pending} laporan menunggu ${admin ? "penanganan Anda." : "tindak lanjut."}`
+                        : "Semua laporan telah ditinjau."}
+                </h2>
+                <Button asChild className="sw-priority-button">
                     <Link href="/reports?status=pending">
-                        Lihat laporan
+                        Tinjau laporan
                         <ArrowUpRight />
                     </Link>
                 </Button>
+                <Recycle
+                    className="sw-attention-symbol"
+                    size={42}
+                    aria-hidden="true"
+                />
             </Card>
-            <Card className="dashboard-card">
-                <h2 className="sw-section-title">Akses cepat</h2>
+            <Card className="dashboard-card sw-quick-card">
+                <h2 className="sw-section-title">Aksi cepat</h2>
                 <div className="sw-quick-links">
-                    <Link href="/reports?buat=true">
-                        <Plus size={19} />
-                        Buat laporan
-                    </Link>
-                    {admin ? (
-                        <Link href="/users">
-                            <Users size={19} />
-                            Kelola pengguna
+                    {links.map(({ label, href, icon: Icon }) => (
+                        <Link key={href} href={href}>
+                            <span>
+                                <Icon size={17} />
+                            </span>
+                            {label}
                         </Link>
-                    ) : (
-                        <Link href="/reports">
-                            <ClipboardList size={19} />
-                            Riwayat laporan
-                        </Link>
-                    )}
+                    ))}
                 </div>
             </Card>
         </div>

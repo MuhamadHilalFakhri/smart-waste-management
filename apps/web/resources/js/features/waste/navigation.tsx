@@ -4,10 +4,11 @@ import {
     FileText,
     Users,
     LogOut,
+    Leaf,
     Recycle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { initials, type Account } from "./types";
+import type { Account } from "./types";
 export function useAccount() {
     return (usePage().props as unknown as { auth: { user: Account } }).auth
         .user;
@@ -21,7 +22,7 @@ export default function Navigation({
     const { url } = usePage();
     const links = [
         { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-        { href: "/reports", label: "Laporan", icon: FileText },
+        { href: "/reports", label: "Laporan sampah", icon: FileText },
         ...(user.role === "admin"
             ? [{ href: "/users", label: "Pengguna", icon: Users }]
             : []),
@@ -30,17 +31,24 @@ export default function Navigation({
         <div className="sw-navigation">
             <Link href="/dashboard" onClick={onNavigate} className="sw-brand">
                 <span className="sw-brand-icon">
-                    <Recycle size={22} />
+                    <Leaf size={23} />
                 </span>
-                <span>Smart Waste</span>
+                <span>
+                    Smart Waste
+                    <small>
+                        MANAGEMENT
+                        <br />
+                        CONSOLE
+                    </small>
+                </span>
             </Link>
-            <p className="sw-nav-label">MENU UTAMA</p>
+            <p className="sw-nav-label">WORKSPACE</p>
             <nav aria-label="Navigasi utama">
                 {links.map(({ href, label, icon: Icon }) => (
                     <Button
-                        key={href}
                         asChild
                         variant="ghost"
+                        key={href}
                         className={
                             "sw-nav-link " +
                             (url.split("?")[0] === href ? "active" : "")
@@ -53,34 +61,39 @@ export default function Navigation({
                                 url.split("?")[0] === href ? "page" : undefined
                             }
                         >
-                            <Icon size={18} />
+                            <Icon size={16} />
                             {label}
+                            {url.split("?")[0] === href && (
+                                <span className="sw-nav-dot" />
+                            )}
                         </Link>
                     </Button>
                 ))}
             </nav>
-            <div className="sw-sidebar-bottom">
-                <div className="sw-sidebar-person">
-                    <span className="avatar-circle">{initials(user.name)}</span>
-                    <div className="min-w-0">
-                        <strong className="block truncate text-sm">
-                            {user.name}
-                        </strong>
-                        <p className="text-xs text-muted-foreground">
-                            {user.role === "admin"
-                                ? "Administrator"
-                                : "Pelapor"}
-                        </p>
-                    </div>
-                </div>
+            <div className="sw-logout">
                 <Button
                     variant="ghost"
-                    className="sw-nav-link mt-4"
+                    className="sw-nav-link"
                     onClick={() => router.post("/logout")}
                 >
-                    <LogOut size={17} />
+                    <LogOut size={16} />
                     Keluar
                 </Button>
+            </div>
+            <div className="sw-sidebar-note">
+                <h2>
+                    <Recycle size={19} />
+                    Lingkungan lebih baik
+                </h2>
+                <p>
+                    Laporan yang tercatat,
+                    <br />
+                    penanganan yang terpantau.
+                </p>
+                <span>
+                    <i />
+                    Smart Waste
+                </span>
             </div>
         </div>
     );

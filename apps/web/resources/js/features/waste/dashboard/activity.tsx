@@ -11,48 +11,79 @@ export default function Activity({ data }: { data: Statistics }) {
         ].join("-");
         return {
             date,
-            total: data.trend.find((item) => item.date === date)?.total ?? 0,
+            total: Number(
+                data.trend.find((item) => item.date === date)?.total ?? 0,
+            ),
         };
     });
-    const max = Math.max(1, ...days.map((day) => day.total));
+    const max = Math.max(3, ...days.map((day) => day.total));
+    const activeDays = days.flatMap((day, index) => (day.total ? [index] : []));
+    const minimumGap =
+        activeDays.length < 2
+            ? 30
+            : Math.min(
+                  ...activeDays
+                      .slice(1)
+                      .map((day, index) => day - activeDays[index]),
+              );
+    const label = (date: string) =>
+        new Date(date + "T12:00:00").toLocaleDateString("id-ID", {
+            day: "numeric",
+            month: "short",
+        });
     return (
-        <Card className="dashboard-card mb-6">
-            <div className="sw-actions justify-between">
-                <div>
-                    <h2 className="sw-section-title">Aktivitas laporan</h2>
-                    <p className="sw-muted mt-1">
-                        {days.reduce((sum, day) => sum + day.total, 0)} laporan
-                        dalam 30 hari terakhir.
-                    </p>
-                </div>
-                <span className="sw-muted">30 hari terakhir</span>
+        <Card className="dashboard-card sw-activity-card">
+            <div className="sw-card-heading">
+                <h2 className="sw-section-title">Aktivitas laporan</h2>
+                <span>30 hari terakhir</span>
             </div>
-            <div
-                className="sw-chart"
-                role="img"
-                aria-label={days
-                    .map((day) => `${day.date}: ${day.total} laporan`)
-                    .join("; ")}
-            >
-                {days.map((day) => (
-                    <div
-                        className="sw-chart-day"
-                        key={day.date}
-                        title={`${day.date}: ${day.total} laporan`}
-                    >
+            <p className="sw-activity-total">
+                <strong>{days.reduce((sum, day) => sum + day.total, 0)}</strong>
+                laporan masuk
+            </p>
+            <div className="sw-chart-wrap">
+                <div className="sw-chart-ticks">
+                    {[
+                        max,
+                        Math.round((max * 2) / 3),
+                        Math.round(max / 3),
+                        0,
+                    ].map((value, index) => (
+                        <span key={index}>{value}</span>
+                    ))}
+                </div>
+                <div
+                    className="sw-chart"
+                    role="img"
+                    aria-label={days
+                        .map((day) => `${day.date}: ${day.total} laporan`)
+                        .join("; ")}
+                >
+                    {days.map((day) => (
                         <div
-                            className="sw-chart-bar"
-                            style={{
-                                height: `${(day.total / max) * 100}%`,
-                                opacity: day.total ? 1 : 0.25,
-                            }}
-                        />
-                    </div>
-                ))}
+                            className="sw-chart-day"
+                            key={day.date}
+                            title={`${day.date}: ${day.total} laporan`}
+                        >
+                            {day.total > 0 && (
+                                <div
+                                    className="sw-chart-bar"
+                                    style={{
+                                        height: `${(day.total / max) * 100}%`,
+                                        width: `min(26px, calc(${minimumGap * 100}% - 3px))`,
+                                    }}
+                                >
+                                    <span>{day.total}</span>
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
             </div>
             <div className="sw-chart-axis">
-                <span>{days[0].date}</span>
-                <span>{days[29].date}</span>
+                {[0, 10, 20, 29].map((index) => (
+                    <span key={index}>{label(days[index].date)}</span>
+                ))}
             </div>
         </Card>
     );

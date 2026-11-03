@@ -1,23 +1,17 @@
+import { Recycle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { categories } from "../api";
 import type { Statistics } from "../types";
-const colors = ["#3e7651", "#a5bd73", "#d7e3c2", "#e5eae3"];
+const colors = ["var(--foreground)", "#78bb3c", "#008274", "#b6c99b"];
 export default function CategoryChart({ data }: { data: Statistics }) {
-    const rows = [
-        ...Object.entries(categories).map(([key, label], index) => ({
-            label,
-            count:
-                data.categories.find((row) => row.category === key)?.total ?? 0,
-            color: colors[index],
-        })),
-        {
-            label: "Belum dipilih",
-            count: data.categories
-                .filter((row) => !row.category || !categories[row.category])
-                .reduce((sum, row) => sum + row.total, 0),
-            color: colors[3],
-        },
-    ];
+    const rows = data.categories
+        .filter((row) => Number(row.total) > 0)
+        .sort((a, b) => Number(b.total) - Number(a.total))
+        .map((row, index) => ({
+            label: categories[row.category ?? ""] ?? "Belum dipilih",
+            count: Number(row.total),
+            color: colors[index % colors.length],
+        }));
     const total = rows.reduce((sum, row) => sum + row.count, 0);
     let offset = 0;
     const stops = rows.map((row) => {
@@ -26,11 +20,11 @@ export default function CategoryChart({ data }: { data: Statistics }) {
         return `${row.color} ${start}% ${offset}%`;
     });
     return (
-        <Card className="dashboard-card">
-            <h2 className="sw-section-title">Distribusi kategori</h2>
-            <p className="sw-muted mt-1">
-                Kategori pilihan pelapor pada laporan.
-            </p>
+        <Card className="dashboard-card sw-category-card">
+            <div className="sw-card-heading">
+                <h2 className="sw-section-title">Kategori pilihan pelapor</h2>
+                <span>{total} laporan</span>
+            </div>
             <div className="sw-category-content">
                 <div
                     className="sw-donut"
@@ -38,25 +32,35 @@ export default function CategoryChart({ data }: { data: Statistics }) {
                     style={{
                         background: total
                             ? `conic-gradient(${stops.join(",")})`
-                            : "#edf1e9",
+                            : "var(--border)",
                     }}
                 >
                     <div className="sw-donut-hole">
+                        <Recycle size={24} />
                         <strong>{total}</strong>
-                        <span>laporan</span>
+                        <span>Total laporan</span>
                     </div>
                 </div>
                 <div className="sw-legend">
                     {rows.map((row) => (
-                        <div key={row.label}>
-                            <span
-                                className="sw-dot"
-                                style={{ background: row.color }}
-                            />
-                            {row.label}
+                        <div className="sw-category-row" key={row.label}>
+                            <span>
+                                <i
+                                    className="sw-dot"
+                                    style={{ background: row.color }}
+                                />
+                                {row.label}
+                            </span>
                             <strong>{row.count}</strong>
+                            <span>
+                                {Math.round((row.count / total) * 100)}%
+                            </span>
                         </div>
                     ))}
+                    <p>
+                        Kategori terbanyak
+                        <strong>{rows[0]?.label ?? "Belum ada laporan"}</strong>
+                    </p>
                 </div>
             </div>
         </Card>

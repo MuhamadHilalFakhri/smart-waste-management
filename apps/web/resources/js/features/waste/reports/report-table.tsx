@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
     Table,
@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/table";
 import { Status } from "../common";
 import { categories } from "../api";
-import { dateLabel, type Report } from "../types";
+import type { Report } from "../types";
 export default function ReportTable({
     rows,
     loading,
@@ -28,10 +28,9 @@ export default function ReportTable({
                         {[
                             "Laporan",
                             "Deskripsi",
-                            "Kategori",
                             "Status",
-                            "Tanggal",
-                            "Tindakan",
+                            "Kategori",
+                            "Detail",
                         ].map((label) => (
                             <TableHead key={label}>{label}</TableHead>
                         ))}
@@ -41,24 +40,33 @@ export default function ReportTable({
                     {rows.map((report) => (
                         <TableRow key={report.id}>
                             <TableCell>
-                                <strong className="font-medium">
-                                    #{report.number.slice(0, 8)}
-                                </strong>
+                                <div className="sw-report-title">
+                                    <span className="report-symbol">
+                                        <FileText size={17} />
+                                    </span>
+                                    <div>
+                                        <strong>
+                                            #{report.number.slice(0, 8)}
+                                        </strong>
+                                        <small>
+                                            {new Date(
+                                                report.created_at,
+                                            ).toLocaleDateString("id-ID")}
+                                        </small>
+                                    </div>
+                                </div>
                             </TableCell>
-                            <TableCell>
-                                <span className="sw-report-description">
+                            <TableCell className="w-[45%]">
+                                <p className="sw-report-description">
                                     {report.description}
-                                </span>
-                            </TableCell>
-                            <TableCell>
-                                {categories[report.category ?? ""] ??
-                                    "Belum dipilih"}
+                                </p>
                             </TableCell>
                             <TableCell>
                                 <Status value={report.status} />
                             </TableCell>
-                            <TableCell className="whitespace-nowrap">
-                                {dateLabel(report.created_at)}
+                            <TableCell className="whitespace-nowrap text-muted-foreground">
+                                {categories[report.category ?? ""] ??
+                                    "Belum dipilih"}
                             </TableCell>
                             <TableCell>
                                 <Button
@@ -66,7 +74,7 @@ export default function ReportTable({
                                     size="sm"
                                     onClick={() => onSelect(report)}
                                 >
-                                    Detail
+                                    Lihat
                                     <ArrowUpRight />
                                 </Button>
                             </TableCell>

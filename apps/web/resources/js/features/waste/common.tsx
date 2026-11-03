@@ -103,16 +103,22 @@ export function Pagination({
     page,
     onPage,
     busy = false,
+    noun = "laporan",
 }: {
-    page: { current_page: number; last_page: number; total: number };
+    page: {
+        current_page: number;
+        last_page: number;
+        total: number;
+        data?: unknown[];
+    };
     onPage: (page: number) => void;
     busy?: boolean;
+    noun?: string;
 }) {
     return (
         <div className="table-footer">
             <span>
-                {page.total} data · halaman {page.current_page} dari{" "}
-                {page.last_page}
+                Menampilkan {page.data?.length ?? 0} dari {page.total} {noun}
             </span>
             <div className="flex items-center gap-3">
                 <Button
@@ -123,6 +129,9 @@ export function Pagination({
                 >
                     Sebelumnya
                 </Button>
+                <span>
+                    {page.current_page} / {page.last_page}
+                </span>
                 <Button
                     variant="outline"
                     size="sm"

@@ -1,5 +1,30 @@
 .waste-app {
-    color-scheme: light;
+    --background: oklch(0.955 0.013 145);
+    --foreground: oklch(0.2 0.025 150);
+    --card: oklch(0.99 0.005 145);
+    --card-foreground: var(--foreground);
+    --primary: var(--foreground);
+    --primary-foreground: #fff;
+    --secondary: var(--background);
+    --secondary-foreground: var(--foreground);
+    --muted: var(--background);
+    --muted-foreground: oklch(0.55 0.018 150);
+    --accent: var(--background);
+    --accent-foreground: var(--foreground);
+    --border: oklch(0.91 0.013 145);
+    --input: var(--border);
+    --ring: #007f73;
+    --popover: var(--card);
+    --popover-foreground: var(--foreground);
+    --destructive: #b63838;
+    --brand: #007f73;
+    --lime: oklch(0.72 0.17 135);
+    --success: oklch(0.46 0.09 153);
+    --success-soft: oklch(0.93 0.035 145);
+    --pending: oklch(0.55 0.09 80);
+    --pending-soft: oklch(0.96 0.036 90);
+    --progress: oklch(0.5 0.075 230);
+    --progress-soft: oklch(0.94 0.025 230);
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --color-card: var(--card);
@@ -18,44 +43,41 @@
     --color-popover: var(--popover);
     --color-popover-foreground: var(--popover-foreground);
     --color-destructive: var(--destructive);
-
-    --background: #f5f8f6;
-    --foreground: #18382d;
-    --card: #fff;
-    --card-foreground: #18382d;
-    --primary: #1b6546;
-    --primary-foreground: #fff;
-    --secondary: #edf4ef;
-    --secondary-foreground: #234f3d;
-    --muted: #edf2ef;
-    --muted-foreground: #63776c;
-    --accent: #edf4ef;
-    --accent-foreground: #18382d;
-    --border: #dce5df;
-    --input: #dce5df;
-    --ring: #31865e;
-    --popover: #fff;
-    --popover-foreground: #18382d;
-    --destructive: #b63838;
     color: var(--foreground);
-    font-family: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+    color-scheme: light;
+    font-family: "Manrope", Arial, sans-serif;
+    letter-spacing: 0;
+    font-size: 14px;
 }
 .waste-app button,
 .waste-app a {
     touch-action: manipulation;
 }
 .waste-app [data-slot="button"] {
-    min-height: 40px;
+    min-height: 36px;
     cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 7px;
+}
+.waste-app .sw-primary-button {
+    background: linear-gradient(90deg, var(--brand), var(--lime));
+    color: white;
+    font-size: 14px;
+    padding-inline: 16px;
 }
 .waste-app [data-slot="input"],
-.waste-app [data-slot="select-trigger"] {
-    background: white;
-    min-height: 42px;
+.waste-app [data-slot="select-trigger"],
+.waste-app [data-slot="textarea"] {
+    background: var(--card);
     width: 100%;
+    min-height: 40px;
+    border-color: var(--border);
+    font-size: 12px;
+    border-radius: 6px;
 }
-.waste-app[data-slot="dialog-content"] {
-    background: white;
+.waste-app [data-slot="input"]::placeholder {
+    color: #a5b2b2;
 }
 .waste-app .sw-field {
     display: grid;
@@ -63,8 +85,9 @@
     min-width: 0;
 }
 .waste-app .sw-field label {
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--muted-foreground);
 }
 .waste-app .sw-error {
     border-color: #e5bcbc;
@@ -79,15 +102,16 @@
 .waste-app .sw-muted {
     color: var(--muted-foreground);
     font-size: 13px;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 .waste-app .sw-empty {
     padding: 42px 20px;
     text-align: center;
     color: var(--muted-foreground);
-    font-size: 14px;
+    font-size: 13px;
 }
 .waste-app.sw-dialog {
+    background: var(--card);
     max-height: 90dvh;
     overflow-y: auto;
     width: calc(100% - 32px);
@@ -109,9 +133,9 @@
     align-items: center;
 }
 .waste-app .sw-section-title {
-    font-size: 16px;
-    font-weight: 650;
-    letter-spacing: -0.3px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.25px;
 }
 .waste-app .avatar-circle {
     width: 38px;
@@ -121,8 +145,12 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: #e6eee6;
-    color: #315d3d;
+    background: var(--success-soft);
+    color: var(--success);
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 500;
+}
+
+.waste-app [data-slot="button"].border {
+    background: var(--card);
 }

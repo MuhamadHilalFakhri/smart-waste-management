@@ -1,4 +1,4 @@
-import { Plus, Download } from "lucide-react";
+import { Plus, Download, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Shell from "@/features/waste/shell";
 import { useAccount } from "@/features/waste/navigation";
@@ -19,8 +19,8 @@ export default function Reports() {
             <div className="sw-intro">
                 <p className="sw-muted">
                     {user.role === "admin"
-                        ? "Tinjau, tindak lanjuti, dan pantau seluruh laporan sampah."
-                        : "Kelola laporan Anda dan pantau status penanganannya."}
+                        ? "Semua laporan, satu tempat."
+                        : "Semua laporan Anda, satu tempat."}
                 </p>
                 <div className="sw-actions">
                     <Button
@@ -34,9 +34,12 @@ export default function Reports() {
                         }
                     >
                         <Download />
-                        Ekspor CSV
+                        Ekspor
                     </Button>
-                    <Button onClick={reports.create}>
+                    <Button
+                        className="sw-primary-button"
+                        onClick={reports.create}
+                    >
                         <Plus />
                         Buat laporan
                     </Button>
@@ -63,14 +66,10 @@ export default function Reports() {
                     <Button
                         variant="ghost"
                         size="sm"
-                        onClick={() =>
-                            void reports.action.run(
-                                reports.list.reload,
-                                "Data diperbarui.",
-                            )
-                        }
+                        onClick={() => reports.setQuery(new URLSearchParams())}
                     >
-                        Perbarui
+                        <X size={14} />
+                        Reset filter
                     </Button>
                 </div>
                 <ReportTable
