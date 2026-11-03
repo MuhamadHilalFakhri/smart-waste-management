@@ -1,8 +1,8 @@
+import { ScrollDialogContent as DialogContent } from "../scroll-dialog";
 import { useState } from "react";
 import { Pencil, RefreshCw, Trash2 } from "lucide-react";
 import {
     Dialog,
-    DialogContent,
     DialogHeader,
     DialogTitle,
     DialogDescription,
@@ -43,7 +43,7 @@ export default function ReportDetail({
                 if (!open && !busy) onClose();
             }}
         >
-            <DialogContent className="waste-app sw-dialog">
+            <DialogContent>
                 <DialogHeader>
                     <DialogTitle>
                         Laporan #{report.number.slice(0, 8)}

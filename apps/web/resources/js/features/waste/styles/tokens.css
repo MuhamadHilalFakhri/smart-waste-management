@@ -111,9 +111,11 @@
     font-size: 13px;
 }
 .waste-app.sw-dialog {
+    padding: 0;
+    display: block;
     background: var(--card);
     max-height: 90dvh;
-    overflow-y: auto;
+    overflow: hidden;
     width: calc(100% - 32px);
     max-width: 620px;
 }
@@ -153,4 +155,18 @@
 
 .waste-app [data-slot="button"].border {
     background: var(--card);
+}
+
+.waste-app .sw-dialog-scroll,
+.waste-app .sw-dialog-scroll [data-slot="scroll-area-viewport"] {
+    max-height: 90dvh;
+    height: auto;
+}
+.waste-app .sw-dialog-inner {
+    display: grid;
+    gap: 16px;
+    padding: 24px;
+}
+.waste-app .sw-dialog-inner [data-slot="dialog-header"] {
+    padding-right: 14px;
 }

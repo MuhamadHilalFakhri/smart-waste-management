@@ -1,0 +1,148 @@
+.waste-app .waste-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: var(--sw-sidebar-width);
+    height: 100dvh;
+    background: var(--card);
+    border-right: 1px solid var(--border);
+    z-index: 20;
+    overflow: hidden;
+}
+.waste-app .sw-navigation {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+    padding: 24px 14px 16px;
+}
+.waste-app .sw-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    flex-shrink: 0;
+}
+.waste-app .sw-brand small {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.9px;
+    line-height: 1.4;
+    font-weight: 400;
+    color: var(--muted-foreground);
+    margin-top: 4px;
+}
+.waste-app .sw-brand-icon {
+    display: grid;
+    place-items: center;
+    background: var(--success-soft);
+    color: var(--success);
+    border-radius: 7px;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+.waste-app .sw-nav-scroll {
+    flex: 1;
+    min-height: 0;
+}
+.waste-app .sw-nav-body {
+    display: flow-root;
+    padding-bottom: 20px;
+}
+.waste-app .sw-nav-label {
+    margin: 32px 10px 14px;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 1.1px;
+    color: var(--muted-foreground);
+}
+.waste-app .sw-navigation nav {
+    display: grid;
+    gap: 6px;
+}
+.waste-app .sw-nav-link {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+    height: 40px;
+    padding: 0 12px;
+    font-size: 11px;
+    color: var(--muted-foreground);
+}
+.waste-app .sw-nav-link:hover {
+    background: var(--background);
+}
+.waste-app .sw-nav-link.active,
+.waste-app .sw-nav-link.active:hover {
+    background: var(--foreground);
+    color: var(--lime);
+}
+.waste-app .sw-nav-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--lime);
+    margin-left: auto;
+}
+.waste-app .sw-logout {
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    margin-top: 0;
+    flex-shrink: 0;
+}
+.waste-app .sw-sidebar-note {
+    border-top: 1px solid var(--border);
+    padding: 18px 12px 0;
+    margin-top: 24px;
+}
+.waste-app .sw-sidebar-note h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.waste-app .sw-sidebar-note h2 svg {
+    color: var(--brand);
+}
+.waste-app .sw-sidebar-note p {
+    font-size: 11px;
+    color: var(--muted-foreground);
+    line-height: 1.9;
+    margin: 12px 0 18px;
+}
+.waste-app .sw-sidebar-note > span {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: var(--brand);
+    font-size: 9px;
+}
+.waste-app .sw-sidebar-note i,
+.waste-app .sw-workspace i {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand);
+}
+.sw-mobile-sidebar {
+    background: var(--card);
+    padding: 0;
+    max-width: 260px;
+    overflow: hidden;
+    gap: 0;
+}
+@media (max-width: 1023px) {
+    .waste-app .sw-navigation .sw-nav-link {
+        height: 44px;
+        min-height: 44px;
+        font-size: 12px;
+    }
+}

@@ -1,17 +1,24 @@
 import type { ComponentProps } from "react";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 export function Table({ className, ...props }: ComponentProps<"table">) {
     return (
-        <div
-            data-slot="table-container"
-            className="relative w-full overflow-x-auto"
+        <ScrollArea
+            orientation="horizontal"
+            type="auto"
+            className="sw-table-scroll w-full"
+            viewportProps={{
+                tabIndex: 0,
+                role: "region",
+                "aria-label": "Tabel dapat digulir horizontal",
+            }}
         >
             <table
                 data-slot="table"
                 className={cn("w-full caption-bottom text-sm", className)}
                 {...props}
             />
-        </div>
+        </ScrollArea>
     );
 }
 export function TableHeader({ className, ...props }: ComponentProps<"thead">) {

@@ -38,8 +38,11 @@
     }
 }
 @media (max-width: 640px) {
+    .sw-root {
+        --sw-header-height: 84px;
+    }
     .waste-app .waste-header {
-        min-height: 84px;
+        min-height: var(--sw-header-height);
         padding: 14px;
         gap: 10px;
     }

@@ -1,7 +1,7 @@
+import { ScrollDialogContent as DialogContent } from "../scroll-dialog";
 import type { FormEvent } from "react";
 import {
     Dialog,
-    DialogContent,
     DialogHeader,
     DialogTitle,
     DialogDescription,
@@ -36,7 +36,7 @@ export default function UserEditor({
                 if (!value && !busy) onClose();
             }}
         >
-            <DialogContent className="waste-app sw-dialog">
+            <DialogContent>
                 <DialogHeader>
                     <DialogTitle>
                         {user ? "Ubah pengguna" : "Tambah pengguna"}

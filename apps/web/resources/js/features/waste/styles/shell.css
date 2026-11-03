@@ -1,134 +1,17 @@
 .sw-root {
-    min-height: 100dvh;
+    --sw-sidebar-width: 216px;
+    --sw-header-height: 98px;
+    height: 100dvh;
+    overflow: hidden;
     background: var(--background);
-}
-.waste-app .waste-sidebar {
-    position: fixed;
-    inset: 0 auto 0 0;
-    width: 236px;
-    background: var(--card);
-    border-right: 1px solid var(--border);
-    z-index: 20;
-    overflow-y: auto;
-}
-.waste-app .sw-navigation {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    padding: 32px 18px;
-}
-.waste-app .sw-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 0 12px;
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: -0.6px;
-}
-.waste-app .sw-brand small {
-    display: block;
-    font-size: 10px;
-    letter-spacing: 1px;
-    line-height: 1.4;
-    font-weight: 400;
-    color: var(--muted-foreground);
-    margin-top: 5px;
-}
-.waste-app .sw-brand-icon {
-    display: grid;
-    place-items: center;
-    background: var(--success-soft);
-    color: var(--success);
-    border-radius: 8px;
-    width: 36px;
-    height: 36px;
-    flex-shrink: 0;
-}
-.waste-app .sw-nav-label {
-    margin: 44px 12px 17px;
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 1.2px;
-    color: var(--muted-foreground);
-}
-.waste-app .sw-navigation nav {
-    display: grid;
-    gap: 8px;
-}
-.waste-app .sw-nav-link {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    align-items: center;
-    gap: 12px;
-    height: 44px;
-    padding: 0 14px;
-    font-size: 12px;
-    color: var(--muted-foreground);
-}
-.waste-app .sw-nav-link:hover {
-    background: var(--background);
-}
-.waste-app .sw-nav-link.active,
-.waste-app .sw-nav-link.active:hover {
-    background: var(--foreground);
-    color: var(--lime);
-}
-.waste-app .sw-nav-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--lime);
-    margin-left: auto;
-}
-.waste-app .sw-logout {
-    border-top: 1px solid var(--border);
-    margin-top: 28px;
-    padding-top: 24px;
-}
-.waste-app .sw-sidebar-note {
-    border-top: 1px solid var(--border);
-    padding: 20px 14px;
-    margin-top: 36px;
-}
-.waste-app .sw-sidebar-note h2 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    white-space: nowrap;
-}
-.waste-app .sw-sidebar-note h2 svg {
-    color: var(--brand);
-}
-.waste-app .sw-sidebar-note p {
-    font-size: 12px;
-    color: var(--muted-foreground);
-    line-height: 2;
-    margin: 14px 0 22px;
-}
-.waste-app .sw-sidebar-note > span {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    color: var(--brand);
-    font-size: 10px;
-}
-.waste-app .sw-sidebar-note i,
-.waste-app .sw-workspace i {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--brand);
 }
 .waste-app .waste-main {
-    margin-left: 236px;
+    margin-left: var(--sw-sidebar-width);
     display: flex;
     flex-direction: column;
-    min-height: 100dvh;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
     min-width: 0;
 }
 .waste-app .waste-header {
@@ -137,7 +20,9 @@
     align-items: center;
     gap: 16px;
     padding: 0 34px;
-    min-height: 98px;
+    height: var(--sw-header-height);
+    min-height: var(--sw-header-height);
+    flex-shrink: 0;
     border-bottom: 1px solid var(--border);
     background: var(--card);
 }
@@ -235,8 +120,32 @@
 .waste-app .sw-mobile-menu {
     display: none;
 }
-.sw-mobile-sidebar {
-    padding: 0;
-    max-width: 280px;
-    overflow-y: auto;
+
+.waste-app .sw-page-scroll {
+    flex: 1;
+    min-height: 0;
+}
+.waste-app .sw-scroll-content {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100dvh - var(--sw-header-height));
+}
+.waste-app [data-slot="scroll-area-viewport"] {
+    overscroll-behavior: contain;
+}
+.waste-app [data-slot="scroll-area-thumb"] {
+    background: #a2b7a6;
+}
+.waste-app
+    [data-slot="scroll-area-scrollbar"]:hover
+    [data-slot="scroll-area-thumb"] {
+    background: #7f9e85;
+}
+.waste-app .sw-greeting {
+    min-width: 0;
+}
+.waste-app .sw-greeting strong {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
