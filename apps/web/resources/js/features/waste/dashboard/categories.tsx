@@ -11,7 +11,7 @@ export default function CategoryChart({ data }: { data: Statistics }) {
             color: colors[index],
         })),
         {
-            label: "Belum dikategorikan",
+            label: "Belum dipilih",
             count: data.categories
                 .filter((row) => !row.category || !categories[row.category])
                 .reduce((sum, row) => sum + row.total, 0),
@@ -29,7 +29,7 @@ export default function CategoryChart({ data }: { data: Statistics }) {
         <Card className="dashboard-card">
             <h2 className="sw-section-title">Distribusi kategori</h2>
             <p className="sw-muted mt-1">
-                Kategori pilihan dan hasil klasifikasi AI.
+                Kategori pilihan pelapor pada laporan.
             </p>
             <div className="sw-category-content">
                 <div
