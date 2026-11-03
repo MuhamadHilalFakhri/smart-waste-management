@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "Smart Waste",
+    "slug": "smart-waste-management",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.smartwaste.management"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Pilih foto sampah untuk laporan.",
+          "cameraPermission": "Ambil foto sampah untuk laporan.",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Catat koordinat laporan sampah."
+        }
+      ],
+      "expo-secure-store"
+    ]
+  }
+}
