@@ -1,6 +1,5 @@
 import {
   CanvasImage,
-  Easing,
   interpolate,
   staticFile,
   useCurrentFrame,
@@ -12,16 +11,25 @@ import { theme } from "./theme";
 export function ScreenCapture({
   image,
   before,
+  navigateFrom,
   typed,
   field,
   cursor = [720, 450],
-  zoom = 1.35,
+  clickTarget,
   mobile = false,
 }: StepProps) {
   const frame = useCurrentFrame();
-  const { fps, durationInFrames } = useVideoConfig();
-  const typingEnd = 6 * fps;
+  const { fps } = useVideoConfig();
+  const typingEnd = 4 * fps;
   const typing = !!typed && frame < typingEnd;
+  const navigationEnd = fps;
+  const showingSource = !!navigateFrom && frame < navigationEnd;
+  const imageOpacity = navigateFrom
+    ? interpolate(frame, [navigationEnd - 1, navigationEnd + fps * 0.25], [0, 1], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+      })
+    : 1;
   const bounds = mobile
     ? { x: 1170, y: 112, w: 390, h: 844 }
     : { x: 160, y: 105, w: 1600, h: 1000 };
@@ -40,34 +48,21 @@ export function ScreenCapture({
         background: "#fff",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: bounds.w,
-          height: bounds.h,
-          transformOrigin: `${cursor[0] * ratio}px ${cursor[1] * ratio}px`,
-          scale: interpolate(
-            frame,
-            [
-              0,
-              fps,
-              3 * fps,
-              Math.max(4 * fps, durationInFrames - 2 * fps),
-              durationInFrames - 1,
-            ],
-            [1, 1, zoom, zoom, 1],
-            {
-              extrapolateLeft: "clamp",
-              extrapolateRight: "clamp",
-              easing: Easing.bezier(0.22, 1, 0.36, 1),
-            },
-          ),
-        }}
-      >
+      <div style={{ position: "absolute", inset: 0, width: bounds.w, height: bounds.h }}>
+        {showingSource && (
+          <CanvasImage
+            src={staticFile(`captures/${navigateFrom}.png`)}
+            style={{ position: "absolute", width: bounds.w, height: bounds.h }}
+          />
+        )}
         <CanvasImage
           src={staticFile(`captures/${typing && before ? before : image}.png`)}
-          style={{ position: "absolute", width: bounds.w, height: bounds.h }}
+          style={{
+            position: "absolute",
+            width: bounds.w,
+            height: bounds.h,
+            opacity: showingSource ? 0 : imageOpacity,
+          }}
         />
         {typing && field && (
           <div
@@ -107,7 +102,13 @@ export function ScreenCapture({
             </span>
           </div>
         )}
-        <Cursor x={cursor[0] * ratio} y={cursor[1] * ratio} mobile={mobile} />
+        {(!navigateFrom || frame < navigationEnd + fps * 0.3) && (
+          <Cursor
+            x={(clickTarget ?? cursor)[0] * ratio}
+            y={(clickTarget ?? cursor)[1] * ratio}
+            mobile={mobile}
+          />
+        )}
       </div>
     </div>
   );

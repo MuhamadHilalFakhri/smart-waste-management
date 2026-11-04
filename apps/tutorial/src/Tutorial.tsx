@@ -9,21 +9,21 @@ export function Tutorial() {
     <Series>
       <Series.Sequence
         name="Pembuka"
-        durationInFrames={8 * fps}
+        durationInFrames={9 * fps}
         premountFor={fps}
       >
         <Intro />
       </Series.Sequence>
       <Series.Sequence
         name="Tutorial website"
-        durationInFrames={238 * fps}
+        durationInFrames={153 * fps}
         premountFor={fps}
       >
         <WebTutorial />
       </Series.Sequence>
       <Series.Sequence
         name="Tutorial mobile"
-        durationInFrames={308 * fps}
+        durationInFrames={198 * fps}
         premountFor={fps}
       >
         <MobileTutorial />

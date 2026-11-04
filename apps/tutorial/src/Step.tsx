@@ -8,12 +8,21 @@ import {
 import { ScreenCapture } from "./ScreenCapture";
 import type { StepProps } from "./step-types";
 import { fontFamily, theme } from "./theme";
+function voiceFile(title: string, mobile: boolean) {
+  const slug = title
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+  return `audio/${mobile ? "mobile-" : "web-"}${slug}.wav`;
+}
 export function Step(props: StepProps) {
-  const { title, instruction, mobile, deviceGuide, audio } = props;
+  const { title, instruction, mobile = false, deviceGuide, audio } = props;
   const { fps } = useVideoConfig();
   return (
     <AbsoluteFill style={{ background: "white", fontFamily, color: theme.ink }}>
-      {audio && <Audio src={staticFile(audio)} premountFor={fps} />}
+      <Audio src={staticFile(audio ?? voiceFile(title, mobile))} premountFor={fps} />
       <div
         style={{
           position: "absolute",

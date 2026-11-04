@@ -22,7 +22,9 @@ function dimensions(data) {
 for (const file of await readdir(resolve(root, "src"))) {
   if (!file.endsWith(".tsx")) continue;
   const source = await readFile(resolve(root, "src", file), "utf8");
-  for (const match of source.matchAll(/(?:image|before)="([^"]+)"/g)) images.add(match[1]);
+  for (const match of source.matchAll(/(?:image|before|navigateFrom)="([^"]+)"/g)) {
+    images.add(match[1]);
+  }
 }
 for (const name of images) {
   const data = await readFile(resolve(root, "public/captures", name + ".png"));
@@ -36,4 +38,32 @@ for (const name of images) {
 }
 await access(resolve(root, "public/Manrope.ttf"));
 await access(resolve(root, "public/droplet.svg"));
-console.log(`${images.size} tangkapan layar tersedia dengan ukuran yang sesuai.`);
+const narration = JSON.parse(await readFile(resolve(root, "scripts/narration.json"), "utf8"));
+const scenes = new Map();
+for (const file of await readdir(resolve(root, "src"))) {
+  if (!file.endsWith(".tsx")) continue;
+  const source = await readFile(resolve(root, "src", file), "utf8");
+  for (const match of source.matchAll(/<Step\s+([\s\S]*?)\/>/g)) {
+    const title = match[1].match(/title="([^"]+)"/)?.[1];
+    if (!title) continue;
+    const mobile = /\bmobile\b/.test(match[1]);
+    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    scenes.set(`${mobile ? "mobile" : "web"}-${slug}`, title);
+  }
+}
+const audioFiles = [...Object.keys(narration)];
+if (scenes.size !== 39) throw new Error(`Jumlah adegan berubah: ${scenes.size}, periksa durasi tutorial.`);
+for (const key of [...audioFiles, ...scenes.keys()]) {
+  if (!(key in narration)) throw new Error(`Naskah suara tidak ditemukan: ${key}.`);
+  const data = await readFile(resolve(root, `public/audio/${key}.wav`));
+  if (data.toString("ascii", 0, 4) !== "RIFF" || data.toString("ascii", 8, 12) !== "WAVE") {
+    throw new Error(`Audio ${key} bukan WAV yang valid.`);
+  }
+  const bytesPerSecond =
+    data.readUInt32LE(28) * data.readUInt16LE(22) * (data.readUInt16LE(34) / 8);
+  const audioData = data.indexOf("data", 12, "ascii");
+  const seconds = data.readUInt32LE(audioData + 4) / bytesPerSecond;
+  const limit = key === "closing" ? 10 : 9;
+  if (seconds > limit) throw new Error(`Audio ${key} (${seconds.toFixed(1)} detik) melebihi durasi adegan ${limit} detik.`);
+}
+console.log(`${images.size} tangkapan layar dan ${audioFiles.length} narasi WAV tersedia.`);

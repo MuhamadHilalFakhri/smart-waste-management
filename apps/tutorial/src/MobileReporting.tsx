@@ -6,7 +6,7 @@ export function MobileReporting() {
     <Series>
       <Series.Sequence
         name="06 Formulir"
-        durationInFrames={14 * fps}
+        durationInFrames={9 * fps}
         premountFor={fps}
       >
         <Step
@@ -14,13 +14,14 @@ export function MobileReporting() {
           title="Buat laporan baru"
           instruction="Formulir menggabungkan foto, deskripsi, lokasi, dan kategori pilihan yang opsional."
           image="mobile-form-empty"
+          navigateFrom="mobile-history-empty"
+          clickTarget={[190, 213]}
           cursor={[195, 280]}
-          zoom={1.08}
         />
       </Series.Sequence>
       <Series.Sequence
         name="07 Validasi"
-        durationInFrames={14 * fps}
+        durationInFrames={9 * fps}
         premountFor={fps}
       >
         <Step
@@ -29,12 +30,11 @@ export function MobileReporting() {
           instruction="Foto, lokasi GPS, dan deskripsi minimal 10 karakter diperlukan. Pesan validasi membantu melengkapi data."
           image="mobile-validation"
           cursor={[190, 140]}
-          zoom={1.08}
         />
       </Series.Sequence>
       <Series.Sequence
         name="08 Galeri"
-        durationInFrames={14 * fps}
+        durationInFrames={9 * fps}
         premountFor={fps}
       >
         <Step
@@ -42,13 +42,14 @@ export function MobileReporting() {
           title="Pilih foto dari galeri"
           instruction="Ketuk Pilih foto, lalu pilih gambar sampah. Pratinjau foto muncul pada formulir."
           image="mobile-photo"
+          navigateFrom="mobile-form-empty"
+          clickTarget={[185, 389]}
           cursor={[190, 495]}
-          zoom={1.1}
         />
       </Series.Sequence>
       <Series.Sequence
         name="09 Kamera"
-        durationInFrames={14 * fps}
+        durationInFrames={9 * fps}
         premountFor={fps}
       >
         <Step
@@ -56,29 +57,15 @@ export function MobileReporting() {
           deviceGuide
           title="Ambil foto di lokasi"
           instruction="Pada HP Android, ketuk Ambil foto dan izinkan kamera saat diminta. Ambil gambar yang jelas lalu gunakan foto tersebut."
-          image="mobile-form-empty"
-          cursor={[85, 385]}
-          zoom={1.12}
-        />
-      </Series.Sequence>
-      <Series.Sequence
-        name="10 GPS"
-        durationInFrames={14 * fps}
-        premountFor={fps}
-      >
-        <Step
-          mobile
-          deviceGuide
-          title="Catat lokasi GPS"
-          instruction="Ketuk Ambil lokasi GPS. Izinkan lokasi saat aplikasi digunakan. Jika izin ditolak, aktifkan melalui pengaturan HP dan ulangi."
           image="mobile-photo"
-          cursor={[190, 728]}
-          zoom={1.1}
+          navigateFrom="mobile-photo"
+          clickTarget={[85, 495]}
+          cursor={[85, 495]}
         />
       </Series.Sequence>
       <Series.Sequence
-        name="11 Deskripsi"
-        durationInFrames={14 * fps}
+        name="10 Deskripsi"
+        durationInFrames={9 * fps}
         premountFor={fps}
       >
         <Step
@@ -90,12 +77,27 @@ export function MobileReporting() {
           typed="[Tutorial mobile] Sampah plastik di sisi taman, perlu diangkut."
           field={[41, 399, 293, 120]}
           cursor={[195, 440]}
-          zoom={1.12}
+        />
+      </Series.Sequence>
+      <Series.Sequence
+        name="11 GPS"
+        durationInFrames={9 * fps}
+        premountFor={fps}
+      >
+        <Step
+          mobile
+          deviceGuide
+          title="Catat lokasi GPS"
+          instruction="Ketuk Ambil lokasi GPS dan izinkan akses saat aplikasi digunakan. Jika ditolak, aktifkan izin di pengaturan HP."
+          image="mobile-edit-filled"
+          navigateFrom="mobile-description"
+          clickTarget={[190, 555]}
+          cursor={[190, 555]}
         />
       </Series.Sequence>
       <Series.Sequence
         name="12 Kategori"
-        durationInFrames={14 * fps}
+        durationInFrames={9 * fps}
         premountFor={fps}
       >
         <Step
@@ -103,13 +105,14 @@ export function MobileReporting() {
           title="Pilih kategori bila perlu"
           instruction="Tersedia Organic Waste, Plastic Waste, dan Paper Waste. Pilihan pelapor didahulukan dari saran AI."
           image="mobile-category"
+          navigateFrom="mobile-edit-filled"
+          clickTarget={[180, 585]}
           cursor={[170, 765]}
-          zoom={1.08}
         />
       </Series.Sequence>
       <Series.Sequence
         name="13 Simpan"
-        durationInFrames={14 * fps}
+        durationInFrames={9 * fps}
         premountFor={fps}
       >
         <Step
@@ -117,8 +120,9 @@ export function MobileReporting() {
           title="Simpan data yang lengkap"
           instruction="Pilih Simpan laporan. Contoh penyimpanan memakai laporan latihan dengan koordinat contoh; laporan tampil kembali di riwayat."
           image="mobile-saved"
+          navigateFrom="mobile-category"
+          clickTarget={[190, 650]}
           cursor={[190, 360]}
-          zoom={1.08}
         />
       </Series.Sequence>
     </Series>

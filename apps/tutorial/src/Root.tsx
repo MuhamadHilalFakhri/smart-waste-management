@@ -10,7 +10,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="TutorialSmartWaste"
         component={Tutorial}
-        durationInFrames={16920}
+        durationInFrames={11100}
         fps={30}
         width={1920}
         height={1080}
@@ -26,7 +26,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="TutorialWeb"
         component={WebTutorial}
-        durationInFrames={7140}
+        durationInFrames={4590}
         fps={30}
         width={1920}
         height={1080}
@@ -34,7 +34,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="TutorialMobile"
         component={MobileTutorial}
-        durationInFrames={9240}
+        durationInFrames={5940}
         fps={30}
         width={1920}
         height={1080}
