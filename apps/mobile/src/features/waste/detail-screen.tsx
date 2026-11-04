@@ -1,26 +1,33 @@
-import { Alert, Image, View } from "react-native";
+import { View } from "react-native";
+import { useState } from "react";
+import { DeleteConfirmation } from "./delete-confirmation";
 import { Text } from "./typography";
 import { StatusBadge } from "./status-badge";
-import { api, baseUrl, categories } from "../../api";
+import { api, categories } from "../../api";
+import { ProtectedPhoto } from "./protected-photo";
 import { useWaste } from "./context";
 import { status } from "./status";
 import { s } from "./styles";
 export default function Screen() {
-  const { token, selected, button, run, detail, newReport, load, setScreen } =
-    useWaste();
+  const {
+    token,
+    selected,
+    button,
+    run,
+    detail,
+    newReport,
+    load,
+    setScreen,
+    busy,
+  } = useWaste();
+  const [confirmDelete, setConfirmDelete] = useState(false);
   if (!selected) return null;
   return (
     <View style={s.card}>
       <Text style={s.eyebrow}>WORKSPACE / DETAIL LAPORAN</Text>
       <Text style={s.title}>#{selected.number.slice(0, 8)}</Text>
       <StatusBadge value={selected.status} />
-      <Image
-        source={{
-          uri: baseUrl + "/reports/" + selected.id + "/photo",
-          headers: { Authorization: "Bearer " + token },
-        }}
-        style={s.photo}
-      />
+      <ProtectedPhoto key={selected.id} id={selected.id} token={token} />
       <Text style={s.line}>{selected.description}</Text>
       <Text style={s.line}>
         {selected.latitude}, {selected.longitude}
@@ -56,30 +63,7 @@ export default function Screen() {
               }),
             true,
           )}
-          {button(
-            "Hapus laporan",
-            () =>
-              Alert.alert(
-                "Hapus laporan?",
-                "Laporan akan dihapus dari daftar.",
-                [
-                  { text: "Batal" },
-                  {
-                    text: "Hapus",
-                    style: "destructive",
-                    onPress: () =>
-                      void run(async () => {
-                        await api("reports/" + selected.id, {
-                          method: "DELETE",
-                        });
-                        await load();
-                        setScreen("history");
-                      }),
-                  },
-                ],
-              ),
-            true,
-          )}
+          {button("Hapus laporan", () => setConfirmDelete(true), true)}
         </>
       )}
       <Text style={[s.label, s.divider]}>Histori status</Text>
@@ -89,6 +73,19 @@ export default function Screen() {
           {new Date(h.created_at).toLocaleString("id-ID")} {h.note}
         </Text>
       ))}
+      <DeleteConfirmation
+        open={confirmDelete}
+        busy={busy}
+        onClose={() => setConfirmDelete(false)}
+        onConfirm={() =>
+          void run(async () => {
+            await api("reports/" + selected.id, { method: "DELETE" });
+            setConfirmDelete(false);
+            await load();
+            setScreen("history");
+          })
+        }
+      />
     </View>
   );
 }
