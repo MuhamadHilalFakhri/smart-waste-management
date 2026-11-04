@@ -1,4 +1,6 @@
-import { Alert, Image, Text, View } from "react-native";
+import { Alert, Image, View } from "react-native";
+import { Text } from "./typography";
+import { StatusBadge } from "./status-badge";
 import { api, baseUrl, categories } from "../../api";
 import { useWaste } from "./context";
 import { status } from "./status";
@@ -9,7 +11,9 @@ export default function Screen() {
   if (!selected) return null;
   return (
     <View style={s.card}>
-      <Text style={s.title}>{status[selected.status]}</Text>
+      <Text style={s.eyebrow}>WORKSPACE / DETAIL LAPORAN</Text>
+      <Text style={s.title}>#{selected.number.slice(0, 8)}</Text>
+      <StatusBadge value={selected.status} />
       <Image
         source={{
           uri: baseUrl + "/reports/" + selected.id + "/photo",
@@ -78,7 +82,7 @@ export default function Screen() {
           )}
         </>
       )}
-      <Text style={s.title}>Histori status</Text>
+      <Text style={[s.label, s.divider]}>Histori status</Text>
       {selected.histories?.map((h) => (
         <Text key={h.id} style={s.line}>
           {status[h.to_status]} ·{" "}

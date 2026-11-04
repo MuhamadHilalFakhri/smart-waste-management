@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import * as SecureStore from "expo-secure-store";
+import * as SecureStore from "../../storage";
 import { useEffect, useState } from "react";
 import { api } from "../../api";
 export function useSession() {

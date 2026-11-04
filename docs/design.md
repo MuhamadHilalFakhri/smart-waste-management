@@ -23,3 +23,8 @@ Warna canvas, surface, ink, garis, dan status memakai token dari CSS referensi p
 
 ## Sidebar ringkas dan ScrollArea
 Sidebar desktop diperkecil menjadi 216 px; logo 18 px, ikon merek 32 px, serta menu 40 px dengan teks 11 px. Pada navigasi sentuh, tinggi menu tetap 44 px. Brand berada di atas, menu dan catatan lingkungan di dalam ScrollArea, dan tombol Keluar di footer terpisah agar selalu berada di bawah layar. Konten utama, sidebar, tabel horizontal, dan dialog menggunakan komponen ScrollArea shadcn/ui berbasis Radix. Header tetap di atas, halaman menggunakan tinggi 100dvh, dan hanya viewport konten yang bergulir. Viewport utama ditandai `scroll-region` untuk integrasi dengan Inertia. Scrollbar menggunakan warna hijau abu, dengan dukungan roda mouse, sentuhan, dan keyboard.
+# Tampilan mobile mengikuti web
+
+Aplikasi Expo memakai Manrope berlisensi OFL, latar hijau muda, kartu putih, ringkasan hijau gelap, serta aksen merek hijau. Gradasi pada tombol utama mengikuti hierarki tindakan pada web. Ikon garis menunjukkan laporan, kamera, lokasi, dan navigasi; tidak dipakai sebagai dekorasi. ENERGY 1 / RHYTHM 2 / MOTION 1.
+
+Navigasi menggunakan sidebar sesuai permintaan: tombol menu pada header, item aktif, area menu yang dapat digulir, tombol tutup, backdrop, dukungan tombol Back Android, dan Keluar di bawah. Tidak ada navigasi bawah. Halaman login, ringkasan, daftar laporan, form, dan detail berbagi komponen tema, teks, tombol, serta badge status. Sentuhan minimal 48 px dan SafeAreaProvider menjaga area sistem ponsel.

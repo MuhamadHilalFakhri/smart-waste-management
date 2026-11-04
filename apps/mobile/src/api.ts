@@ -1,4 +1,4 @@
-import * as SecureStore from "expo-secure-store";
+import * as SecureStore from "./storage";
 export const baseUrl =
   (process.env.EXPO_PUBLIC_API_URL ?? "http://10.0.2.2:8080") + "/api/v1";
 export async function api<T = unknown>(

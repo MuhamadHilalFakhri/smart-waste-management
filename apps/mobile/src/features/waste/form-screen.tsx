@@ -1,4 +1,7 @@
-import { Image, Pressable, Text, TextInput, View } from "react-native";
+import { Image, Pressable, TextInput, View } from "react-native";
+import { Text } from "./typography";
+import { Icon } from "./icons";
+import { colors } from "./theme";
 import { categories } from "../../api";
 import { useWaste } from "./context";
 import { s } from "./styles";
@@ -20,8 +23,29 @@ export default function Screen() {
   } = useWaste();
   return (
     <View style={s.card}>
+      <Text style={s.eyebrow}>WORKSPACE / BUAT LAPORAN</Text>
       <Text style={s.title}>{editing ? "Ubah laporan" : "Laporan baru"}</Text>
+      <Text style={s.sub}>Sertakan foto, lokasi, dan deskripsi sampah.</Text>
       {photo && <Image source={{ uri: photo.uri }} style={s.photo} />}
+      {!photo && (
+        <View
+          style={[
+            s.card,
+            {
+              alignItems: "center",
+              backgroundColor: colors.background,
+              paddingVertical: 28,
+            },
+          ]}
+        >
+          <Icon name="camera" size={32} />
+          <Text style={s.sub}>
+            {editing
+              ? "Pilih foto untuk mengganti foto laporan."
+              : "Ambil foto atau pilih dari galeri."}
+          </Text>
+        </View>
+      )}
       <View style={s.nav}>
         {button("Ambil foto", () => void run(() => pick(true)), true)}
         {button("Pilih foto", () => void run(() => pick(false)), true)}
@@ -29,7 +53,8 @@ export default function Screen() {
       <Text style={s.label}>Deskripsi</Text>
       <TextInput
         accessibilityLabel="Deskripsi"
-        style={[s.input, { minHeight: 100 }]}
+        style={[s.input, { minHeight: 120, textAlignVertical: "top" }]}
+        placeholder="Jelaskan kondisi dan lokasi sampah…"
         multiline
         value={description}
         onChangeText={setDescription}
@@ -44,10 +69,18 @@ export default function Screen() {
       {Object.entries(categories).map(([k, v]) => (
         <Pressable
           key={k}
-          style={s.choice}
+          accessibilityRole="radio"
+          accessibilityState={{ checked: category === k }}
+          style={[
+            s.choice,
+            category === k && {
+              borderColor: colors.brand,
+              backgroundColor: colors.background,
+            },
+          ]}
           onPress={() => setCategory(category === k ? null : k)}
         >
-          <Text>
+          <Text style={{ color: category === k ? colors.brand : colors.ink }}>
             {category === k ? "●" : "○"} {v}
           </Text>
         </Pressable>
