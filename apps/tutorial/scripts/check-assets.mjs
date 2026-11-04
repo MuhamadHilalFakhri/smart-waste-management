@@ -39,6 +39,10 @@ for (const name of images) {
 await access(resolve(root, "public/Manrope.ttf"));
 await access(resolve(root, "public/droplet.svg"));
 const narration = JSON.parse(await readFile(resolve(root, "scripts/narration.json"), "utf8"));
+const renderedAudio = await readdir(resolve(root, "public/audio"));
+if (renderedAudio.length !== Object.keys(narration).length) {
+  throw new Error("Folder audio harus hanya berisi berkas narasi yang tercantum di naskah.");
+}
 const scenes = new Map();
 for (const file of await readdir(resolve(root, "src"))) {
   if (!file.endsWith(".tsx")) continue;
