@@ -8,7 +8,7 @@ npm ci
 npm run dev -- --no-open --port=3090
 ```
 
-Buka `http://localhost:3090/TutorialSmartWaste`. Layar aplikasi tampil utuh tanpa bingkai tambahan atau crop. Perpindahan halaman diawali klik kursor sederhana; tidak ada zoom atau efek detak. Video sementara tanpa suara sambil menunggu audio yang akan Anda kirim. Naskah rekaman tersedia di `../../docs/naskah-narasi-tutorial.md`. Source per file dibatasi 250 baris.
+Buka `http://localhost:3090/TutorialSmartWaste`. Layar aplikasi tampil utuh tanpa bingkai tambahan atau crop. Perpindahan halaman diawali klik kursor sederhana; tidak ada zoom atau efek detak. Video sementara tanpa suara sambil menunggu audio yang akan Anda kirim. Naskah lengkap siap salin ke generator suara tersedia di `../../docs/naskah-narasi-lengkap.txt`; pemetaan adegan tersedia di `../../docs/naskah-narasi-tutorial.md`. Source per file dibatasi 250 baris.
 
 ```powershell
 npm run lint

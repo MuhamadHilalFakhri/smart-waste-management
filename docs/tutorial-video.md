@@ -1,6 +1,6 @@
 # Tutorial Smart Waste
 
-Source Remotion berada di `apps/tutorial`. Komposisi utama `TutorialSmartWaste` berdurasi 6 menit 10 detik, 1920×1080, 30 fps. Bab web dan mobile juga tersedia sebagai komposisi terpisah. Preview dibuka melalui `npm run dev -- --no-open` dari folder tersebut. Source menggunakan Remotion 4.0.540, Manrope lokal, dan logo droplet proyek. Video untuk sementara tanpa audio; [naskah narasi per adegan](naskah-narasi-tutorial.md) disiapkan untuk dipasangi suara yang dikirim pengguna.
+Source Remotion berada di `apps/tutorial`. Komposisi utama `TutorialSmartWaste` berdurasi 6 menit 10 detik, 1920×1080, 30 fps. Bab web dan mobile juga tersedia sebagai komposisi terpisah. Preview dibuka melalui `npm run dev -- --no-open` dari folder tersebut. Source menggunakan Remotion 4.0.540, Manrope lokal, dan logo droplet proyek. Video untuk sementara tanpa audio; [naskah lengkap siap salin ke generator suara](naskah-narasi-lengkap.txt) disediakan bersama [pemetaan naskah per adegan](naskah-narasi-tutorial.md).
 
 Materi terdiri dari tangkapan layar UI aktual yang ditampilkan utuh tanpa bingkai atau crop tambahan, animasi ketikan, serta klik kursor sederhana sebelum tampilan tujuan muncul. Tidak ada zoom atau efek detak kursor. Materi bukan rekaman layar kontinu. Setiap langkah memiliki petunjuk teks dan durasi sekitar sembilan detik. Data akun dan laporan tutorial ditandai dengan nama atau deskripsi Tutorial; koordinat -6.2, 106.8 adalah contoh.
 

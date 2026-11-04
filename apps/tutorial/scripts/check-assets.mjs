@@ -38,6 +38,7 @@ for (const name of images) {
 }
 await access(resolve(root, "public/Manrope.ttf"));
 await access(resolve(root, "public/droplet.svg"));
+await access(resolve(root, "../../docs/naskah-narasi-lengkap.txt"));
 await access(resolve(root, "../../docs/naskah-narasi-tutorial.md"));
 const narration = JSON.parse(await readFile(resolve(root, "scripts/narration.json"), "utf8"));
 const scenes = new Map();

@@ -1,0 +1,53 @@
+Halo, selamat datang di Smart Waste. Dalam video ini, kita akan melihat alur pengelolaan sampah dari dua sisi. Admin menggunakan website untuk mengelola laporan, sedangkan pelapor menggunakan aplikasi Android untuk mengirim temuan dan mengikuti penanganannya.
+
+Kita mulai dari halaman masuk Admin. Masukkan email dan kata sandi akun, lalu tekan tombol Masuk. Setelah berhasil, dashboard akan menampilkan ringkasan laporan yang perlu dipantau.
+
+Di bagian atas dashboard, Admin dapat melihat jumlah seluruh laporan dan pembagiannya berdasarkan status Pending, In Progress, Completed, serta Rejected. Angka-angka ini membantu melihat kondisi laporan secara cepat.
+
+Gulir ke bagian bawah untuk memeriksa kategori yang dipilih pelapor, tren laporan, prioritas penanganan hari ini, dan laporan terbaru. Dari sini, Admin dapat menentukan laporan mana yang perlu ditinjau lebih dahulu.
+
+Untuk membuka daftar laporan, klik Laporan sampah pada sidebar. Halaman ini memuat laporan dalam satu tempat. Admin dapat mencari nomor laporan atau deskripsinya, kemudian membuka detail melalui tombol Lihat.
+
+Untuk mencatat temuan baru, klik Buat laporan. Lampirkan foto sampah, tuliskan deskripsi, masukkan koordinat lokasi, lalu pilih kategori jika sudah diketahui. Foto yang diterima berformat JPEG, PNG, atau WebP dengan ukuran maksimal lima megabita.
+
+Setelah data tersimpan, sistem mengirim foto untuk diperiksa oleh layanan kecerdasan buatan. Hasil klasifikasi muncul sebagai saran kategori beserta nilai confidence. Detail laporan juga menampilkan foto, lokasi, kategori pilihan pelapor, dan histori perubahan status. Koordinat yang terlihat pada contoh ini adalah data demonstrasi.
+
+Selama status laporan masih Pending, Admin dapat memperbarui deskripsi atau kategori. Pilihan kategori dari pelapor tetap menjadi acuan utama meskipun saran AI menunjukkan kategori yang berbeda.
+
+Untuk mulai menindaklanjuti laporan, pilih status In Progress, tambahkan catatan penanganan, lalu klik Perbarui status. Catatan ini membantu pelapor mengetahui bahwa laporannya sudah diperiksa dan sedang ditangani.
+
+Setelah pekerjaan selesai, ubah status menjadi Completed dan simpan. Riwayat status mencatat perubahan yang dilakukan, waktu pembaruan, pelaku, dan catatan penyelesaian. Setiap tahapan tetap terlihat pada detail laporan.
+
+Jika laporan duplikat atau tidak dapat ditindaklanjuti, Admin dapat memilih Rejected. Masukkan alasan penolakan dengan jelas sebelum memperbarui status, agar pelapor memahami keputusan yang diberikan.
+
+Admin juga dapat menyaring daftar laporan berdasarkan status, kategori, dan rentang tanggal. Gabungkan filter tersebut dengan pencarian, lalu klik Terapkan. Gunakan Reset filter untuk menghapus pilihan. Jika perlu mengolah daftar di luar aplikasi, klik Ekspor untuk mengunduh hasilnya dalam format CSV.
+
+Pada menu Pengguna, Admin dapat melihat jumlah akun, peran, serta status akses. Gunakan pencarian nama atau email untuk menemukan akun. Admin juga dapat menambahkan pengguna, menentukan peran dan akses, mengubah data, atau menonaktifkan akun. Penonaktifan mencabut akses akun tersebut ke aplikasi.
+
+Selanjutnya, kita beralih ke aplikasi Android untuk pelapor. Pada halaman masuk, tekan Daftar, isi nama, email, dan kata sandi, lalu kirim formulir. Jika sudah memiliki akun, masukkan email serta kata sandi dan tekan Masuk.
+
+Dashboard pelapor menampilkan ringkasan laporan miliknya sendiri, jumlah laporan pada tiap status, dan laporan terbaru. Untuk berpindah halaman, ketuk ikon menu di bagian atas. Sidebar menyediakan menu Dashboard, Laporan sampah, Buat laporan, dan Keluar.
+
+Pada akun baru, riwayat masih kosong. Tekan Buat laporan untuk membuka formulir. Jika foto, lokasi, atau deskripsi wajib belum lengkap, aplikasi menampilkan pesan validasi. Lengkapi data yang diminta sebelum menyimpan laporan.
+
+Untuk melampirkan gambar yang sudah ada, tekan Pilih foto dan ambil gambar dari galeri. Periksa pratinjaunya agar foto sesuai dengan temuan. Jika ingin mengambil foto langsung, tekan Ambil foto dan izinkan akses kamera saat diminta oleh perangkat Android.
+
+Lokasi dapat dicatat dengan menekan Ambil lokasi GPS. Izinkan akses lokasi saat aplikasi digunakan. Jika izin ditolak, aktifkan kembali izin lokasi melalui pengaturan perangkat, lalu ulangi pengambilan lokasi. Titik koordinat yang terlihat pada contoh video hanya untuk demonstrasi.
+
+Tuliskan jenis sampah, kondisinya, dan penanda lokasi yang mudah ditemukan. Deskripsi yang jelas membantu petugas memahami situasi sebelum datang ke lokasi.
+
+Kategori dapat dipilih secara opsional: Organic Waste, Plastic Waste, atau Paper Waste. Jika pelapor memilih kategori, pilihan tersebut akan didahulukan daripada saran yang diberikan oleh AI.
+
+Setelah foto, lokasi, dan deskripsi lengkap, tekan Simpan laporan. Laporan baru akan muncul di riwayat dengan status Pending. Pelapor dapat membuka daftar tersebut untuk melihat nomor laporan, deskripsi, kategori, dan statusnya.
+
+Gunakan kolom pencarian untuk menemukan laporan berdasarkan nomor atau sebagian deskripsi. Ketuk salah satu laporan untuk membuka detail, memeriksa foto dan lokasi, serta melihat kategori pilihan, saran AI, dan nilai confidence.
+
+Jika hasil AI belum tersedia atau perlu diperbarui, pelapor dapat menekan Ulangi prediksi selama laporan masih Pending. Setelah proses berjalan, tekan Perbarui detail untuk mengambil hasil terbaru dari layanan AI.
+
+Laporan berstatus Pending masih dapat diubah oleh pemiliknya. Tekan Ubah laporan, sesuaikan deskripsi atau kategori, lalu simpan kembali. Jika laporan latihan perlu dihapus, tekan Hapus laporan dan konfirmasikan penghapusan. Tombol Batal akan menutup konfirmasi tanpa menghapus laporan.
+
+Setelah Admin memperbarui status melalui website, pelapor dapat menekan Perbarui detail di aplikasi. Histori akan menampilkan urutan penanganan, seperti Pending, In Progress, dan Completed, beserta catatan yang ditambahkan Admin.
+
+Untuk mengakhiri penggunaan aplikasi, buka sidebar dan tekan Keluar. Sesi akun akan berakhir dan aplikasi kembali ke halaman masuk.
+
+Demikian panduan Smart Waste. Admin dapat memantau dan menindaklanjuti laporan melalui website. Pelapor dapat mengirim foto dan lokasi temuan melalui aplikasi Android, lalu mengikuti perkembangan statusnya sampai selesai.
