@@ -10,7 +10,7 @@
   "web-ubah-deskripsi-atau-kategori": "Tekan Ubah untuk memperbarui laporan yang masih Pending. Pilihan kategori pelapor diutamakan daripada saran AI.",
   "web-mulai-tindak-lanjut": "Pilih In Progress, tambahkan catatan penanganan, lalu tekan Perbarui status untuk mulai menindaklanjuti.",
   "web-selesaikan-penanganan": "Setelah pekerjaan selesai, pilih Completed dan simpan. Histori mencatat pelaku, waktu, dan catatan.",
-  "web-tolak-dengan-alasan-yang-jelas": "Untuk laporan tidak valid, pilih Rejected dan tulis alasan yang jelas sebelum memperbarui status.",
+  "web-tolak-dengan-alasan-yang-jelas": "Periksa alasan penolakan laporan duplikat, lalu klik Perbarui status untuk menyimpan keputusan.",
   "web-cari-dan-saring-laporan": "Cari nomor atau deskripsi, lalu saring status, kategori, dan tanggal. Klik Terapkan untuk melihat hasilnya.",
   "web-unduh-hasil-filter": "Tekan Ekspor untuk mengunduh berkas CSV sesuai hasil filter yang sedang ditampilkan.",
   "web-kelola-akun-pengguna": "Klik Pengguna pada sidebar. Halaman ini memperlihatkan jumlah akun, role, dan status akses.",

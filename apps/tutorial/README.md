@@ -8,18 +8,12 @@ npm ci
 npm run dev -- --no-open --port=3090
 ```
 
-Buka `http://localhost:3090/TutorialSmartWaste`. Tekan Play untuk mendengar narasi bahasa Indonesia dan melihat animasi ketikan. Perpindahan halaman diawali klik kursor sederhana; tidak ada zoom atau efek detak. Setiap adegan berlangsung sekitar sembilan detik agar penjelasan tetap ringkas. Source per file dibatasi 250 baris.
+Buka `http://localhost:3090/TutorialSmartWaste`. Layar aplikasi tampil utuh tanpa bingkai tambahan atau crop. Perpindahan halaman diawali klik kursor sederhana; tidak ada zoom atau efek detak. Video sementara tanpa suara sambil menunggu audio yang akan Anda kirim. Naskah rekaman tersedia di `../../docs/naskah-narasi-tutorial.md`. Source per file dibatasi 250 baris.
 
 ```powershell
 npm run lint
 node scripts/check-assets.mjs
 npm run build
-```
-
-Audio WAV sudah disertakan. Untuk membuat ulang narasi di Windows dengan suara Indonesia Microsoft Andika yang tersedia pada komputer:
-
-```powershell
-& .\scripts\generate-narration.ps1
 ```
 
 Untuk ekspor MP4 ketika dibutuhkan:
@@ -30,7 +24,7 @@ npx remotion render TutorialSmartWaste out/tutorial-smart-waste.mp4
 
 Jika unduhan Chrome otomatis terhambat, gunakan instalasi Chrome lokal dengan opsi `--browser-executable="C:/Program Files/Google/Chrome/Application/chrome.exe"`.
 
-Materi memakai tangkapan layar UI aktual dan data contoh bertanda Tutorial, bukan rekaman layar kontinu. Narasi tersinkron menggunakan suara Bahasa Indonesia Microsoft Andika. Kamera dan GPS dijelaskan sebagai panduan penggunaan di HP, bukan rekaman izin atau sensor perangkat. Koordinat laporan adalah contoh. Lihat `../../docs/tutorial-video.md` untuk daftar cakupan.
+Materi memakai tangkapan layar UI aktual dan data contoh bertanda Tutorial, bukan rekaman layar kontinu. Kamera dan GPS dijelaskan sebagai panduan penggunaan di HP, bukan rekaman izin atau sensor perangkat. Koordinat laporan adalah contoh. Lihat `../../docs/tutorial-video.md` untuk daftar cakupan.
 
 Foto: RealWaste, UCI, CC BY 4.0; sumber dan atribusi mengikuti dokumentasi dataset proyek. Font Manrope disertakan dengan OFL di `public/Manrope-OFL.txt`. Logo mengikuti droplet hijau Smart Waste.
 

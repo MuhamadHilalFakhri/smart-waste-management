@@ -6,7 +6,6 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { Audio } from "@remotion/media";
 import { fontFamily, theme } from "./theme";
 export function Intro() {
   const frame = useCurrentFrame();
@@ -20,7 +19,6 @@ export function Intro() {
         justifyContent: "center",
       }}
     >
-      <Audio src={staticFile("audio/intro.wav")} premountFor={fps} />
       <div
         style={{
           opacity: interpolate(frame, [0, fps], [0, 1], {

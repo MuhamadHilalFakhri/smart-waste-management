@@ -1,8 +1,6 @@
-import { Audio } from "@remotion/media";
-import { AbsoluteFill, CanvasImage, staticFile, useVideoConfig } from "remotion";
+import { AbsoluteFill, CanvasImage, staticFile } from "remotion";
 import { fontFamily, theme } from "./theme";
 export function Closing() {
-  const { fps } = useVideoConfig();
   return (
     <AbsoluteFill
       style={{
@@ -13,7 +11,6 @@ export function Closing() {
         justifyContent: "center",
       }}
     >
-      <Audio src={staticFile("audio/closing.wav")} premountFor={fps} />
       <CanvasImage
         src={staticFile("droplet.svg")}
         style={{ width: 80, height: 80, marginBottom: 40 }}

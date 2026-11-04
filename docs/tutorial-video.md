@@ -1,8 +1,8 @@
 # Tutorial Smart Waste
 
-Source Remotion berada di `apps/tutorial`. Komposisi utama `TutorialSmartWaste` berdurasi 6 menit 10 detik, 1920×1080, 30 fps. Bab web dan mobile juga tersedia sebagai komposisi terpisah. Preview dibuka melalui `npm run dev -- --no-open` dari folder tersebut. Source menggunakan Remotion 4.0.540, Manrope lokal, logo droplet proyek, serta narasi Bahasa Indonesia Microsoft Andika.
+Source Remotion berada di `apps/tutorial`. Komposisi utama `TutorialSmartWaste` berdurasi 6 menit 10 detik, 1920×1080, 30 fps. Bab web dan mobile juga tersedia sebagai komposisi terpisah. Preview dibuka melalui `npm run dev -- --no-open` dari folder tersebut. Source menggunakan Remotion 4.0.540, Manrope lokal, dan logo droplet proyek. Video untuk sementara tanpa audio; [naskah narasi per adegan](naskah-narasi-tutorial.md) disiapkan untuk dipasangi suara yang dikirim pengguna.
 
-Materi terdiri dari tangkapan layar UI aktual, animasi ketikan, narasi tersinkron di setiap langkah, serta klik kursor sederhana sebelum tampilan tujuan muncul. Tidak ada zoom atau efek detak kursor. Materi bukan rekaman layar kontinu. Setiap langkah memiliki petunjuk teks dan durasi sekitar sembilan detik. Data akun dan laporan tutorial ditandai dengan nama atau deskripsi Tutorial; koordinat -6.2, 106.8 adalah contoh.
+Materi terdiri dari tangkapan layar UI aktual yang ditampilkan utuh tanpa bingkai atau crop tambahan, animasi ketikan, serta klik kursor sederhana sebelum tampilan tujuan muncul. Tidak ada zoom atau efek detak kursor. Materi bukan rekaman layar kontinu. Setiap langkah memiliki petunjuk teks dan durasi sekitar sembilan detik. Data akun dan laporan tutorial ditandai dengan nama atau deskripsi Tutorial; koordinat -6.2, 106.8 adalah contoh.
 
 ## Cakupan praktik
 
@@ -16,4 +16,4 @@ Foto contoh berasal dari dataset RealWaste (UCI), berlisensi CC BY 4.0; atribusi
 
 ## Verifikasi
 
-Jalankan `npm run narrate` di Windows untuk membuat ulang berkas suara dari `scripts/narration.json`. Periksa dengan `npm run lint`, `node scripts/check-assets.mjs`, dan `node infra/scripts/check-source-size.mjs`. Ekspor MP4 tersedia melalui tombol Render di Studio atau `npx remotion render TutorialSmartWaste out/tutorial-smart-waste.mp4`.
+Naskah teks juga tersedia dalam format JSON pada `apps/tutorial/scripts/narration.json` untuk pencocokan ID adegan. Periksa dengan `npm run lint`, `node scripts/check-assets.mjs`, dan `node infra/scripts/check-source-size.mjs`. Audio akan dipasang setelah berkas suara dikirim. Ekspor MP4 tersedia melalui tombol Render di Studio atau `npx remotion render TutorialSmartWaste out/tutorial-smart-waste.mp4`.

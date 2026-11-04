@@ -1,28 +1,15 @@
-import { Audio } from "@remotion/media";
 import {
   AbsoluteFill,
   CanvasImage,
   staticFile,
-  useVideoConfig,
 } from "remotion";
 import { ScreenCapture } from "./ScreenCapture";
 import type { StepProps } from "./step-types";
 import { fontFamily, theme } from "./theme";
-function voiceFile(title: string, mobile: boolean) {
-  const slug = title
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-  return `audio/${mobile ? "mobile-" : "web-"}${slug}.wav`;
-}
 export function Step(props: StepProps) {
-  const { title, instruction, mobile = false, deviceGuide, audio } = props;
-  const { fps } = useVideoConfig();
+  const { title, instruction, mobile = false, deviceGuide } = props;
   return (
     <AbsoluteFill style={{ background: "white", fontFamily, color: theme.ink }}>
-      <Audio src={staticFile(audio ?? voiceFile(title, mobile))} premountFor={fps} />
       <div
         style={{
           position: "absolute",
@@ -77,7 +64,6 @@ export function Step(props: StepProps) {
           {deviceGuide && (
             <div
               style={{
-                borderTop: `1px solid ${theme.line}`,
                 paddingTop: 24,
                 marginTop: 36,
                 color: theme.brand,
@@ -99,7 +85,6 @@ export function Step(props: StepProps) {
             right: 0,
             height: 150,
             background: "#fff",
-            borderTop: `1px solid ${theme.line}`,
             padding: "20px 80px",
             boxSizing: "border-box",
           }}

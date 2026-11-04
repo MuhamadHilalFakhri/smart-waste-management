@@ -32,7 +32,7 @@ export function ScreenCapture({
     : 1;
   const bounds = mobile
     ? { x: 1170, y: 112, w: 390, h: 844 }
-    : { x: 160, y: 105, w: 1600, h: 1000 };
+    : { x: 320, y: 110, w: 1280, h: 800 };
   const ratio = bounds.w / (mobile ? 390 : 1440);
   return (
     <div
@@ -41,18 +41,14 @@ export function ScreenCapture({
         left: bounds.x,
         top: bounds.y,
         width: bounds.w,
-        height: mobile ? bounds.h : 810,
-        overflow: "hidden",
-        border: `1px solid ${theme.line}`,
-        borderRadius: mobile ? 24 : 10,
-        background: "#fff",
+        height: bounds.h,
       }}
     >
       <div style={{ position: "absolute", inset: 0, width: bounds.w, height: bounds.h }}>
         {showingSource && (
           <CanvasImage
             src={staticFile(`captures/${navigateFrom}.png`)}
-            style={{ position: "absolute", width: bounds.w, height: bounds.h }}
+            style={{ position: "absolute", width: bounds.w, height: bounds.h, objectFit: "contain" }}
           />
         )}
         <CanvasImage
@@ -62,6 +58,7 @@ export function ScreenCapture({
             width: bounds.w,
             height: bounds.h,
             opacity: showingSource ? 0 : imageOpacity,
+            objectFit: "contain",
           }}
         />
         {typing && field && (

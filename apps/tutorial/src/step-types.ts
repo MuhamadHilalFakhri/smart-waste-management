@@ -10,5 +10,4 @@ export type StepProps = {
   clickTarget?: [number, number];
   mobile?: boolean;
   deviceGuide?: boolean;
-  audio?: string;
 };
