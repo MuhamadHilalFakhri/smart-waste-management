@@ -1,12 +1,14 @@
 import { Series, useVideoConfig } from "remotion";
 import { Step } from "./Step";
+import { CLOSING_START_SECONDS, MOBILE_SCENE_STARTS, sceneDurationInFrames } from "./narrationTimeline";
 export function MobileFollowUp() {
   const { fps } = useVideoConfig();
+  const sceneDuration = (index: number) => sceneDurationInFrames(MOBILE_SCENE_STARTS, index, CLOSING_START_SECONDS, fps);
   return (
     <Series>
       <Series.Sequence
         name="14 Riwayat"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(13)}
         premountFor={fps}
       >
         <Step
@@ -19,7 +21,7 @@ export function MobileFollowUp() {
       </Series.Sequence>
       <Series.Sequence
         name="15 Pencarian"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(14)}
         premountFor={fps}
       >
         <Step
@@ -32,7 +34,7 @@ export function MobileFollowUp() {
       </Series.Sequence>
       <Series.Sequence
         name="16 Detail"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(15)}
         premountFor={fps}
       >
         <Step
@@ -47,7 +49,7 @@ export function MobileFollowUp() {
       </Series.Sequence>
       <Series.Sequence
         name="17 Ulangi AI"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(16)}
         premountFor={fps}
       >
         <Step
@@ -62,7 +64,7 @@ export function MobileFollowUp() {
       </Series.Sequence>
       <Series.Sequence
         name="18 Hasil AI"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(17)}
         premountFor={fps}
       >
         <Step
@@ -77,7 +79,7 @@ export function MobileFollowUp() {
       </Series.Sequence>
       <Series.Sequence
         name="19 Edit"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(18)}
         premountFor={fps}
       >
         <Step
@@ -92,7 +94,7 @@ export function MobileFollowUp() {
       </Series.Sequence>
       <Series.Sequence
         name="20 Hapus"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(19)}
         premountFor={fps}
       >
         <Step
@@ -107,7 +109,7 @@ export function MobileFollowUp() {
       </Series.Sequence>
       <Series.Sequence
         name="21 Status histori"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(20)}
         premountFor={fps}
       >
         <Step
@@ -122,7 +124,7 @@ export function MobileFollowUp() {
       </Series.Sequence>
       <Series.Sequence
         name="22 Keluar"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(21)}
         premountFor={fps}
       >
         <Step

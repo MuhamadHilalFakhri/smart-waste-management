@@ -1,6 +1,6 @@
 # Tutorial Smart Waste dengan Remotion
 
-Komposisi `TutorialSmartWaste`: 1920×1080, 30 fps, 6 menit 10 detik. Tersedia pula `TutorialWeb`, `TutorialMobile`, dan `Pembuka` untuk meninjau bab secara terpisah.
+Komposisi `TutorialSmartWaste`: 1920×1080, 30 fps, 6 menit 19,52 detik, mengikuti durasi rekaman suara. Tersedia pula `TutorialWeb`, `TutorialMobile`, dan `Pembuka` untuk meninjau bab secara terpisah.
 
 ```powershell
 cd D:\Assesment\apps\tutorial
@@ -8,7 +8,7 @@ npm ci
 npm run dev -- --no-open --port=3090
 ```
 
-Buka `http://localhost:3090/TutorialSmartWaste`. Layar aplikasi tampil utuh tanpa bingkai tambahan atau crop. Perpindahan halaman diawali klik kursor sederhana; tidak ada zoom atau efek detak. Video sementara tanpa suara sambil menunggu audio yang akan Anda kirim. Naskah lengkap siap salin ke generator suara tersedia di `../../docs/naskah-narasi-lengkap.txt`; pemetaan adegan tersedia di `../../docs/naskah-narasi-tutorial.md`. Source per file dibatasi 250 baris.
+Buka `http://localhost:3090/TutorialSmartWaste`. Layar aplikasi tampil utuh tanpa bingkai tambahan atau crop. Perpindahan halaman diawali klik kursor sederhana; tidak ada zoom atau efek detak. Narasi terpasang dan dipotong mengikuti adegan dalam `public/audio/narasi-tutorial.wav`; [pembagian waktunya](../../docs/pembagian-audio-tutorial.md) mencatat cue setiap adegan. Source per file dibatasi 250 baris.
 
 ```powershell
 npm run lint

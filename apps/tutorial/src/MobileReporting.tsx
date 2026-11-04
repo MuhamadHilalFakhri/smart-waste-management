@@ -1,12 +1,14 @@
 import { Series, useVideoConfig } from "remotion";
 import { Step } from "./Step";
+import { CLOSING_START_SECONDS, MOBILE_SCENE_STARTS, sceneDurationInFrames } from "./narrationTimeline";
 export function MobileReporting() {
   const { fps } = useVideoConfig();
+  const sceneDuration = (index: number) => sceneDurationInFrames(MOBILE_SCENE_STARTS, index, CLOSING_START_SECONDS, fps);
   return (
     <Series>
       <Series.Sequence
         name="06 Formulir"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(5)}
         premountFor={fps}
       >
         <Step
@@ -21,7 +23,7 @@ export function MobileReporting() {
       </Series.Sequence>
       <Series.Sequence
         name="07 Validasi"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(6)}
         premountFor={fps}
       >
         <Step
@@ -34,7 +36,7 @@ export function MobileReporting() {
       </Series.Sequence>
       <Series.Sequence
         name="08 Galeri"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(7)}
         premountFor={fps}
       >
         <Step
@@ -49,7 +51,7 @@ export function MobileReporting() {
       </Series.Sequence>
       <Series.Sequence
         name="09 Kamera"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(8)}
         premountFor={fps}
       >
         <Step
@@ -64,40 +66,42 @@ export function MobileReporting() {
         />
       </Series.Sequence>
       <Series.Sequence
-        name="10 Deskripsi"
-        durationInFrames={9 * fps}
-        premountFor={fps}
-      >
-        <Step
-          mobile
-          title="Jelaskan temuan sampah"
-          instruction="Tuliskan jenis, kondisi, dan penanda lokasi agar petugas mudah menindaklanjuti laporan."
-          image="mobile-description"
-          before="mobile-description-empty"
-          typed="[Tutorial mobile] Sampah plastik di sisi taman, perlu diangkut."
-          field={[41, 399, 293, 120]}
-          cursor={[195, 440]}
-        />
-      </Series.Sequence>
-      <Series.Sequence
-        name="11 GPS"
-        durationInFrames={9 * fps}
+        name="10 GPS"
+        durationInFrames={sceneDuration(9)}
         premountFor={fps}
       >
         <Step
           mobile
           deviceGuide
           title="Catat lokasi GPS"
-          instruction="Ketuk Ambil lokasi GPS dan izinkan akses saat aplikasi digunakan. Jika ditolak, aktifkan izin di pengaturan HP."
+          instruction="Ketuk Ambil lokasi GPS dan izinkan akses saat digunakan. Jika izin ditolak, aktifkan kembali di pengaturan HP. Koordinat pada contoh ini hanya demonstrasi."
           image="mobile-edit-filled"
-          navigateFrom="mobile-description"
-          clickTarget={[190, 555]}
-          cursor={[190, 555]}
+          navigateFrom="mobile-photo"
+          clickTarget={[190, 728]}
+          cursor={[190, 340]}
+        />
+      </Series.Sequence>
+      <Series.Sequence
+        name="11 Deskripsi"
+        durationInFrames={sceneDuration(10)}
+        premountFor={fps}
+      >
+        <Step
+          mobile
+          title="Jelaskan temuan sampah"
+          instruction="Tuliskan jenis, kondisi, dan penanda lokasi agar petugas mudah menindaklanjuti laporan."
+          image="mobile-edit-filled"
+          before="mobile-edit-filled"
+          navigateFrom="mobile-edit-filled"
+          typed="[Tutorial mobile] Sampah plastik di sisi taman, perlu diangkut."
+          field={[41, 164, 293, 136]}
+          clickTarget={[185, 230]}
+          cursor={[195, 230]}
         />
       </Series.Sequence>
       <Series.Sequence
         name="12 Kategori"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(11)}
         premountFor={fps}
       >
         <Step
@@ -105,14 +109,14 @@ export function MobileReporting() {
           title="Pilih kategori bila perlu"
           instruction="Tersedia Organic Waste, Plastic Waste, dan Paper Waste. Pilihan pelapor didahulukan dari saran AI."
           image="mobile-category"
-          navigateFrom="mobile-edit-filled"
-          clickTarget={[180, 585]}
+          navigateFrom="mobile-description"
+          clickTarget={[180, 765]}
           cursor={[170, 765]}
         />
       </Series.Sequence>
       <Series.Sequence
         name="13 Simpan"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(12)}
         premountFor={fps}
       >
         <Step

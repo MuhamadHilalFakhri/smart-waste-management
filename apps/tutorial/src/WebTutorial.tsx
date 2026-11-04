@@ -1,12 +1,14 @@
 import { Series, useVideoConfig } from "remotion";
 import { Step } from "./Step";
+import { MOBILE_SCENE_STARTS, sceneDurationInFrames, WEB_SCENE_STARTS } from "./narrationTimeline";
 export function WebTutorial() {
   const { fps } = useVideoConfig();
+  const sceneDuration = (index: number) => sceneDurationInFrames(WEB_SCENE_STARTS, index, MOBILE_SCENE_STARTS[0], fps);
   return (
     <Series>
       <Series.Sequence
         name="01 Masuk admin"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(0)}
         premountFor={fps}
       >
         <Step
@@ -21,7 +23,7 @@ export function WebTutorial() {
       </Series.Sequence>
       <Series.Sequence
         name="02 Ringkasan"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(1)}
         premountFor={fps}
       >
         <Step
@@ -35,7 +37,7 @@ export function WebTutorial() {
       </Series.Sequence>
       <Series.Sequence
         name="03 Tren"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(2)}
         premountFor={fps}
       >
         <Step
@@ -47,7 +49,7 @@ export function WebTutorial() {
       </Series.Sequence>
       <Series.Sequence
         name="04 Laporan"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(3)}
         premountFor={fps}
       >
         <Step
@@ -61,7 +63,7 @@ export function WebTutorial() {
       </Series.Sequence>
       <Series.Sequence
         name="05 Deskripsi"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(4)}
         premountFor={fps}
       >
         <Step
@@ -78,7 +80,7 @@ export function WebTutorial() {
       </Series.Sequence>
       <Series.Sequence
         name="06 Foto lokasi"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(5)}
         premountFor={fps}
       >
         <Step
@@ -90,7 +92,7 @@ export function WebTutorial() {
       </Series.Sequence>
       <Series.Sequence
         name="07 Hasil AI"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(6)}
         premountFor={fps}
       >
         <Step
@@ -104,7 +106,7 @@ export function WebTutorial() {
       </Series.Sequence>
       <Series.Sequence
         name="08 Koreksi laporan"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(7)}
         premountFor={fps}
       >
         <Step
@@ -118,7 +120,7 @@ export function WebTutorial() {
       </Series.Sequence>
       <Series.Sequence
         name="09 In Progress"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(8)}
         premountFor={fps}
       >
         <Step
@@ -132,7 +134,7 @@ export function WebTutorial() {
       </Series.Sequence>
       <Series.Sequence
         name="10 Completed"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(9)}
         premountFor={fps}
       >
         <Step
@@ -146,7 +148,7 @@ export function WebTutorial() {
       </Series.Sequence>
       <Series.Sequence
         name="11 Rejected"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(10)}
         premountFor={fps}
       >
         <Step
@@ -160,7 +162,7 @@ export function WebTutorial() {
       </Series.Sequence>
       <Series.Sequence
         name="12 Filter"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(11)}
         premountFor={fps}
       >
         <Step
@@ -172,7 +174,7 @@ export function WebTutorial() {
       </Series.Sequence>
       <Series.Sequence
         name="13 Ekspor"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(12)}
         premountFor={fps}
       >
         <Step
@@ -184,7 +186,7 @@ export function WebTutorial() {
       </Series.Sequence>
       <Series.Sequence
         name="14 Pengguna"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(13)}
         premountFor={fps}
       >
         <Step
@@ -197,34 +199,36 @@ export function WebTutorial() {
         />
       </Series.Sequence>
       <Series.Sequence
-        name="15 Tambah akun"
-        durationInFrames={9 * fps}
-        premountFor={fps}
-      >
-        <Step
-          title="Tambahkan pengguna"
-          instruction="Isi nama, email, dan kata sandi. Tentukan role serta akses, lalu Simpan pengguna."
-          image="web-user-form-filled"
-          navigateFrom="web-users"
-          clickTarget={[1335, 235]}
-          cursor={[720, 440]}
-        />
-      </Series.Sequence>
-      <Series.Sequence
-        name="16 Cari akun"
-        durationInFrames={9 * fps}
+        name="15 Cari akun"
+        durationInFrames={sceneDuration(14)}
         premountFor={fps}
       >
         <Step
           title="Temukan akun yang akan diubah"
           instruction="Cari nama atau email, lalu pilih Ubah pada akun yang sesuai."
           image="web-user-search"
+          navigateFrom="web-users"
+          clickTarget={[1240, 460]}
           cursor={[1240, 460]}
         />
       </Series.Sequence>
       <Series.Sequence
+        name="16 Tambah akun"
+        durationInFrames={sceneDuration(15)}
+        premountFor={fps}
+      >
+        <Step
+          title="Tambahkan pengguna"
+          instruction="Isi nama, email, dan kata sandi. Tentukan role serta akses, lalu Simpan pengguna."
+          image="web-user-form-filled"
+          navigateFrom="web-user-search"
+          clickTarget={[1335, 235]}
+          cursor={[720, 440]}
+        />
+      </Series.Sequence>
+      <Series.Sequence
         name="17 Nonaktifkan"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(16)}
         premountFor={fps}
       >
         <Step

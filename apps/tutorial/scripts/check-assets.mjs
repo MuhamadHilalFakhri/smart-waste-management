@@ -38,8 +38,10 @@ for (const name of images) {
 }
 await access(resolve(root, "public/Manrope.ttf"));
 await access(resolve(root, "public/droplet.svg"));
+await access(resolve(root, "public/audio/narasi-tutorial.wav"));
 await access(resolve(root, "../../docs/naskah-narasi-lengkap.txt"));
 await access(resolve(root, "../../docs/naskah-narasi-tutorial.md"));
+await access(resolve(root, "../../docs/pembagian-audio-tutorial.md"));
 const narration = JSON.parse(await readFile(resolve(root, "scripts/narration.json"), "utf8"));
 const scenes = new Map();
 for (const file of await readdir(resolve(root, "src"))) {

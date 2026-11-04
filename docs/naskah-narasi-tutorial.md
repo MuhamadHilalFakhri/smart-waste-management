@@ -1,6 +1,6 @@
 # Naskah Narasi Tutorial Smart Waste
 
-Naskah ini dibagi per adegan agar mudah direkam atau dibuat suaranya. Nama ID dapat dipakai sebagai nama berkas audio saat nanti dikirim untuk dipasang ke video.
+Dokumen ini berisi petunjuk ringkas untuk tiap adegan. Audio yang dipakai video berasal dari naskah lengkap; lihat [pembagian waktu audio](pembagian-audio-tutorial.md) untuk cue yang sudah disesuaikan.
 
 ## Pembuka
 
@@ -64,13 +64,13 @@ Naskah ini dibagi per adegan agar mudah direkam atau dibuat suaranya. Nama ID da
 
 **`web-kelola-akun-pengguna`** — Klik Pengguna pada sidebar. Halaman ini memperlihatkan jumlah akun, role, dan status akses.
 
-### 15. Tambahkan pengguna
-
-**`web-tambahkan-pengguna`** — Pilih Tambah pengguna. Isi nama, email, kata sandi, role, dan akses, kemudian simpan akun.
-
-### 16. Temukan akun yang akan diubah
+### 15. Temukan akun yang akan diubah
 
 **`web-temukan-akun-yang-akan-diubah`** — Cari nama atau alamat email untuk mempersempit daftar sebelum memilih akun yang akan diubah.
+
+### 16. Tambahkan pengguna
+
+**`web-tambahkan-pengguna`** — Pilih Tambah pengguna. Isi nama, email, kata sandi, role, dan akses, kemudian simpan akun.
 
 ### 17. Ubah akses dan simpan
 
@@ -114,13 +114,13 @@ Naskah ini dibagi per adegan agar mudah direkam atau dibuat suaranya. Nama ID da
 
 **`mobile-ambil-foto-di-lokasi`** — Untuk mengambil gambar langsung, tekan Ambil foto dan berikan izin kamera pada perangkat Android.
 
-### 10. Jelaskan temuan sampah
-
-**`mobile-jelaskan-temuan-sampah`** — Jelaskan jenis sampah, kondisinya, serta penanda sekitar agar petugas lebih mudah menemukan lokasi.
-
-### 11. Catat lokasi GPS
+### 10. Catat lokasi GPS
 
 **`mobile-catat-lokasi-gps`** — Tekan Ambil lokasi GPS dan izinkan akses saat aplikasi digunakan. Jika ditolak, aktifkan izin di pengaturan HP.
+
+### 11. Jelaskan temuan sampah
+
+**`mobile-jelaskan-temuan-sampah`** — Jelaskan jenis sampah, kondisinya, serta penanda sekitar agar petugas lebih mudah menemukan lokasi.
 
 ### 12. Pilih kategori bila perlu
 

@@ -1,12 +1,14 @@
 import { Series, useVideoConfig } from "remotion";
 import { Step } from "./Step";
+import { CLOSING_START_SECONDS, MOBILE_SCENE_STARTS, sceneDurationInFrames } from "./narrationTimeline";
 export function MobileAccess() {
   const { fps } = useVideoConfig();
+  const sceneDuration = (index: number) => sceneDurationInFrames(MOBILE_SCENE_STARTS, index, CLOSING_START_SECONDS, fps);
   return (
     <Series>
       <Series.Sequence
         name="01 Registrasi"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(0)}
         premountFor={fps}
       >
         <Step
@@ -21,7 +23,7 @@ export function MobileAccess() {
       </Series.Sequence>
       <Series.Sequence
         name="02 Login"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(1)}
         premountFor={fps}
       >
         <Step
@@ -39,7 +41,7 @@ export function MobileAccess() {
       </Series.Sequence>
       <Series.Sequence
         name="03 Dashboard"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(2)}
         premountFor={fps}
       >
         <Step
@@ -54,7 +56,7 @@ export function MobileAccess() {
       </Series.Sequence>
       <Series.Sequence
         name="04 Sidebar"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(3)}
         premountFor={fps}
       >
         <Step
@@ -69,7 +71,7 @@ export function MobileAccess() {
       </Series.Sequence>
       <Series.Sequence
         name="05 Riwayat kosong"
-        durationInFrames={9 * fps}
+        durationInFrames={sceneDuration(4)}
         premountFor={fps}
       >
         <Step

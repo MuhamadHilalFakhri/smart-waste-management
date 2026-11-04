@@ -88,4 +88,4 @@ Hasil pemeriksaan rinci: `docs/testing.md`.
 
 ## Tutorial Remotion
 
-Source tutorial terbaru tersedia di `apps/tutorial`, berdurasi 6 menit 10 detik dengan animasi mengetik, kursor sederhana, dan klik sebelum perpindahan halaman. Layar aplikasi ditampilkan utuh tanpa bingkai tambahan. Preview sementara tanpa suara; [naskah lengkap siap salin ke generator suara](docs/naskah-narasi-lengkap.txt) tersedia, bersama [pemetaan naskah per adegan](docs/naskah-narasi-tutorial.md). Audio akan dipasang setelah dikirim. Jalankan `npm ci`, lalu `npm run dev -- --no-open --port=3090` dari folder tersebut. Video pada rilis v1.0.1 adalah walkthrough sebelumnya.
+Source tutorial terbaru tersedia di `apps/tutorial`, berdurasi 6 menit 19,52 detik mengikuti rekaman suara, dengan animasi mengetik, kursor sederhana, dan klik sebelum perpindahan halaman. Layar aplikasi ditampilkan utuh tanpa bingkai tambahan. [Pembagian audio per adegan](docs/pembagian-audio-tutorial.md) dan [naskah lengkap](docs/naskah-narasi-lengkap.txt) tersedia. Jalankan `npm ci`, lalu `npm run dev -- --no-open --port=3090` dari folder tersebut. Video pada rilis v1.0.1 adalah walkthrough sebelumnya.
