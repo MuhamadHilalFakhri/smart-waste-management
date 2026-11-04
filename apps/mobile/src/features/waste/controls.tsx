@@ -1,4 +1,3 @@
-import { LinearGradient } from "expo-linear-gradient";
 import { Pressable, TextInput, View } from "react-native";
 import { s } from "./styles";
 import { Text } from "./typography";
@@ -16,20 +15,16 @@ export function useControls(busy: boolean) {
       ]}
       onPress={onPress}
     >
-      <LinearGradient
-        colors={
-          secondary
-            ? [colors.surface, colors.surface]
-            : [colors.brand, colors.lime]
-        }
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        style={s.buttonInner}
+      <View
+        style={[
+          s.buttonInner,
+          { backgroundColor: secondary ? colors.surface : colors.brand },
+        ]}
       >
         <Text style={[s.buttonText, secondary && { color: colors.ink }]}>
           {label}
         </Text>
-      </LinearGradient>
+      </View>
     </Pressable>
   );
   const field = (

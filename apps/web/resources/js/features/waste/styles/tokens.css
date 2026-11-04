@@ -1,5 +1,5 @@
 .waste-app {
-    --background: oklch(0.955 0.013 145);
+    --background: #fff;
     --foreground: oklch(0.2 0.025 150);
     --card: oklch(0.99 0.005 145);
     --card-foreground: var(--foreground);
@@ -61,7 +61,7 @@
     border-radius: 7px;
 }
 .waste-app .sw-primary-button {
-    background: linear-gradient(90deg, var(--brand), var(--lime));
+    background: var(--brand);
     color: white;
     font-size: 14px;
     padding-inline: 16px;
