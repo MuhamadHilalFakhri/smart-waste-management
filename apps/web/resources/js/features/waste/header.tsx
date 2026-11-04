@@ -54,9 +54,7 @@ export default function Header() {
                 </Sheet>
                 <span className="avatar-circle">{initials(user.name)}</span>
                 <div className="sw-greeting">
-                    <strong>
-                        Halo, {user.name} <span aria-hidden="true">👋</span>
-                    </strong>
+                    <strong>Halo, {user.name}</strong>
                     <p>Selamat datang di Smart Waste</p>
                 </div>
             </div>
