@@ -1,4 +1,4 @@
-import { Recycle } from "lucide-react";
+import { Droplet } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { categories } from "../api";
 import type { Statistics } from "../types";
@@ -36,7 +36,7 @@ export default function CategoryChart({ data }: { data: Statistics }) {
                     }}
                 >
                     <div className="sw-donut-hole">
-                        <Recycle size={24} />
+                        <Droplet size={24} />
                         <strong>{total}</strong>
                         <span>Total laporan</span>
                     </div>

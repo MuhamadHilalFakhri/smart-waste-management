@@ -4,7 +4,7 @@ import {
     FileText,
     Users,
     LogOut,
-    Leaf,
+    Droplet,
     Recycle,
 } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -32,7 +32,7 @@ export default function Navigation({
         <div className="sw-navigation">
             <Link href="/dashboard" onClick={onNavigate} className="sw-brand">
                 <span className="sw-brand-icon">
-                    <Leaf size={20} />
+                    <Droplet size={20} style={{ color: "var(--brand)" }} />
                 </span>
                 <span>
                     Smart Waste
@@ -93,10 +93,6 @@ export default function Navigation({
                             <br />
                             penanganan yang terpantau.
                         </p>
-                        <span>
-                            <i />
-                            Smart Waste
-                        </span>
                     </div>
                 </div>
             </ScrollArea>

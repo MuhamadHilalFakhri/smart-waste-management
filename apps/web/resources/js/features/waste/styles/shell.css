@@ -98,12 +98,6 @@
     font-weight: 500;
     letter-spacing: -0.8px;
 }
-.waste-app .sw-workspace {
-    background: var(--card);
-    min-height: 34px;
-    font-size: 12px;
-    gap: 8px;
-}
 .waste-app .sw-footer {
     max-width: 1426px;
     width: calc(100% - 54px);

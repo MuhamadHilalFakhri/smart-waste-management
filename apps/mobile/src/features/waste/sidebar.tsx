@@ -66,7 +66,7 @@ export function Sidebar({
             <View style={[s.between, { marginBottom: 26 }]}>
               <View style={s.row}>
                 <View style={s.symbol}>
-                  <Icon name="leaf" />
+                  <Icon name="droplet" />
                 </View>
                 <View>
                   <Text style={s.brand}>Smart Waste</Text>

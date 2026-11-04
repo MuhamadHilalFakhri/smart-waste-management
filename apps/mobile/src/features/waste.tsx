@@ -57,11 +57,14 @@ export function WasteScreen({ screen }: { screen: string }) {
           </Pressable>
         ) : (
           <View style={s.symbol}>
-            <Icon name="leaf" />
+            <Icon name="droplet" />
           </View>
         )}
         <View style={{ flex: 1 }}>
-          <Text style={s.brand}>Smart Waste</Text>
+          <View style={s.row}>
+            {token && <Icon name="droplet" size={22} />}
+            <Text style={s.brand}>Smart Waste</Text>
+          </View>
           <Text style={s.sub}>
             {token
               ? "Selamat datang di Smart Waste"

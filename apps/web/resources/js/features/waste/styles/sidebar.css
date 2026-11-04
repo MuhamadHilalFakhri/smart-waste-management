@@ -117,21 +117,6 @@
     line-height: 1.9;
     margin: 12px 0 18px;
 }
-.waste-app .sw-sidebar-note > span {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    color: var(--brand);
-    font-size: 9px;
-}
-.waste-app .sw-sidebar-note i,
-.waste-app .sw-workspace i {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--brand);
-}
 .sw-mobile-sidebar {
     background: var(--card);
     padding: 0;

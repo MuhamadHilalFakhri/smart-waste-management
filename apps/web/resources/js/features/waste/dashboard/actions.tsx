@@ -4,8 +4,7 @@ import {
     Plus,
     Users,
     FileText,
-    Leaf,
-    Recycle,
+    Droplet,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -25,7 +24,7 @@ export default function Actions({
         <div className="sw-side-stack">
             <Card className="dashboard-card sw-attention">
                 <p>
-                    <Leaf size={15} />
+                    <Droplet size={15} />
                     Prioritas hari ini
                 </p>
                 <h2>
@@ -39,7 +38,7 @@ export default function Actions({
                         <ArrowUpRight />
                     </Link>
                 </Button>
-                <Recycle
+                <Droplet
                     className="sw-attention-symbol"
                     size={42}
                     aria-hidden="true"

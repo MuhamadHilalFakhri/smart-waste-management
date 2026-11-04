@@ -3,7 +3,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import type { ReactNode } from "react";
 import Navigation, { useAccount } from "./navigation";
 import Header from "./header";
-import WorkspaceMenu from "./workspace-menu";
 import "./styles/index.css";
 export default function Shell({
     title,
@@ -43,7 +42,6 @@ export default function Shell({
                                     </p>
                                     <h1>{title}</h1>
                                 </div>
-                                <WorkspaceMenu />
                             </section>
                             {children}
                         </main>
