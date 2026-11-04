@@ -85,3 +85,7 @@ Model, dataset aktual, APK, dan video disediakan melalui GitHub Releases. Kreden
 
 Unduhan lengkap: https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/tag/v1.0.1
 Hasil pemeriksaan rinci: `docs/testing.md`.
+
+## Tutorial Remotion
+
+Source tutorial terbaru tersedia di `apps/tutorial`, berdurasi 9 menit 24 detik dengan animasi mengetik, kursor/tanda sentuh, dan zoom. Jalankan `npm ci`, lalu `npm run dev -- --no-open --port=3090` dari folder tersebut untuk membuka preview. Panduan cakupan dan keterbatasan praktik perangkat terdapat di [dokumentasi tutorial](docs/tutorial-video.md). Video pada rilis v1.0.1 adalah walkthrough sebelumnya; tutorial Remotion terbaru memiliki petunjuk teks dan belum diekspor menjadi MP4.
