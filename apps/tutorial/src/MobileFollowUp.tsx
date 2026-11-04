@@ -29,6 +29,8 @@ export function MobileFollowUp() {
           title="Cari laporan pada halaman"
           instruction="Masukkan nomor atau deskripsi pada pencarian. Hapus kata kunci untuk menampilkan kembali semua laporan pada halaman tersebut."
           image="mobile-search"
+          navigateFrom="mobile-history"
+          clickTarget={[190, 280]}
           cursor={[190, 280]}
         />
       </Series.Sequence>

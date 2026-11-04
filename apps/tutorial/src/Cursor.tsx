@@ -3,10 +3,12 @@ export function Cursor({
   x,
   y,
   mobile = false,
+  startAt = 0,
 }: {
   x: number;
   y: number;
   mobile?: boolean;
+  startAt?: number;
 }) {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -16,10 +18,12 @@ export function Cursor({
     <div
       style={{
         position: "absolute",
-        left: interpolate(frame, [0, fps * 0.75], [startX, x], {
+        left: interpolate(frame, [startAt, startAt + fps * 0.65], [startX, x], {
+          extrapolateLeft: "clamp",
           extrapolateRight: "clamp",
         }),
-        top: interpolate(frame, [0, fps * 0.75], [startY, y], {
+        top: interpolate(frame, [startAt, startAt + fps * 0.65], [startY, y], {
+          extrapolateLeft: "clamp",
           extrapolateRight: "clamp",
         }),
         pointerEvents: "none",

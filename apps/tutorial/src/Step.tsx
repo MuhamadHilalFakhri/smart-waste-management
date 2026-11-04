@@ -8,6 +8,9 @@ import type { StepProps } from "./step-types";
 import { fontFamily, theme } from "./theme";
 export function Step(props: StepProps) {
   const { title, instruction, mobile = false, deviceGuide } = props;
+  if (!mobile) {
+    return <AbsoluteFill style={{ background: "white" }}><ScreenCapture {...props} /></AbsoluteFill>;
+  }
   return (
     <AbsoluteFill style={{ background: "white", fontFamily, color: theme.ink }}>
       <div

@@ -1,6 +1,6 @@
 # Tutorial Smart Waste dengan Remotion
 
-Komposisi `TutorialSmartWaste`: 1920×1080, 30 fps, 6 menit 19,52 detik, mengikuti durasi rekaman suara. Tersedia pula `TutorialWeb`, `TutorialMobile`, dan `Pembuka` untuk meninjau bab secara terpisah.
+Komposisi `TutorialSmartWaste`: 1440×900, 30 fps, 6 menit 19,52 detik, mengikuti durasi rekaman suara. Tersedia pula `TutorialWeb`, `TutorialMobile`, dan `Pembuka` untuk meninjau bab secara terpisah.
 
 ```powershell
 cd D:\Assesment\apps\tutorial
@@ -19,7 +19,7 @@ npm run build
 Untuk ekspor MP4 ketika dibutuhkan:
 
 ```powershell
-npx remotion render TutorialSmartWaste out/tutorial-smart-waste.mp4
+npx remotion render TutorialSmartWaste out/tutorial-smart-waste-revisi.mp4 --crf=14 --image-format=png
 ```
 
 Jika unduhan Chrome otomatis terhambat, gunakan instalasi Chrome lokal dengan opsi `--browser-executable="C:/Program Files/Google/Chrome/Application/chrome.exe"`.

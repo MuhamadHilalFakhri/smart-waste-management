@@ -8,6 +8,7 @@ import {
 import { Cursor } from "./Cursor";
 import type { StepProps } from "./step-types";
 import { theme } from "./theme";
+import { actionTiming } from "./actionTiming";
 export function ScreenCapture({
   image,
   before,
@@ -20,20 +21,28 @@ export function ScreenCapture({
 }: StepProps) {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const typingEnd = 4 * fps;
+  const timing = image === "mobile-edit-filled"
+    ? { reveal: typed ? 0.5 : navigateFrom === "mobile-photo" ? 3.34 : 4.32, typingStart: 0.7, typingEnd: 4 }
+    : actionTiming[image] ?? { reveal: 0.8 };
+  const typingStart = (timing.typingStart ?? timing.reveal + 0.2) * fps;
+  const typingEnd = (timing.typingEnd ?? timing.reveal + 3) * fps;
   const typing = !!typed && frame < typingEnd;
-  const navigationEnd = fps;
+  const navigationEnd = timing.reveal * fps;
   const showingSource = !!navigateFrom && frame < navigationEnd;
-  const imageOpacity = navigateFrom
-    ? interpolate(frame, [navigationEnd - 1, navigationEnd + fps * 0.25], [0, 1], {
-        extrapolateLeft: "clamp",
-        extrapolateRight: "clamp",
-      })
-    : 1;
+  const imageOpacity = 1;
   const bounds = mobile
-    ? { x: 1170, y: 112, w: 390, h: 844 }
-    : { x: 320, y: 110, w: 1280, h: 800 };
+    ? { x: 1300, y: 40, w: 520, h: 1125.333333 }
+    : { x: 0, y: 0, w: 1920, h: 1200 };
   const ratio = bounds.w / (mobile ? 390 : 1440);
+  const seconds = frame / fps;
+  const cursorAt = navigateFrom ? navigationEnd : typingStart;
+  const sourceImage = image === "mobile-logout" && seconds < 2.4
+    ? "mobile-history-status"
+    : image === "mobile-category" ? "mobile-edit-filled"
+    : image === "mobile-deleted" && seconds < 2.66 ? "mobile-detail" : navigateFrom;
+  const destinationImage = image === "mobile-deleted" && seconds >= 6.28
+    ? seconds < 8.5 ? "mobile-delete-confirm" : "mobile-detail"
+    : image === "mobile-category" ? "mobile-edit-filled" : image;
   return (
     <div
       style={{
@@ -47,12 +56,12 @@ export function ScreenCapture({
       <div style={{ position: "absolute", inset: 0, width: bounds.w, height: bounds.h }}>
         {showingSource && (
           <CanvasImage
-            src={staticFile(`captures/${navigateFrom}.png`)}
+            src={staticFile(`captures/${sourceImage}.png`)}
             style={{ position: "absolute", width: bounds.w, height: bounds.h, objectFit: "contain" }}
           />
         )}
         <CanvasImage
-          src={staticFile(`captures/${typing && before ? before : image}.png`)}
+          src={staticFile(`captures/${typing && before ? before : destinationImage}.png`)}
           style={{
             position: "absolute",
             width: bounds.w,
@@ -83,7 +92,7 @@ export function ScreenCapture({
             {typed?.slice(
               0,
               Math.floor(
-                interpolate(frame, [fps, typingEnd - fps], [0, typed.length], {
+                interpolate(frame, [typingStart, typingEnd], [0, typed.length], {
                   extrapolateLeft: "clamp",
                   extrapolateRight: "clamp",
                 }),
@@ -99,12 +108,16 @@ export function ScreenCapture({
             </span>
           </div>
         )}
-        {(!navigateFrom || frame < navigationEnd + fps * 0.3) && (
+        {(navigateFrom || typed) && frame >= Math.max(0, cursorAt - fps * 0.7) && frame < cursorAt + fps * 0.15 && (
           <Cursor
+            startAt={Math.max(0, cursorAt - fps * 0.7)}
             x={(clickTarget ?? cursor)[0] * ratio}
             y={(clickTarget ?? cursor)[1] * ratio}
             mobile={mobile}
           />
+        )}
+        {image === "mobile-deleted" && seconds >= 7.8 && seconds < 8.65 && (
+          <Cursor x={195 * ratio} y={445 * ratio} mobile startAt={7.8 * fps} />
         )}
       </div>
     </div>

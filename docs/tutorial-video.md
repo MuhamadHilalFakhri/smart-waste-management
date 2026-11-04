@@ -1,6 +1,6 @@
 # Tutorial Smart Waste
 
-Source Remotion berada di `apps/tutorial`. Komposisi utama `TutorialSmartWaste` berdurasi 6 menit 19,52 detik, 1920×1080, 30 fps, mengikuti rekaman suara yang diberikan. Bab web dan mobile juga tersedia sebagai komposisi terpisah. Preview dibuka melalui `npm run dev -- --no-open` dari folder tersebut. Source menggunakan Remotion 4.0.540, Manrope lokal, dan logo droplet proyek. Lihat [naskah lengkap](naskah-narasi-lengkap.txt) dan [pembagian audio per adegan](pembagian-audio-tutorial.md).
+Source Remotion berada di `apps/tutorial`. Komposisi utama `TutorialSmartWaste` berdurasi 6 menit 19,52 detik, 1440×900, 30 fps, mengikuti rekaman suara yang diberikan. Bab web dan mobile juga tersedia sebagai komposisi terpisah. Preview dibuka melalui `npm run dev -- --no-open` dari folder tersebut. Source menggunakan Remotion 4.0.540, Manrope lokal, dan logo droplet proyek. Lihat [naskah lengkap](naskah-narasi-lengkap.txt) dan [pembagian audio per adegan](pembagian-audio-tutorial.md).
 
 Materi terdiri dari tangkapan layar UI aktual yang ditampilkan utuh tanpa bingkai atau crop tambahan, animasi ketikan, serta klik kursor sederhana sebelum tampilan tujuan muncul. Tidak ada zoom atau efek detak kursor. Materi bukan rekaman layar kontinu. Durasi tiap adegan mengikuti bagian narasi dan bervariasi. Data akun dan laporan tutorial ditandai dengan nama atau deskripsi Tutorial; koordinat -6.2, 106.8 adalah contoh.
 
@@ -16,4 +16,4 @@ Foto contoh berasal dari dataset RealWaste (UCI), berlisensi CC BY 4.0; atribusi
 
 ## Verifikasi
 
-Petunjuk singkat per adegan tersedia dalam format JSON pada `apps/tutorial/scripts/narration.json`. Audio tersimpan di `apps/tutorial/public/audio/narasi-tutorial.wav`; daftar cue terdapat pada `pembagian-audio-tutorial.md`. Periksa dengan `npm run lint`, `node scripts/check-assets.mjs`, dan `node infra/scripts/check-source-size.mjs`. Ekspor MP4 tersedia melalui tombol Render di Studio atau `npx remotion render TutorialSmartWaste out/tutorial-smart-waste.mp4`.
+Petunjuk singkat per adegan tersedia dalam format JSON pada `apps/tutorial/scripts/narration.json`. Audio tersimpan di `apps/tutorial/public/audio/narasi-tutorial.wav`; daftar cue terdapat pada `pembagian-audio-tutorial.md`. Periksa dengan `npm run lint`, `node scripts/check-assets.mjs`, dan `node infra/scripts/check-source-size.mjs`. Ekspor MP4 tersedia melalui tombol Render di Studio atau `npx remotion render TutorialSmartWaste out/tutorial-smart-waste-revisi.mp4 --crf=14 --image-format=png`.

@@ -181,6 +181,8 @@ export function WebTutorial() {
           title="Unduh hasil filter"
           instruction="Pilih Ekspor untuk mengunduh CSV. Notifikasi mengonfirmasi bahwa berkas berhasil diunduh."
           image="web-export"
+          navigateFrom="web-filters"
+          clickTarget={[1190, 240]}
           cursor={[1190, 240]}
         />
       </Series.Sequence>

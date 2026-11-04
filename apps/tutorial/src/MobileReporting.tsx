@@ -93,7 +93,7 @@ export function MobileReporting() {
           image="mobile-edit-filled"
           before="mobile-edit-filled"
           navigateFrom="mobile-edit-filled"
-          typed="[Tutorial mobile] Sampah plastik di sisi taman, perlu diangkut."
+          typed="[Tutorial mobile] Sampah plastik sudah dipilah, menunggu pengangkutan. Koordinat contoh."
           field={[41, 164, 293, 136]}
           clickTarget={[185, 230]}
           cursor={[195, 230]}

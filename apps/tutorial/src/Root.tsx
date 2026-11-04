@@ -5,6 +5,7 @@ import { Intro } from "./Intro";
 import { Tutorial } from "./Tutorial";
 import { WebTutorial } from "./WebTutorial";
 import { MobileTutorial } from "./MobileTutorial";
+import { NativeCanvas } from "./NativeCanvas";
 import {
   AUDIO_DURATION_SECONDS,
   CLOSING_START_SECONDS,
@@ -31,7 +32,7 @@ function AudioChapter({
         trimBefore={secondsToFrames(startSeconds, fps)}
         durationInFrames={durationBetweenSeconds(startSeconds, endSeconds, fps)}
       />
-      {children}
+      <NativeCanvas>{children}</NativeCanvas>
     </>
   );
 }
@@ -66,40 +67,42 @@ function NarratedMobileTutorial() {
   );
 }
 
+function NativeTutorial() { return <NativeCanvas><Tutorial /></NativeCanvas>; }
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Composition
         id="TutorialSmartWaste"
-        component={Tutorial}
+        component={NativeTutorial}
         durationInFrames={secondsToFrames(AUDIO_DURATION_SECONDS, 30)}
         fps={30}
-        width={1920}
-        height={1080}
+        width={1440}
+        height={900}
       />
       <Composition
         id="Pembuka"
         component={NarratedIntro}
         durationInFrames={durationBetweenSeconds(0, WEB_SCENE_STARTS[0], 30)}
         fps={30}
-        width={1920}
-        height={1080}
+        width={1440}
+        height={900}
       />
       <Composition
         id="TutorialWeb"
         component={NarratedWebTutorial}
         durationInFrames={durationBetweenSeconds(WEB_SCENE_STARTS[0], MOBILE_SCENE_STARTS[0], 30)}
         fps={30}
-        width={1920}
-        height={1080}
+        width={1440}
+        height={900}
       />
       <Composition
         id="TutorialMobile"
         component={NarratedMobileTutorial}
         durationInFrames={durationBetweenSeconds(MOBILE_SCENE_STARTS[0], CLOSING_START_SECONDS, 30)}
         fps={30}
-        width={1920}
-        height={1080}
+        width={1440}
+        height={900}
       />
     </>
   );

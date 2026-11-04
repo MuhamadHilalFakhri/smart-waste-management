@@ -5,8 +5,8 @@ Audio `apps/tutorial/public/audio/narasi-tutorial.wav` berdurasi 6 menit 19,52 d
 | Bagian | Waktu | Adegan |
 |---|---:|---|
 | Pembuka | 00:00.00–00:14.70 | Pengantar Smart Waste |
-| Web 01 | 00:14.70–00:25.66 | Masuk sebagai Admin |
-| Web 02 | 00:25.66–00:38.32 | Ringkasan laporan |
+| Web 01 | 00:14.70–00:19.54 | Masuk sebagai Admin |
+| Web 02 | 00:19.54–00:38.32 | Ringkasan laporan |
 | Web 03 | 00:38.32–00:50.08 | Kategori dan aktivitas |
 | Web 04 | 00:50.08–01:02.44 | Daftar laporan |
 | Web 05 | 01:02.44–01:12.00 | Buat laporan |
@@ -23,8 +23,8 @@ Audio `apps/tutorial/public/audio/narasi-tutorial.wav` berdurasi 6 menit 19,52 d
 | Web 16 | 02:54.60–03:00.72 | Tambah pengguna |
 | Web 17 | 03:00.72–03:05.18 | Nonaktifkan akses |
 | Android 01 | 03:05.18–03:15.64 | Daftar sebagai pelapor |
-| Android 02 | 03:15.64–03:20.64 | Masuk ke aplikasi |
-| Android 03 | 03:20.64–03:27.46 | Dashboard pelapor |
+| Android 02 | 03:15.64–03:19.20 | Masuk ke aplikasi |
+| Android 03 | 03:19.20–03:27.46 | Dashboard pelapor |
 | Android 04 | 03:27.46–03:36.86 | Sidebar |
 | Android 05 | 03:36.86–03:39.28 | Riwayat kosong |
 | Android 06 | 03:39.28–03:42.62 | Buka formulir laporan |
