@@ -22,7 +22,7 @@
 
 ## 6. Source code dan model Machine Learning
 
-[Buka source notebook publik di Google Colab](https://colab.research.google.com/github/MuhamadHilalFakhri/smart-waste-management/blob/main/ml/notebooks/train_waste.ipynb), [file notebook](../ml/notebooks/train_waste.ipynb), [script persiapan dan training](../ml/scripts/), [layanan inference FastAPI](../services/ml/), dan [unduh model beserta metadata](https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/download/v1.0.1/trained-model.zip). Source notebook dapat diakses publik; hasil evaluasi eksekusi tersedia pada bagian 8.
+[Lihat arsip hasil training di Google Colab](https://colab.research.google.com/github/MuhamadHilalFakhri/smart-waste-management/blob/main/ml/notebooks/training_results.ipynb), [notebook source untuk menjalankan ulang](../ml/notebooks/train_waste.ipynb), [script persiapan dan training](../ml/scripts/), [layanan inference FastAPI](../services/ml/), dan [unduh model beserta metadata](https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/download/v1.0.1/trained-model.zip). Arsip hasil memuat cuplikan log asli Colab serta artefak evaluasi dari run yang sama.
 
 ## 7. Dataset beserta sumbernya
 

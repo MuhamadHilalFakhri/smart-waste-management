@@ -21,7 +21,7 @@ Baris menunjukkan label aktual, kolom prediksi; urutan organic, paper, plastic.
 
 Sumber: RealWaste (Single, Iranmanesh, Raad, 2023), UCI, CC BY 4.0, DOI 10.24432/C5SS4G. Food Organics dan Vegetation menjadi organic, Paper menjadi paper, Plastic menjadi plastic. Enam gambar duplikat/sangat mirip dihapus sebelum split; test tidak dipakai memilih hyperparameter. Hasil ini mengukur dataset testing RealWaste, bukan jaminan akurasi semua foto lapangan.
 
-[Source notebook publik di Google Colab](https://colab.research.google.com/github/MuhamadHilalFakhri/smart-waste-management/blob/main/ml/notebooks/train_waste.ipynb). Notebook publik berisi source untuk menjalankan ulang training; hasil eksekusi yang dilaporkan tersedia dalam artefak evaluasi di bawah ini.
+[Arsip hasil training publik di Google Colab](https://colab.research.google.com/github/MuhamadHilalFakhri/smart-waste-management/blob/main/ml/notebooks/training_results.ipynb) memuat cuplikan log asli yang disalin dari notebook Colab tersimpan, JSON evaluasi, dan grafik artefak training. Arsip ini disusun untuk menampilkan hasil; bukan ekspor utuh notebook asli atau hasil eksekusi baru. [Notebook source](../ml/notebooks/train_waste.ipynb) tetap tersedia untuk menjalankan ulang training.
 Manifest aktual tersedia pada [split.csv](../ml/manifests/split.csv). [JSON hasil evaluasi](evaluation.json) memuat classification report lengkap dan confusion matrix. [Arsip model](https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/download/v1.0.1/trained-model.zip) menyertakan model, metadata, dan dependency runtime Colab aktual.
 
 ## Grafik training
