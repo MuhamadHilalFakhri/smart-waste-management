@@ -65,7 +65,7 @@ export function Sidebar({
           <View accessibilityViewIsModal style={{ flex: 1, padding: 18 }}>
             <View style={[s.between, { marginBottom: 26 }]}>
               <View style={s.row}>
-                <View style={s.symbol}>
+                <View style={[s.symbol, { backgroundColor: "transparent" }]}>
                   <Icon name="droplet" />
                 </View>
                 <View>
