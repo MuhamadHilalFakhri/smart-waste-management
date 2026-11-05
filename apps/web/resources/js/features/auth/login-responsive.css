@@ -11,9 +11,7 @@
         gap: 64px;
         overflow: hidden;
         padding: 22px 17px 24px;
-        background:
-            radial-gradient(ellipse at 35% 25%, #699c4090, transparent 60%),
-            linear-gradient(160deg, #173315, #23541c 48%, #70b83d);
+        background: #252d45;
         color: white;
     }
     .login-story::after {

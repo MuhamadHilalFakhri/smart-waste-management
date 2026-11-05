@@ -2,7 +2,7 @@
     --login-ink: #060c18;
     --login-muted: #71829c;
     --login-border: #dce3ee;
-    --login-brand: #007f73;
+    --login-brand: #52639f;
     box-sizing: border-box;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -102,7 +102,7 @@
 }
 .login-input:focus-within {
     border-color: var(--login-brand);
-    box-shadow: 0 0 0 3px #007f7325;
+    box-shadow: 0 0 0 3px #52639f25;
 }
 .login-input-error {
     border-color: #ae342f;
@@ -118,7 +118,7 @@
     padding: 14px;
     margin-block-end: 22px;
     border-radius: 8px;
-    background: #edf5ed;
+    background: #edf0fa;
     font-size: 14px;
     line-height: 1.5;
 }
@@ -145,8 +145,8 @@
     padding: 12px 20px;
     border: 0;
     border-radius: 14px;
-    background: #007f73;
-    box-shadow: 0 3px 5px #132b1b20;
+    background: var(--login-brand);
+    box-shadow: 0 3px 5px #20263b20;
     color: white;
     font-size: 14px;
     font-weight: 700;

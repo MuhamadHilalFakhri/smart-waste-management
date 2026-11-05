@@ -1,17 +1,17 @@
 export const colors = {
-  background: "#ffffff",
-  surface: "#fafdf9",
-  ink: "#0e1a10",
-  muted: "#617369",
-  border: "#d9e4da",
-  brand: "#007f73",
-  lime: "#75b936",
-  soft: "#daefda",
+  background: "#f7f8fc",
+  surface: "#ffffff",
+  ink: "#20263b",
+  muted: "#687289",
+  border: "#e1e4ee",
+  brand: "#52639f",
+  selected: "#b4bee2",
+  soft: "#edf0fa",
   white: "#ffffff",
 };
 export const tones: Record<string, { color: string; background: string }> = {
   pending: { color: "#896519", background: "#fcf2d9" },
-  in_progress: { color: "#276c88", background: "#dff2fb" },
-  completed: { color: "#25623e", background: "#daefda" },
+  in_progress: { color: "#52639f", background: "#edf0fa" },
+  completed: { color: "#405f80", background: "#e9eff7" },
   rejected: { color: "#963d35", background: "#fbe9e5" },
 };

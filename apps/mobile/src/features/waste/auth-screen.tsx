@@ -1,5 +1,4 @@
 import { View } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
 import { useWaste } from "./context";
 import { s } from "./styles";
 import { Text } from "./typography";
@@ -25,17 +24,14 @@ export default function Screen() {
   } = useWaste();
   return (
     <>
-      <LinearGradient
-        colors={["#123219", "#72b636"]}
-        style={{ padding: 24, borderRadius: 12, gap: 12 }}
-      >
+      <View style={{ padding: 24, borderRadius: 12, gap: 12, backgroundColor: colors.ink }}>
         <Text style={{ color: colors.white, fontSize: 23, fontWeight: "600" }}>
           Lingkungan lebih baik.
         </Text>
-        <Text style={{ color: "#edf5e8", lineHeight: 22 }}>
+        <Text style={{ color: "#e2e6f0", lineHeight: 22 }}>
           Laporan yang tercatat, penanganan yang terpantau.
         </Text>
-      </LinearGradient>
+      </View>
       <View style={[s.card, { paddingVertical: 28 }]}>
         <View style={{ alignItems: "center", gap: 14, marginBottom: 14 }}>
           <Icon name="droplet" size={36} />

@@ -1,6 +1,7 @@
 import { Modal, Pressable, ScrollView, View } from "react-native";
 import { useControls } from "./controls";
 import { s } from "./styles";
+import { colors } from "./theme";
 import { Text } from "./typography";
 
 export type ActionMessage = {
@@ -36,7 +37,7 @@ export function ActionModal({
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#0e1a1070",
+          backgroundColor: "#20263b70",
           padding: 24,
         }}
       >
@@ -73,7 +74,7 @@ export function ActionModal({
                 style={[
                   s.buttonInner,
                   {
-                    backgroundColor: value.destructive ? "#b63838" : "#007f73",
+                    backgroundColor: value.destructive ? "#b63838" : colors.brand,
                   },
                 ]}
               >

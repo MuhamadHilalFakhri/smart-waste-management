@@ -52,7 +52,7 @@ export function Sidebar({
           accessibilityRole="button"
           accessibilityLabel="Tutup sidebar"
           onPress={close}
-          style={[StyleSheet.absoluteFill, { backgroundColor: "#0e1a1070" }]}
+          style={[StyleSheet.absoluteFill, { backgroundColor: "#20263b70" }]}
         />
         <SafeAreaView
           style={{
@@ -119,14 +119,14 @@ export function Sidebar({
                   >
                     <Icon
                       name={item.icon}
-                      color={active ? c.lime : c.muted}
+                      color={active ? c.selected : c.muted}
                       size={18}
                     />
                     <Text
                       style={{
                         fontSize: 13,
                         flex: 1,
-                        color: active ? c.lime : c.muted,
+                        color: active ? c.selected : c.muted,
                       }}
                     >
                       {item.label}
@@ -137,7 +137,7 @@ export function Sidebar({
                           width: 5,
                           height: 5,
                           borderRadius: 3,
-                          backgroundColor: c.lime,
+                          backgroundColor: c.selected,
                         }}
                       />
                     )}

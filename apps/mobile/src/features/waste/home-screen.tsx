@@ -23,13 +23,13 @@ export default function Screen() {
       >
         <View style={s.between}>
           <Text style={{ color: colors.white }}>Total laporan</Text>
-          <Icon name="report" color="#a5b5a6" />
+          <Icon name="report" color="#b4bbce" />
         </View>
         <View style={[s.row, { alignItems: "baseline" }]}>
           <Text style={s.count}>{stats?.total ?? "–"}</Text>
-          <Text style={{ color: "#c5d1c7" }}>laporan</Text>
+          <Text style={{ color: "#d5d9e4" }}>laporan</Text>
         </View>
-        <Text style={{ color: "#c5d1c7", fontSize: 12 }}>
+        <Text style={{ color: "#d5d9e4", fontSize: 12 }}>
           Laporan yang tercatat di workspace Anda.
         </Text>
       </View>
@@ -61,7 +61,7 @@ export default function Screen() {
           { backgroundColor: colors.ink, borderColor: colors.ink },
         ]}
       >
-        <Text style={{ color: "#c5d1c7", fontSize: 12 }}>
+        <Text style={{ color: "#d5d9e4", fontSize: 12 }}>
           Prioritas hari ini
         </Text>
         <Text style={{ color: colors.white, fontSize: 21, lineHeight: 30 }}>

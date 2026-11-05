@@ -17,7 +17,7 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     background: var(--card);
-    box-shadow: 0 3px 16px #14251906;
+    box-shadow: 0 3px 16px #20263b08;
     gap: 0;
     min-width: 0;
 }
@@ -109,7 +109,7 @@
     flex-wrap: wrap;
 }
 .waste-app .sw-stat-total time {
-    color: var(--lime);
+    color: #e0e5f8;
     background: #ffffff14;
     border-radius: 4px;
     padding: 4px 8px;
@@ -141,8 +141,8 @@
     letter-spacing: -0.7px;
 }
 .waste-app .sw-priority-button {
-    background: var(--lime);
-    color: var(--foreground);
+    background: var(--brand);
+    color: #ffffff;
     width: fit-content;
     font-size: 14px;
     padding-inline: 16px;

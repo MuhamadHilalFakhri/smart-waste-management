@@ -2,7 +2,7 @@ import { Droplet } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { categories } from "../api";
 import type { Statistics } from "../types";
-const colors = ["var(--foreground)", "#78bb3c", "#008274", "#b6c99b"];
+const colors = ["var(--foreground)", "#52639f", "#8a96c2", "#c3c9dc"];
 export default function CategoryChart({ data }: { data: Statistics }) {
     const rows = data.categories
         .filter((row) => Number(row.total) > 0)

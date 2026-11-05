@@ -38,7 +38,7 @@
     display: grid;
     place-items: center;
     background: transparent;
-    color: var(--success);
+    color: var(--brand);
     width: 32px;
     height: 32px;
     flex-shrink: 0;
@@ -78,14 +78,14 @@
 }
 .waste-app .sw-nav-link.active,
 .waste-app .sw-nav-link.active:hover {
-    background: var(--foreground);
-    color: var(--lime);
+    background: var(--success-soft);
+    color: var(--brand);
 }
 .waste-app .sw-nav-dot {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: var(--lime);
+    background: var(--brand);
     margin-left: auto;
 }
 .waste-app .sw-logout {

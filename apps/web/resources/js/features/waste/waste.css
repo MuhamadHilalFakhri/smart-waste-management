@@ -1,13 +1,13 @@
 .waste {
     min-height: 100vh;
-    background: #f5f7f2;
-    color: #18382b;
+    background: #f7f8fc;
+    color: #20263b;
     font-family: Arial, sans-serif;
 }
 .waste header {
     padding: 22px 5%;
     background: white;
-    border-bottom: 1px solid #dce4da;
+    border-bottom: 1px solid #e1e4ee;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,7 +23,7 @@
     display: block;
     font-size: 12px;
     font-weight: 400;
-    color: #52665a;
+    color: #687289;
     margin-top: 4px;
 }
 .waste nav {
@@ -57,13 +57,13 @@
 }
 .eyebrow {
     font-size: 11px;
-    color: #506655;
+    color: #52639f;
     letter-spacing: 0.08em;
     margin-bottom: 8px;
 }
 .panel {
     background: white;
-    border: 1px solid #dce4da;
+    border: 1px solid #e1e4ee;
     padding: 24px;
     margin-bottom: 24px;
     border-radius: 8px;
@@ -75,7 +75,7 @@
     margin-bottom: 28px;
 }
 .stat {
-    border-left: 3px solid #24734b;
+    border-left: 3px solid #52639f;
     padding: 18px;
     background: white;
 }
@@ -86,7 +86,7 @@
 }
 .waste button,
 .waste .button {
-    background: #216b45;
+    background: #52639f;
     color: white;
     border-radius: 5px;
     padding: 10px 15px;
@@ -103,11 +103,11 @@
 .waste textarea {
     display: block;
     background: white;
-    border: 1px solid #9cab9e;
+    border: 1px solid #c9cede;
     border-radius: 5px;
     padding: 10px;
     width: 100%;
-    color: #18382b;
+    color: #20263b;
 }
 .waste textarea {
     min-height: 100px;
@@ -145,14 +145,14 @@
 .waste td,
 .waste th {
     padding: 15px 10px;
-    border-bottom: 1px solid #e3e9e0;
+    border-bottom: 1px solid #e1e4ee;
     font-size: 14px;
 }
 .waste th {
-    color: #52665a;
+    color: #687289;
 }
 .waste .muted {
-    color: #52665a;
+    color: #687289;
     font-size: 14px;
 }
 .waste .error {
@@ -162,7 +162,7 @@
     margin-bottom: 16px;
 }
 .waste .notice {
-    background: #e8f2e9;
+    background: #edf0fa;
     padding: 14px;
     margin-bottom: 16px;
 }
@@ -176,10 +176,10 @@
     text-align: center;
     font-size: 12px;
     padding: 24px;
-    color: #52665a;
+    color: #687289;
 }
 .waste :focus-visible {
-    outline: 3px solid #ba6c1e;
+    outline: 3px solid #52639f;
     outline-offset: 3px;
 }
 .two-col {
@@ -189,7 +189,7 @@
 }
 .bar {
     height: 9px;
-    background: #24734b;
+    background: #52639f;
     margin: 8px 0 18px;
     border-radius: 2px;
 }
