@@ -24,7 +24,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm ci && npm run lint && npx tsc --noEmit
+      - run: npm ci && npm test && npm run lint && npx tsc --noEmit
         working-directory: apps/mobile
   ml:
     runs-on: ubuntu-latest

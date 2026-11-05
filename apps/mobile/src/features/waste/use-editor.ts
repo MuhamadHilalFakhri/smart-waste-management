@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Alert } from "react-native";
 import { api, type Report } from "../../api";
 import { deviceActions } from "./device";
+import { appendReportPhoto } from "./report-photo";
 export function useEditor(
   load: () => Promise<void>,
   setScreen: (view: string) => void,
@@ -40,12 +41,7 @@ export function useEditor(
     data.append("latitude", String(coords.latitude));
     data.append("longitude", String(coords.longitude));
     data.append("category", category ?? "");
-    if (photo)
-      data.append("photo", {
-        uri: photo.uri,
-        name: "report.jpg",
-        type: photo.mimeType ?? "image/jpeg",
-      } as unknown as Blob);
+    if (photo) await appendReportPhoto(data, photo);
     if (editing) data.append("_method", "PUT");
     await api("reports" + (editing ? "/" + editing.id : ""), {
       method: "POST",

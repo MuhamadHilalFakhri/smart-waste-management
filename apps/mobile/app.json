@@ -2,7 +2,7 @@
   "expo": {
     "name": "Smart Waste",
     "slug": "smart-waste-management",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -10,7 +10,7 @@
       "supportsTablet": true
     },
     "android": {
-      "versionCode": 2,
+      "versionCode": 3,
       "package": "com.smartwaste.management",
       "permissions": [
         "android.permission.ACCESS_COARSE_LOCATION",
