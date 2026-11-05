@@ -10,7 +10,6 @@ const folders = [
   "apps/web/tests",
   "apps/web/database",
   "apps/mobile/src",
-  "apps/tutorial/src",
 ];
 const generated = [
   "apps/web/resources/js/actions/",

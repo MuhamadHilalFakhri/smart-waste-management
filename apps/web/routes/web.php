@@ -6,7 +6,7 @@ use App\Http\Middleware\ActiveUser;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/api-documentation', function () {
-    return response()->file(file_exists(resource_path('openapi.json')) ? resource_path('openapi.json') : base_path('../../docs/openapi.json'));
+    return response()->file(resource_path('openapi.json'));
 });
 Route::redirect('/', '/dashboard')->name('home');
 Route::middleware(['auth', ActiveUser::class])->group(function () {

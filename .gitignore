@@ -25,3 +25,7 @@ ml/artifacts/
 backups/
 
 .ruff_cache/
+
+# Dokumentasi kerja dan video tutorial hanya disimpan lokal.
+/docs/
+/apps/tutorial/

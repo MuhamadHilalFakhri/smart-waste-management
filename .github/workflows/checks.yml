@@ -26,15 +26,6 @@ jobs:
           node-version: '22'
       - run: npm ci && npm run lint && npx tsc --noEmit
         working-directory: apps/mobile
-  tutorial:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - run: npm ci && npm run lint && node scripts/check-assets.mjs
-        working-directory: apps/tutorial
   ml:
     runs-on: ubuntu-latest
     steps:

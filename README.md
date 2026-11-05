@@ -57,7 +57,7 @@ pip install -r requirements.lock
 uvicorn app.main:app --port 8001
 ```
 
-Hasil training aktual: **97,06% accuracy testing** pada 340 gambar. Lihat `docs/evaluation.md` untuk confusion matrix, classification report, dan checksum model.
+Hasil training aktual: **97,06% accuracy testing** pada 340 gambar. Confusion matrix, classification report, dan metadata model tersedia dalam arsip hasil training di GitHub Releases.
 
 ## Pemeriksaan
 
@@ -70,13 +70,11 @@ cd ../mobile
 npx tsc --noEmit
 ```
 
-Lihat [arsitektur](docs/architecture.md), [API](docs/api.md), [ERD](docs/erd.md), [deployment](docs/deployment.md), dan [skenario demo](docs/demo.md).
-
 ## Hasil dan demo
 
 - Repository: https://github.com/MuhamadHilalFakhri/smart-waste-management
 - Website: https://8080-001m6e4ck17dvek9788p0t5q4fm.sbx.sandboxes-cloud.docker.com
-- OpenAPI: endpoint web `/api-documentation` atau `docs/openapi.json`.
+- OpenAPI: endpoint web `/api-documentation` atau `apps/web/resources/openapi.json`.
 - Model: accuracy testing 97,06%, 340 gambar testing, versi `9fdcea1e664b`.
 - Dataset aktual: 2.262 gambar, 1.583 train / 339 validation / 340 test.
 - Video walkthrough memakai tangkapan layar aplikasi aktual dan narasi sintetis bahasa Indonesia. Pengujian kamera/GPS di perangkat fisik masih diperlukan.
@@ -84,8 +82,3 @@ Lihat [arsitektur](docs/architecture.md), [API](docs/api.md), [ERD](docs/erd.md)
 Model, dataset aktual, APK, dan video disediakan melalui GitHub Releases. Kredensial Admin demo disimpan lokal di `.cache/demo-credentials.txt` dan tidak dipublikasikan.
 
 Unduhan lengkap: https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/tag/v1.0.1
-Hasil pemeriksaan rinci: `docs/testing.md`.
-
-## Tutorial Remotion
-
-Source tutorial terbaru tersedia di `apps/tutorial`, berdurasi 6 menit 19,52 detik mengikuti rekaman suara, dengan animasi mengetik, kursor sederhana, dan klik sebelum perpindahan halaman. Layar aplikasi ditampilkan utuh tanpa bingkai tambahan. [Pembagian audio per adegan](docs/pembagian-audio-tutorial.md) dan [naskah lengkap](docs/naskah-narasi-lengkap.txt) tersedia. Jalankan `npm ci`, lalu `npm run dev -- --no-open --port=3090` dari folder tersebut. Video pada rilis v1.0.1 adalah walkthrough sebelumnya.
