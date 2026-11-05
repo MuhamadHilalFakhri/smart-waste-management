@@ -51,6 +51,10 @@
     color: var(--success);
     background: var(--success-soft);
 }
+.waste-app .tone-rejected {
+    color: var(--rejected);
+    background: var(--rejected-soft);
+}
 .waste-app .tone-neutral {
     color: var(--muted-foreground);
     background: var(--background);

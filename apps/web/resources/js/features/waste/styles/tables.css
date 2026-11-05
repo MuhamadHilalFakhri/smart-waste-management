@@ -87,6 +87,10 @@
     background: var(--success-soft);
     color: var(--success);
 }
+.waste-app .status-rejected {
+    background: var(--rejected-soft);
+    color: var(--rejected);
+}
 .waste-app .status-pending {
     background: var(--pending-soft);
     color: var(--pending);

@@ -19,12 +19,14 @@
     --destructive: #b63838;
     --brand: #52639f;
     --accent-strong: #b4bee2;
-    --success: #405f80;
-    --success-soft: #e9eff7;
+    --success: #26734d;
+    --success-soft: #e8f4ec;
+    --rejected: #963d35;
+    --rejected-soft: #fbe9e5;
     --pending: #896519;
     --pending-soft: #fcf2d9;
-    --progress: #52639f;
-    --progress-soft: #edf0fa;
+    --progress: #3569a8;
+    --progress-soft: #e9f1fb;
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --color-card: var(--card);

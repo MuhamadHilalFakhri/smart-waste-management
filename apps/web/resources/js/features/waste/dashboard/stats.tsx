@@ -25,7 +25,7 @@ export default function Stats({ data }: { data: Statistics }) {
             label: "Rejected",
             value: data.statuses.rejected ?? 0,
             icon: Ban,
-            tone: "neutral",
+            tone: "rejected",
         },
     ];
     const todayCount =

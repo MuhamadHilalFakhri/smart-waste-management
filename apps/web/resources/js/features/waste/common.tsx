@@ -31,7 +31,9 @@ export function Status({ value }: { value: string }) {
               ? "pending"
               : value === "in_progress"
                 ? "progress"
-                : "neutral";
+                : value === "rejected"
+                  ? "rejected"
+                  : "neutral";
     return (
         <Badge variant="outline" className={"status-badge status-" + tone}>
             {statuses[value] ??

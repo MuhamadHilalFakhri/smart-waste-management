@@ -11,7 +11,7 @@ export const colors = {
 };
 export const tones: Record<string, { color: string; background: string }> = {
   pending: { color: "#896519", background: "#fcf2d9" },
-  in_progress: { color: "#52639f", background: "#edf0fa" },
-  completed: { color: "#405f80", background: "#e9eff7" },
+  in_progress: { color: "#3569a8", background: "#e9f1fb" },
+  completed: { color: "#26734d", background: "#e8f4ec" },
   rejected: { color: "#963d35", background: "#fbe9e5" },
 };

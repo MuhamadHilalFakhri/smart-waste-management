@@ -43,7 +43,13 @@ export default function Screen() {
               style={[s.symbol, { backgroundColor: tones[key].background }]}
             >
               <Icon
-                name={key === "completed" ? "check" : "clock"}
+                name={
+                  key === "completed"
+                    ? "check"
+                    : key === "rejected"
+                      ? "close"
+                      : "clock"
+                }
                 color={tones[key].color}
                 size={18}
               />
