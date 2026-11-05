@@ -2,6 +2,8 @@
 
 Monorepo Laravel 13 + Inertia React TypeScript, React Native Expo, FastAPI, MySQL, dan training Google Colab.
 
+[Dokumen pengumpulan sesuai 10 ketentuan](docs/README.md).
+
 ## Mulai dengan Docker
 
 1. Salin `.env.example` menjadi `.env`. Isi password database, ML_TOKEN, ADMIN_EMAIL, ADMIN_PASSWORD, dan APP_URL.

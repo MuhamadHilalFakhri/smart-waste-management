@@ -26,6 +26,18 @@ backups/
 
 .ruff_cache/
 
-# Dokumentasi kerja dan video tutorial hanya disimpan lokal.
-/docs/
+# Hanya dokumentasi pengumpulan yang dilacak.
+/docs/*
+!/docs/README.md
+!/docs/api.md
+!/docs/erd.md
+!/docs/dataset.md
+!/docs/evaluation.md
+!/docs/evaluation.json
+!/docs/images/
+/docs/images/*
+!/docs/images/accuracy.png
+!/docs/images/confusion-matrix.png
+!/docs/images/loss.png
+# Source pembuatan video tetap lokal.
 /apps/tutorial/
