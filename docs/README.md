@@ -38,4 +38,4 @@
 
 ## 10. Video demo maksimal 10 menit
 
-[Unduh video demo revisi](https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/download/v1.0.1/tutorial-smart-waste-revisi.mp4), durasi 6 menit 19,54 detik, mencakup penggunaan website dan UI aplikasi mobile dengan narasi bahasa Indonesia.
+[Unduh video demo](https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/download/v1.0.1/tutorial-smart-waste.mp4), durasi 6 menit 19,54 detik, mencakup penggunaan website dan UI aplikasi mobile dengan narasi bahasa Indonesia.
