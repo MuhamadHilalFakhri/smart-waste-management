@@ -48,6 +48,8 @@ Gunakan perangkat Android untuk kamera dan GPS. Profil APK tidak memerlukan Metr
 
 ## Training dan inference
 
+[Buka notebook publik di Google Colab](https://colab.research.google.com/github/MuhamadHilalFakhri/smart-waste-management/blob/main/ml/notebooks/train_waste.ipynb).
+
 Buka `ml/notebooks/train_waste.ipynb` di Colab, pilih GPU T4 bila tersedia, jalankan semua sel. Notebook mandiri mengunduh RealWaste dan menjalankan training. Unduh arsip hasil, ekstrak ke `ml/artifacts/`, lalu restart layanan ML. Arsip berisi model.keras, metadata.json, manifest.csv, evaluation.json, confusion matrix, dan kurva training.
 
 ```sh

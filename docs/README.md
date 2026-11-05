@@ -22,7 +22,7 @@
 
 ## 6. Source code dan model Machine Learning
 
-[Notebook Colab](../ml/notebooks/train_waste.ipynb), [script persiapan dan training](../ml/scripts/), [layanan inference FastAPI](../services/ml/), dan [unduh model beserta metadata](https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/download/v1.0.1/trained-model.zip).
+[Buka source notebook publik di Google Colab](https://colab.research.google.com/github/MuhamadHilalFakhri/smart-waste-management/blob/main/ml/notebooks/train_waste.ipynb), [file notebook](../ml/notebooks/train_waste.ipynb), [script persiapan dan training](../ml/scripts/), [layanan inference FastAPI](../services/ml/), dan [unduh model beserta metadata](https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/download/v1.0.1/trained-model.zip). Source notebook dapat diakses publik; hasil evaluasi eksekusi tersedia pada bagian 8.
 
 ## 7. Dataset beserta sumbernya
 
@@ -38,4 +38,4 @@
 
 ## 10. Video demo maksimal 10 menit
 
-[Video yang sudah tersedia di rilis](https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/download/v1.0.1/demo-smart-waste.mp4), durasi 2 menit 49 detik. Video revisi berdurasi 6 menit 19,54 detik masih tersimpan lokal dan belum diunggah ke GitHub Releases.
+[Unduh video demo revisi](https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/download/v1.0.1/tutorial-smart-waste-revisi.mp4), durasi 6 menit 19,54 detik, mencakup penggunaan website dan UI aplikasi mobile dengan narasi bahasa Indonesia.
