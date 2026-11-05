@@ -1,9 +1,9 @@
 import type { ImagePickerAsset } from "expo-image-picker";
 import { useState } from "react";
-import { Alert } from "react-native";
 import { api, type Report } from "../../api";
 import { deviceActions } from "./device";
 import { appendReportPhoto } from "./report-photo";
+import { reportErrors } from "./report-validation";
 export function useEditor(
   load: () => Promise<void>,
   setScreen: (view: string) => void,
@@ -31,11 +31,20 @@ export function useEditor(
     setPhoto(undefined);
     setScreen("form");
   }
+  function validate() {
+    const errors = reportErrors({
+      description,
+      coords,
+      hasPhoto: !!photo,
+      editing: !!editing,
+      mimeType: photo?.mimeType,
+      fileSize: photo?.fileSize,
+    });
+    if (errors.length) throw new Error(errors.join("\n"));
+  }
   async function save() {
-    if (description.trim().length < 10 || !coords || (!photo && !editing))
-      throw new Error(
-        "Isi deskripsi minimal 10 karakter, foto, dan lokasi GPS.",
-      );
+    validate();
+    if (!coords) return;
     const data = new FormData();
     data.append("description", description);
     data.append("latitude", String(coords.latitude));
@@ -49,10 +58,6 @@ export function useEditor(
     });
     await load();
     setScreen("history");
-    Alert.alert(
-      "Laporan tersimpan",
-      "Saran kategori AI akan muncul pada detail laporan.",
-    );
   }
   return {
     editing,
@@ -64,6 +69,7 @@ export function useEditor(
     coords,
     newReport,
     save,
+    validate,
     ...deviceActions(setPhoto, setCoords),
   };
 }

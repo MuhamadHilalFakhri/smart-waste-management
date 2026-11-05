@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Notice, TextField, Choice } from "../common";
 import type { Account } from "../types";
+import { useConfirmation } from "../use-confirmation";
 export default function UserEditor({
     open,
     user,
@@ -24,10 +25,18 @@ export default function UserEditor({
     onClose: () => void;
     onSave: (data: Record<string, unknown>) => void;
 }) {
+    const confirmation = useConfirmation();
     function submit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const data = Object.fromEntries(new FormData(event.currentTarget));
-        onSave({ ...data, is_active: data.is_active === "true" });
+        if (!busy)
+            confirmation.ask(
+                user
+                    ? "Simpan perubahan akun, role, dan akses pengguna ini?"
+                    : "Buat akun pengguna dengan data yang telah diisi?",
+                () => onSave({ ...data, is_active: data.is_active === "true" }),
+                event.currentTarget,
+            );
     }
     return (
         <Dialog
@@ -47,6 +56,7 @@ export default function UserEditor({
                     </DialogDescription>
                 </DialogHeader>
                 <form
+                    noValidate
                     key={user?.id ?? "new"}
                     className="editor-form"
                     onSubmit={submit}
@@ -111,6 +121,7 @@ export default function UserEditor({
                         </Button>
                     </div>
                 </form>
+                {confirmation.dialog}
             </DialogContent>
         </Dialog>
     );

@@ -1,6 +1,4 @@
 import { View } from "react-native";
-import { useState } from "react";
-import { DeleteConfirmation } from "./delete-confirmation";
 import { Text } from "./typography";
 import { StatusBadge } from "./status-badge";
 import { api, categories } from "../../api";
@@ -18,9 +16,8 @@ export default function Screen() {
     newReport,
     load,
     setScreen,
-    busy,
+    confirm,
   } = useWaste();
-  const [confirmDelete, setConfirmDelete] = useState(false);
   if (!selected) return null;
   return (
     <View style={s.card}>
@@ -63,7 +60,25 @@ export default function Screen() {
               }),
             true,
           )}
-          {button("Hapus laporan", () => setConfirmDelete(true), true)}
+          {button(
+            "Hapus laporan",
+            () =>
+              confirm(
+                async () => {
+                  await api("reports/" + selected.id, { method: "DELETE" });
+                  await load();
+                  setScreen("history");
+                },
+                {
+                  title: "Hapus laporan?",
+                  message:
+                    "Laporan akan diarsipkan dan tidak muncul lagi di daftar. Lanjutkan menghapus?",
+                  success: "Laporan berhasil dihapus.",
+                  destructive: true,
+                },
+              ),
+            true,
+          )}
         </>
       )}
       <Text style={[s.label, s.divider]}>Histori status</Text>
@@ -73,19 +88,6 @@ export default function Screen() {
           {new Date(h.created_at).toLocaleString("id-ID")} {h.note}
         </Text>
       ))}
-      <DeleteConfirmation
-        open={confirmDelete}
-        busy={busy}
-        onClose={() => setConfirmDelete(false)}
-        onConfirm={() =>
-          void run(async () => {
-            await api("reports/" + selected.id, { method: "DELETE" });
-            setConfirmDelete(false);
-            await load();
-            setScreen("history");
-          })
-        }
-      />
     </View>
   );
 }

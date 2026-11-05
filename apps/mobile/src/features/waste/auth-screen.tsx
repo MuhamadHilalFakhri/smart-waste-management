@@ -21,6 +21,7 @@ export default function Screen() {
     button,
     run,
     auth,
+    confirm,
   } = useWaste();
   return (
     <>
@@ -54,7 +55,30 @@ export default function Screen() {
           {register &&
             field("Konfirmasi kata sandi", confirmation, setConfirmation, true)}
         </View>
-        {button(register ? "Daftar" : "Masuk", () => void run(auth))}
+        {button(register ? "Daftar" : "Masuk", () => {
+          if (!register) {
+            void run(auth);
+            return;
+          }
+          confirm(auth, {
+            title: "Buat akun pelapor?",
+            message:
+              "Daftarkan akun menggunakan nama dan email yang telah diisi?",
+            success: "Akun pelapor berhasil dibuat.",
+            validate: () => {
+              const errors = [];
+              if (!name.trim() || name.trim().length > 100)
+                errors.push("Nama wajib diisi, maksimal 100 karakter.");
+              if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
+                errors.push("Isi alamat email yang valid.");
+              if (password.length < 8)
+                errors.push("Kata sandi minimal 8 karakter.");
+              if (password !== confirmation)
+                errors.push("Konfirmasi kata sandi tidak sesuai.");
+              if (errors.length) throw new Error(errors.join("\n"));
+            },
+          });
+        })}
         {button(
           register ? "Sudah punya akun? Masuk" : "Belum punya akun? Daftar",
           () => setRegister(!register),

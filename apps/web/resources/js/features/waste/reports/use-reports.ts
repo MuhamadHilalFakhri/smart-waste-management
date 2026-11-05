@@ -43,7 +43,11 @@ export default function useReports() {
         setSelected(undefined);
         setOpen(true);
     }
-    async function mutate(fn: () => Promise<unknown>, close = false) {
+    async function mutate(
+        fn: () => Promise<unknown>,
+        close = false,
+        message = "Perubahan laporan berhasil disimpan.",
+    ) {
         await action.run(async () => {
             await fn();
             await list.reload();
@@ -52,7 +56,7 @@ export default function useReports() {
                 setOpen(false);
             } else if (selected)
                 setSelected(await api<Report>("reports/" + selected.id));
-        });
+        }, message);
     }
     function save(data: FormData) {
         if (editing) data.set("_method", "PUT");

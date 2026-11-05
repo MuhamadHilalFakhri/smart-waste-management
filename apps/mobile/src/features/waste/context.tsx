@@ -5,6 +5,7 @@ import { useEditor } from "./use-editor";
 import { useFeedback } from "./use-feedback";
 import { useReports } from "./use-reports";
 import { useSession } from "./use-session";
+import { ActionModal } from "./action-modal";
 function useWasteState() {
   const session = useSession();
   const feedback = useFeedback();
@@ -24,7 +25,17 @@ function useWasteState() {
 const Context = createContext<ReturnType<typeof useWasteState> | null>(null);
 export function WasteProvider({ children }: { children: ReactNode }) {
   const value = useWasteState();
-  return <Context.Provider value={value}>{children}</Context.Provider>;
+  return (
+    <Context.Provider value={value}>
+      {children}
+      <ActionModal
+        value={value.feedback}
+        busy={value.busy}
+        onClose={value.dismiss}
+        onConfirm={value.proceed}
+      />
+    </Context.Provider>
+  );
 }
 export function useWaste() {
   const state = useContext(Context);

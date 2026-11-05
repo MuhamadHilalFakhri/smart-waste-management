@@ -1,6 +1,9 @@
 import { useForm, Link } from "@inertiajs/react";
 import "./waste.css";
+import "./styles/tokens.css";
+import { useConfirmation } from "./use-confirmation";
 export default function Auth({ register = false }: { register?: boolean }) {
+    const confirmation = useConfirmation();
     const form = useForm({
         name: "",
         email: "",
@@ -22,10 +25,25 @@ export default function Auth({ register = false }: { register?: boolean }) {
                     Laporkan sampah dan pantau proses penanganannya.
                 </p>
                 <form
+                    noValidate
                     className="panel"
                     onSubmit={(e) => {
                         e.preventDefault();
-                        form.post(register ? "/register" : "/login");
+                        if (form.processing) return;
+                        const submit = () =>
+                            form.post(register ? "/register" : "/login", {
+                                onError: (errors) =>
+                                    confirmation.show(
+                                        Object.values(errors).join("\n"),
+                                    ),
+                            });
+                        if (register)
+                            confirmation.ask(
+                                "Buat akun pelapor menggunakan data yang telah diisi?",
+                                submit,
+                                e.currentTarget,
+                            );
+                        else submit();
                     }}
                 >
                     {Object.entries(form.errors).map(([k, v]) => (
@@ -37,6 +55,8 @@ export default function Auth({ register = false }: { register?: boolean }) {
                         <label>
                             Nama
                             <input
+                                name="name"
+                                maxLength={100}
                                 value={form.data.name}
                                 onChange={(e) =>
                                     form.setData("name", e.target.value)
@@ -49,6 +69,7 @@ export default function Auth({ register = false }: { register?: boolean }) {
                     <label>
                         Email
                         <input
+                            name="email"
                             type="email"
                             value={form.data.email}
                             onChange={(e) =>
@@ -61,6 +82,8 @@ export default function Auth({ register = false }: { register?: boolean }) {
                     <label>
                         Kata sandi
                         <input
+                            name="password"
+                            minLength={register ? 8 : undefined}
                             type="password"
                             value={form.data.password}
                             onChange={(e) =>
@@ -76,6 +99,7 @@ export default function Auth({ register = false }: { register?: boolean }) {
                         <label>
                             Konfirmasi kata sandi
                             <input
+                                name="password_confirmation"
                                 type="password"
                                 value={form.data.password_confirmation}
                                 onChange={(e) =>
@@ -106,6 +130,7 @@ export default function Auth({ register = false }: { register?: boolean }) {
                         : "Belum punya akun? Daftar"}
                 </Link>
             </main>
+            {confirmation.dialog}
         </div>
     );
 }

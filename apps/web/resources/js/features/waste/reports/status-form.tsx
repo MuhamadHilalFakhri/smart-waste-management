@@ -4,6 +4,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Choice } from "../common";
 import type { Report } from "../api";
+import { useConfirmation } from "../use-confirmation";
 export default function StatusForm({
     report,
     busy,
@@ -13,14 +14,25 @@ export default function StatusForm({
     busy: boolean;
     onUpdate: (data: Record<string, FormDataEntryValue>) => void;
 }) {
+    const confirmation = useConfirmation();
     const next = report.status === "pending" ? "in_progress" : "completed";
     const [status, setStatus] = useState(next);
     function submit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        onUpdate(Object.fromEntries(new FormData(e.currentTarget)));
+        const data = Object.fromEntries(new FormData(e.currentTarget));
+        if (!busy)
+            confirmation.ask(
+                `Ubah status laporan menjadi ${status === "rejected" ? "Rejected" : next === "completed" ? "Completed" : "In Progress"}?${["rejected", "completed"].includes(status) ? " Status ini merupakan status akhir." : ""}`,
+                () => onUpdate(data),
+                e.currentTarget,
+            );
     }
     return (
-        <form className="editor-form rounded-lg border p-4" onSubmit={submit}>
+        <form
+            noValidate
+            className="editor-form rounded-lg border p-4"
+            onSubmit={submit}
+        >
             <h3 className="sw-section-title">Tindak lanjut laporan</h3>
             <Choice
                 label="Status baru"
@@ -48,6 +60,7 @@ export default function StatusForm({
             <Button disabled={busy} type="submit">
                 Perbarui status
             </Button>
+            {confirmation.dialog}
         </form>
     );
 }

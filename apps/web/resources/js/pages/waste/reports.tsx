@@ -10,6 +10,7 @@ import ReportEditor from "@/features/waste/reports/report-editor";
 import ReportDetail from "@/features/waste/reports/report-detail";
 import useReports from "@/features/waste/reports/use-reports";
 import { exportReports } from "@/features/waste/reports/export";
+import { ActionDialog } from "@/features/waste/action-dialog";
 export default function Reports() {
     const reports = useReports();
     const user = useAccount();
@@ -105,6 +106,7 @@ export default function Reports() {
                     void reports.mutate(
                         () => api("reports/" + id, { method: "DELETE" }),
                         true,
+                        "Laporan berhasil dihapus.",
                     )
                 }
                 onRetry={() =>
@@ -120,6 +122,10 @@ export default function Reports() {
                         }),
                     )
                 }
+            />
+            <ActionDialog
+                value={reports.action.feedback}
+                onClose={reports.action.dismiss}
             />
         </Shell>
     );

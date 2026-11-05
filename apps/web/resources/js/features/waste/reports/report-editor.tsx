@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { TextField, Choice, Notice } from "../common";
 import { categories, type Report } from "../api";
 import LocationFields from "./location-fields";
+import { useConfirmation } from "../use-confirmation";
 export default function ReportEditor({
     open,
     report,
@@ -27,13 +28,21 @@ export default function ReportEditor({
     onClose: () => void;
     onSave: (data: FormData) => void;
 }) {
+    const confirmation = useConfirmation();
     function submit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         if (data.get("category") === "_none") data.set("category", "");
         const photo = data.get("photo");
         if (photo instanceof File && !photo.size) data.delete("photo");
-        onSave(data);
+        if (!busy)
+            confirmation.ask(
+                report
+                    ? "Simpan perubahan pada laporan ini?"
+                    : "Kirim laporan beserta foto dan lokasi yang telah diisi?",
+                () => onSave(data),
+                event.currentTarget,
+            );
     }
     return (
         <Dialog
@@ -52,6 +61,7 @@ export default function ReportEditor({
                     </DialogDescription>
                 </DialogHeader>
                 <form
+                    noValidate
                     className="editor-form"
                     key={report?.id ?? "new"}
                     onSubmit={submit}
@@ -107,6 +117,7 @@ export default function ReportEditor({
                         </Button>
                     </div>
                 </form>
+                {confirmation.dialog}
             </DialogContent>
         </Dialog>
     );

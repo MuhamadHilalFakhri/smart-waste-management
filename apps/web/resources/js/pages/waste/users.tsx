@@ -10,6 +10,7 @@ import type { Account, UserPage } from "@/features/waste/types";
 import UserStats from "@/features/waste/users/user-stats";
 import UserTable from "@/features/waste/users/user-table";
 import UserEditor from "@/features/waste/users/user-editor";
+import { ActionDialog } from "@/features/waste/action-dialog";
 export default function UsersPage() {
     const [query, setQuery] = useState("");
     const [draft, setDraft] = useState("");
@@ -107,6 +108,7 @@ export default function UsersPage() {
                 onClose={() => setOpen(false)}
                 onSave={save}
             />
+            <ActionDialog value={action.feedback} onClose={action.dismiss} />
         </Shell>
     );
 }

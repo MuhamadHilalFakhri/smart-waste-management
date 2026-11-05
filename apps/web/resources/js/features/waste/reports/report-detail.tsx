@@ -1,5 +1,5 @@
 import { ScrollDialogContent as DialogContent } from "../scroll-dialog";
-import { useState } from "react";
+import { useConfirmation } from "../use-confirmation";
 import { Pencil, RefreshCw, Trash2 } from "lucide-react";
 import {
     Dialog,
@@ -33,7 +33,7 @@ export default function ReportDetail({
     onRetry: () => void;
     onStatus: (data: Record<string, FormDataEntryValue>) => void;
 }) {
-    const [confirmDelete, setConfirmDelete] = useState(false);
+    const confirmation = useConfirmation();
     if (!report) return null;
     const editable = admin || report.status === "pending";
     return (
@@ -107,37 +107,21 @@ export default function ReportDetail({
                         <Button
                             variant="outline"
                             disabled={busy}
-                            onClick={() => setConfirmDelete(true)}
+                            onClick={() =>
+                                confirmation.ask(
+                                    "Laporan ini akan diarsipkan dan tidak muncul lagi di daftar. Lanjutkan menghapus?",
+                                    onDelete,
+                                    undefined,
+                                    true,
+                                )
+                            }
                         >
                             <Trash2 />
                             Hapus
                         </Button>
                     </div>
                 )}
-                {confirmDelete && (
-                    <div className="rounded-lg border border-red-200 p-4">
-                        <p className="mb-3 text-sm">
-                            Hapus laporan ini? Laporan akan diarsipkan dan tidak
-                            muncul di daftar.
-                        </p>
-                        <div className="sw-actions">
-                            <Button
-                                disabled={busy}
-                                variant="destructive"
-                                onClick={onDelete}
-                            >
-                                Ya, hapus
-                            </Button>
-                            <Button
-                                disabled={busy}
-                                variant="outline"
-                                onClick={() => setConfirmDelete(false)}
-                            >
-                                Batal
-                            </Button>
-                        </div>
-                    </div>
-                )}
+                {confirmation.dialog}
                 {admin &&
                     ["pending", "in_progress"].includes(report.status) && (
                         <StatusForm

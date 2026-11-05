@@ -10,7 +10,7 @@
 
 ## 3. APK atau link demo aplikasi mobile
 
-[Unduh APK Android](https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/download/v1.0.1/smart-waste-android.apk). Versi aplikasi 1.0.3, build 3, menggunakan UI terbaru dan perbaikan unggah foto.
+[Unduh APK Android](https://github.com/MuhamadHilalFakhri/smart-waste-management/releases/download/v1.0.1/smart-waste-android.apk). Versi aplikasi 1.0.4, build 4, mencakup perbaikan unggah foto serta modal validasi dan konfirmasi aksi.
 
 ## 4. Dokumentasi API
 

@@ -19,6 +19,8 @@ export default function Screen() {
     pick,
     gps,
     save,
+    validate,
+    confirm,
     setScreen,
   } = useWaste();
   return (
@@ -85,7 +87,16 @@ export default function Screen() {
           </Text>
         </Pressable>
       ))}
-      {button("Simpan laporan", () => void run(save))}
+      {button("Simpan laporan", () =>
+        confirm(save, {
+          title: editing ? "Simpan perubahan?" : "Kirim laporan?",
+          message:
+            "Simpan laporan beserta foto, lokasi, dan deskripsi yang telah diisi?",
+          success:
+            "Laporan berhasil disimpan. Saran kategori AI akan muncul pada detail laporan.",
+          validate,
+        }),
+      )}
       {button("Batal", () => setScreen("history"), true)}
     </View>
   );

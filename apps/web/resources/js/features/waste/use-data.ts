@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { api } from "./api";
+import type { ActionMessage } from "./action-dialog";
 type Result<T> = { path: string; data?: T; error?: string; loading: boolean };
 export function useData<T>(path: string) {
     const [result, setResult] = useState<Result<T>>({ path, loading: true });
@@ -41,6 +42,8 @@ export function useData<T>(path: string) {
     };
 }
 export function useAction() {
+    const running = useRef(false);
+    const [feedback, setFeedback] = useState<ActionMessage>();
     const [busy, setBusy] = useState(false);
     const [error, setError] = useState("");
     const [notice, setNotice] = useState("");
@@ -48,15 +51,23 @@ export function useAction() {
         action: () => Promise<void>,
         message = "Perubahan tersimpan.",
     ) {
+        if (running.current) return;
+        running.current = true;
         setBusy(true);
         setError("");
         setNotice("");
         try {
             await action();
             setNotice(message);
+            if (message) setFeedback({ title: "Berhasil", message });
         } catch (error) {
             setError((error as Error).message);
+            setFeedback({
+                title: "Perubahan belum berhasil",
+                message: (error as Error).message,
+            });
         } finally {
+            running.current = false;
             setBusy(false);
         }
     }
@@ -65,6 +76,8 @@ export function useAction() {
         error,
         notice,
         run,
+        feedback,
+        dismiss: () => setFeedback(undefined),
         clear: () => {
             setError("");
             setNotice("");
