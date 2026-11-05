@@ -79,7 +79,7 @@ npx tsc --noEmit
 - Repository: https://github.com/MuhamadHilalFakhri/smart-waste-management
 - Website: https://8080-001m6e4ck17dvek9788p0t5q4fm.sbx.sandboxes-cloud.docker.com
 - OpenAPI: endpoint web `/api-documentation` atau `apps/web/resources/openapi.json`.
-- APK Android terbaru: versi 1.0.4 (build 4), tersedia di GitHub Releases.
+- APK Android terbaru: versi 1.0.6 (build 6), tersedia di GitHub Releases.
 - Model: accuracy testing 97,06%, 340 gambar testing, versi `9fdcea1e664b`.
 - Dataset aktual: 2.262 gambar, 1.583 train / 339 validation / 340 test.
 - Video walkthrough memakai tangkapan layar aplikasi aktual dan narasi sintetis bahasa Indonesia. Pengujian kamera/GPS di perangkat fisik masih diperlukan.
